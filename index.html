@@ -808,7 +808,6 @@ img{max-width:100%}
 
 /* topo em duas colunas: argumento à esquerda, servidor à direita */
 .tec-top{display:grid; gap:clamp(28px,4vw,64px); align-items:center; margin-bottom:clamp(36px,5vw,64px)}
-@media (min-width:1000px){ .tec-top{grid-template-columns:1fr .92fr} }
 .tec-facts{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:26px;
   background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.12); border-radius:14px; overflow:hidden}
 .tec-facts div{background:rgba(20,8,24,.72); padding:14px 16px}
@@ -869,32 +868,6 @@ img{max-width:100%}
 .node span{font-size:13px; color:var(--on-deep-2); line-height:1.45}
 .node--wide{grid-column:span 2}
 @media (max-width:700px){ .node--wide{grid-column:span 1} }
-
-/* painel de processos, do jeito que aparece no servidor */
-.procs{
-  margin-top:38px; border-radius:var(--r-m); overflow:hidden;
-  border:1px solid rgba(255,255,255,.14); background:rgba(10,4,13,.7);
-}
-.procs__bar{
-  display:flex; align-items:center; gap:9px; padding:11px 16px;
-  border-bottom:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04);
-}
-.procs__bar i{width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,.22); display:block}
-.procs__bar span{font-family:var(--mono); font-size:11px; color:var(--on-deep-2); letter-spacing:.06em}
-.procs__scroll{overflow-x:auto}
-.procs table{width:100%; border-collapse:collapse; font-family:var(--mono); font-size:12px; min-width:560px}
-.procs th, .procs td{padding:9px 16px; text-align:left; white-space:nowrap}
-.procs thead th{
-  font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(246,234,248,.4);
-  font-weight:600; border-bottom:1px solid rgba(255,255,255,.09);
-}
-.procs tbody tr{border-bottom:1px solid rgba(255,255,255,.05)}
-.procs tbody tr:last-child{border-bottom:0}
-.procs td{color:var(--on-deep-2)}
-.procs td:first-child{color:#fff}
-.procs .up{color:#7FE6EA; display:inline-flex; align-items:center; gap:6px}
-.procs .up::before{content:""; width:6px; height:6px; border-radius:50%; background:#7FE6EA; box-shadow:0 0 8px #7FE6EA}
-.procs__note{padding:12px 16px; font-family:var(--mono); font-size:10.5px; color:rgba(246,234,248,.38); letter-spacing:.04em}
 
 /* ───────── espaço do vídeo: cresce conforme chega ao centro ───────── */
 #video{padding-block:clamp(70px,8vw,120px)}
@@ -1743,38 +1716,16 @@ footer{border-top:1px solid var(--line); padding:34px 0 60px}
           fatura que cresce junto com o movimento da rede.</p>
         <div class="tec-facts">
           <div><b>1</b><span>VPS Ubuntu para toda a rede</span></div>
-          <div><b>6</b><span>processos supervisionados</span></div>
+          <div><b>24/7</b><span>operação supervisionada</span></div>
           <div><b>0</b><span>serviços cobrados por uso</span></div>
         </div>
       </div>
 
-      <div class="procs rv" style="--d:80ms; margin-top:0">
-        <div class="procs__bar">
-          <i></i><i></i><i></i>
-          <span>srv1772478 — pm2 list</span>
-        </div>
-        <div class="procs__scroll">
-          <table>
-            <thead>
-              <tr><th scope="col">processo</th><th scope="col">porta</th><th scope="col">papel</th><th scope="col">status</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>portal</td><td>3001</td><td>rede municipal — produção</td><td><span class="up">online</span></td></tr>
-              <tr><td>homolog</td><td>3011</td><td>homologação e testes</td><td><span class="up">online</span></td></tr>
-              <tr><td>chat-regulacao</td><td>3004</td><td>atendimento e WhatsApp</td><td><span class="up">online</span></td></tr>
-              <tr><td>apa</td><td>—</td><td>produção profissional</td><td><span class="up">online</span></td></tr>
-              <tr><td>apa-conferencia</td><td>3007</td><td>conferência de produção</td><td><span class="up">online</span></td></tr>
-              <tr><td>patrimonio</td><td>3013</td><td>bens e rastreio</td><td><span class="up">online</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="procs__note">// nginx na frente, PostgreSQL atrás, tudo na mesma máquina</p>
-      </div>
     </div>
     <div class="arch">
       <div class="arch__tier rv">
         <span class="arch__label">Borda</span>
-        <div class="node"><span class="node__k"><i></i>TLS · vhosts</span><b>nginx</b><span>Oito vhosts com bloqueio de arquivos sensíveis e gate por cookie no homologação.</span></div>
+        <div class="node"><span class="node__k"><i></i>TLS · vhosts</span><b>nginx</b><span>TLS em todos os endereços, com bloqueio de arquivos sensíveis na borda.</span></div>
         <div class="node"><span class="node__k"><i></i>Supervisão</span><b>PM2</b><span>Cada app é um processo nomeado, com restart automático e log próprio.</span></div>
         <div class="node"><span class="node__k"><i></i>Mídia</span><b>coturn · TURN</b><span>Servidor próprio para a chamada de voz atravessar NAT de operadora.</span></div>
       </div>
