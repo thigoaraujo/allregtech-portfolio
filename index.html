@@ -1078,6 +1078,13 @@ img{max-width:100%}
 .cta::before{
   content:""; position:absolute; inset:auto auto -50% 50%; translate:-50% 0; width:120%; aspect-ratio:2/1;
   background:radial-gradient(50% 50% at 50% 50%, rgba(208,122,221,.35), transparent 70%); pointer-events:none;
+  animation:ctaGlow 17s ease-in-out infinite alternate;
+}
+/* a luz do fundo respira e passeia devagar, para o cartão nunca ficar parado */
+@keyframes ctaGlow{
+  0%{transform:translate(-9%,5%) scale(1); opacity:.7}
+  50%{transform:translate(2%,-2%) scale(1.1); opacity:.95}
+  100%{transform:translate(9%,-5%) scale(1.18); opacity:.8}
 }
 .cta > *{position:relative}
 .cta p{color:var(--on-deep-2); max-width:48ch}
@@ -1092,12 +1099,32 @@ img{max-width:100%}
 .cta__mail a:hover{color:#fff; border-color:#fff}
 
 .agenda{
-  list-style:none; margin:0; padding:0; display:grid; gap:1px; text-align:left;
+  list-style:none; margin:0; padding:0; display:grid; gap:1px; text-align:left; position:relative;
   border-radius:var(--r-m); overflow:hidden;
   background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.16);
 }
-.agenda li{background:rgba(20,8,24,.68); padding:15px 18px; display:grid; gap:4px; transition:background .35s}
-.agenda li:hover{background:rgba(255,255,255,.06)}
+/* trilho da sessão, com o pulso descendo os quatro blocos */
+.agenda::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:2px; pointer-events:none;
+  background:linear-gradient(180deg, rgba(127,230,234,.75), rgba(208,122,221,.4));
+  opacity:.6;
+}
+.agenda::after{
+  content:""; position:absolute; left:-2px; width:6px; height:6px; border-radius:50%; pointer-events:none;
+  background:#7FE6EA; box-shadow:0 0 13px rgba(127,230,234,.95);
+  animation:agendaFlow 5.6s cubic-bezier(.5,0,.5,1) infinite;
+}
+@keyframes agendaFlow{
+  0%{top:-7px; opacity:0}
+  12%{opacity:1}
+  86%{opacity:1}
+  100%{top:100%; opacity:0}
+}
+.agenda li{
+  background:rgba(20,8,24,.68); padding:15px 18px; display:grid; gap:4px;
+  transition:background .35s, padding-left .35s cubic-bezier(.2,.7,.3,1);
+}
+.agenda li:hover{background:rgba(255,255,255,.06); padding-left:24px}
 .agenda em{
   font-style:normal; font-family:var(--mono); font-size:10px; letter-spacing:.16em;
   text-transform:uppercase; color:#7FE6EA;
@@ -1110,7 +1137,39 @@ img{max-width:100%}
   padding-top:clamp(22px,3vw,32px); border-top:1px solid rgba(255,255,255,.14);
   font-family:var(--display); font-size:clamp(17px,2.1vw,26px); letter-spacing:-.02em;
 }
-.cta__sign b{color:#fff}
+/* a assinatura recebe um brilho que atravessa a frase de tempos em tempos */
+.cta__sign b{
+  color:#fff;
+  /* o branco é dominante e o realce apenas atravessa: o padrão se repete,
+     então a frase nunca fica sem fundo (e sem cor) em nenhum momento */
+  background:linear-gradient(100deg,#fff 0 38%, #E8B4F0 46%, #7FE6EA 52%, #fff 60% 100%);
+  background-size:280% 100%; background-repeat:repeat;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:signShine 9s linear infinite;
+}
+@keyframes signShine{
+  from{background-position:280% 0}
+  to{background-position:0 0}
+}
+/* halo saindo do botão principal, chamando o clique sem piscar */
+.cta .btn--primary{position:relative}
+.cta .btn--primary::after{
+  content:""; position:absolute; inset:-4px; border-radius:999px; pointer-events:none;
+  border:2px solid rgba(232,180,240,.85); box-shadow:0 0 18px rgba(232,180,240,.45);
+  animation:ctaPulse 3.4s cubic-bezier(.2,.7,.3,1) infinite;
+}
+@keyframes ctaPulse{
+  0%{transform:scale(1); opacity:.9}
+  45%{transform:scale(1.13); opacity:.45}
+  80%{transform:scale(1.24); opacity:0}
+  100%{transform:scale(1.24); opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .cta::before, .agenda::after, .cta__sign b, .cta .btn--primary::after{animation:none}
+  .agenda::after{display:none}
+  .cta__sign b{background:none; -webkit-text-fill-color:#fff; color:#fff}
+}
 
 footer{border-top:1px solid var(--line); padding:44px 0 44px}
 .foot{display:grid; gap:clamp(22px,4vw,52px); align-items:start; font-size:13.5px; color:var(--ink-3)}
