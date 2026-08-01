@@ -806,13 +806,53 @@ img{max-width:100%}
 #tecnologia .lede{color:var(--on-deep-2)}
 #tecnologia .eyebrow{color:#E8B4F0}
 
-/* topo em duas colunas: argumento à esquerda, servidor à direita */
+/* topo em duas colunas: argumento à esquerda, as escolhas à direita */
 .tec-top{display:grid; gap:clamp(28px,4vw,64px); align-items:center; margin-bottom:clamp(36px,5vw,64px)}
+@media (min-width:1000px){ .tec-top{grid-template-columns:1fr .92fr} }
 .tec-facts{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:26px;
   background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.12); border-radius:14px; overflow:hidden}
 .tec-facts div{background:rgba(20,8,24,.72); padding:14px 16px}
 .tec-facts b{display:block; font-family:var(--mono); font-size:clamp(19px,2vw,26px); color:#E8B4F0; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
 .tec-facts span{display:block; font-size:11.5px; color:var(--on-deep-2); margin-top:3px; line-height:1.35}
+
+/* cartão das escolhas: o que ficou de fora e o que entrou */
+.choice{
+  border-radius:var(--r-m); overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(155deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
+  transition:border-color .4s, box-shadow .4s;
+}
+.choice:hover{border-color:rgba(232,180,240,.45); box-shadow:0 0 40px rgba(208,122,221,.18), inset 0 1px 0 rgba(255,255,255,.26)}
+.choice__bar{
+  display:flex; align-items:center; gap:10px; padding:12px 16px;
+  border-bottom:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04);
+  font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+  color:rgba(246,234,248,.5);
+}
+.choice__bar::before{
+  content:""; width:6px; height:6px; border-radius:50%; background:#7FE6EA;
+  box-shadow:0 0 8px #7FE6EA; flex:none;
+}
+.choice ul{list-style:none; margin:0; padding:4px 0}
+.choice li{
+  display:grid; grid-template-columns:24px 1fr; gap:3px 13px; align-items:start;
+  padding:12px 16px; transition:background .35s;
+}
+.choice li + li{border-top:1px solid rgba(255,255,255,.055)}
+.choice li:hover{background:rgba(255,255,255,.045)}
+.choice i{
+  grid-row:span 2; width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
+  font-style:normal; font-size:12px; line-height:1; margin-top:1px; flex:none;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s;
+}
+.choice li:hover i{transform:scale(1.12)}
+.choice .no i{background:rgba(255,255,255,.06); color:rgba(246,234,248,.42); border:1px solid rgba(255,255,255,.13)}
+.choice .yes i{background:rgba(127,230,234,.13); color:#7FE6EA; border:1px solid rgba(127,230,234,.4)}
+.choice li.yes:hover i{box-shadow:0 0 16px rgba(127,230,234,.5)}
+.choice b{font-family:var(--display); font-size:14.5px; letter-spacing:-.01em; color:#fff}
+.choice .no b{color:rgba(246,234,248,.66)}
+.choice span{font-size:12.5px; color:var(--on-deep-2); line-height:1.45}
 
 .arch{display:grid; gap:0; margin-top:8px}
 .arch__tier{
@@ -1032,9 +1072,50 @@ img{max-width:100%}
 .cta p{color:var(--on-deep-2); max-width:48ch}
 .cta .btn--primary{background:#fff; color:#25082B}
 
-footer{border-top:1px solid var(--line); padding:34px 0 60px}
-.foot{display:flex; gap:18px; flex-wrap:wrap; align-items:center; justify-content:space-between; font-size:13.5px; color:var(--ink-3)}
+/* fecho em duas colunas: o convite e a agenda da sessão */
+.cta__grid{display:grid; gap:clamp(28px,4vw,56px); align-items:start; text-align:left; width:100%}
+@media (min-width:900px){ .cta__grid{grid-template-columns:1fr .84fr} }
+.cta__lead{display:grid; gap:18px; justify-items:start}
+.cta__mail{font-size:13.5px}
+.cta__mail a{color:#E8B4F0; text-decoration:none; border-bottom:1px solid rgba(232,180,240,.38); transition:color .25s, border-color .25s}
+.cta__mail a:hover{color:#fff; border-color:#fff}
+
+.agenda{
+  list-style:none; margin:0; padding:0; display:grid; gap:1px; text-align:left;
+  border-radius:var(--r-m); overflow:hidden;
+  background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.16);
+}
+.agenda li{background:rgba(20,8,24,.68); padding:15px 18px; display:grid; gap:4px; transition:background .35s}
+.agenda li:hover{background:rgba(255,255,255,.06)}
+.agenda em{
+  font-style:normal; font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+  text-transform:uppercase; color:#7FE6EA;
+}
+.agenda b{font-family:var(--display); font-size:16px; letter-spacing:-.01em; color:#fff}
+.agenda p{font-size:13px; line-height:1.45; margin:0; max-width:none}
+
+.cta .cta__sign{
+  width:100%; max-width:none; margin:0; text-align:center;
+  padding-top:clamp(22px,3vw,32px); border-top:1px solid rgba(255,255,255,.14);
+  font-family:var(--display); font-size:clamp(17px,2.1vw,26px); letter-spacing:-.02em;
+}
+.cta__sign b{color:#fff}
+
+footer{border-top:1px solid var(--line); padding:44px 0 44px}
+.foot{display:grid; gap:clamp(22px,4vw,52px); align-items:start; font-size:13.5px; color:var(--ink-3)}
+@media (min-width:820px){ .foot{grid-template-columns:1.5fr .75fr .75fr} }
 .foot .brand{font-size:15px}
+.foot__brand{display:grid; gap:13px; justify-items:start; max-width:44ch}
+.foot__brand p{margin:0; font-size:13.5px; line-height:1.55; color:var(--ink-2)}
+.foot__col{display:grid; gap:9px; justify-items:start}
+.foot__t{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3)}
+.foot__col a{color:var(--ink-2); text-decoration:none; transition:color .25s, translate .25s}
+.foot__col a:hover{color:var(--accent); translate:3px 0}
+.foot__base{
+  display:flex; gap:14px; flex-wrap:wrap; justify-content:space-between; align-items:center;
+  margin-top:clamp(24px,3vw,38px); padding-top:18px; border-top:1px solid var(--line);
+  font-size:12.5px; color:var(--ink-3);
+}
 
 /* ───────── telas baixas: o conteúdo fixado encolhe para caber inteiro ───────── */
 @media (max-height:820px) and (min-width:1000px){
@@ -1721,6 +1802,23 @@ footer{border-top:1px solid var(--line); padding:34px 0 60px}
         </div>
       </div>
 
+      <div class="choice rv" style="--d:80ms">
+        <div class="choice__bar">escolha de infraestrutura</div>
+        <ul>
+          <li class="no rv" style="--d:140ms"><i>✕</i><b>Orquestrador de containers</b>
+            <span>Mais uma camada para a equipe da secretaria manter em pé.</span></li>
+          <li class="no rv" style="--d:200ms"><i>✕</i><b>Serviço gerenciado cobrado por uso</b>
+            <span>Fatura que cresce junto com o movimento da rede.</span></li>
+          <li class="no rv" style="--d:260ms"><i>✕</i><b>Bundler no frontend</b>
+            <span>Correção que depende de build para chegar na unidade.</span></li>
+          <li class="yes rv" style="--d:320ms"><i>✓</i><b>Stack que a equipe já sabe operar</b>
+            <span>Node, PostgreSQL e nginx, sem peça exótica no caminho.</span></li>
+          <li class="yes rv" style="--d:380ms"><i>✓</i><b>Processo supervisionado</b>
+            <span>Se cai, sobe sozinho — cada app com log próprio.</span></li>
+          <li class="yes rv" style="--d:440ms"><i>✓</i><b>Atualização sem instalar nada</b>
+            <span>A recepção abre o navegador e já está na versão nova.</span></li>
+        </ul>
+      </div>
     </div>
     <div class="arch">
       <div class="arch__tier rv">
@@ -1758,25 +1856,69 @@ footer{border-top:1px solid var(--line); padding:34px 0 60px}
 <section id="contato">
   <div class="wrap">
     <div class="cta rv">
-      <p class="eyebrow" style="color:#E8B4F0">Próximo passo</p>
-      <h2 class="h-l">Vamos percorrer a sua rede na tela.</h2>
-      <p class="lede" style="color:var(--on-deep-2)">Uma sessão de 40 minutos com dados de demonstração: entramos pela
-        recepção da UBS e saímos no faturamento, passando por regulação, transporte e o aplicativo do paciente.</p>
-      <div class="hero-cta">
-        <a class="btn btn--primary" href="mailto:allregtech.4120@gmail.com?subject=Demonstra%C3%A7%C3%A3o%20do%20Portal%20AllRegTech">Agendar demonstração</a>
-        <a class="btn btn--onDeep" href="#modulos">Rever os módulos</a>
+      <div class="cta__grid">
+        <div class="cta__lead">
+          <p class="eyebrow" style="color:#E8B4F0">Próximo passo</p>
+          <h2 class="h-l">Vamos percorrer a sua rede na tela.</h2>
+          <p class="lede" style="color:var(--on-deep-2)">Uma sessão de 40 minutos com dados de demonstração: entramos pela
+            recepção da UBS e saímos no faturamento, passando por regulação, transporte e o aplicativo do paciente.</p>
+          <div class="hero-cta">
+            <a class="btn btn--primary" href="mailto:allregtech.4120@gmail.com?subject=Demonstra%C3%A7%C3%A3o%20do%20Portal%20AllRegTech">Agendar demonstração</a>
+            <a class="btn btn--onDeep" href="#modulos">Rever os módulos</a>
+          </div>
+          <p class="cta__mail">ou escreva direto para
+            <a href="mailto:allregtech.4120@gmail.com">allregtech.4120@gmail.com</a></p>
+        </div>
+
+        <ol class="agenda">
+          <li class="rv" style="--d:120ms"><em>10 min</em><b>A recepção e a fila</b>
+            <p>Cadastro do cidadão, senha emitida e o painel de chamada rodando na TV da unidade.</p></li>
+          <li class="rv" style="--d:180ms"><em>15 min</em><b>A esteira da regulação</b>
+            <p>Solicitação, análise, vaga casada e o transporte reservado para o dia da consulta.</p></li>
+          <li class="rv" style="--d:240ms"><em>10 min</em><b>O paciente no celular</b>
+            <p>O aviso chegando, a confirmação de volta e a chamada de voz do operador dentro do app.</p></li>
+          <li class="rv" style="--d:300ms"><em>5 min</em><b>O que vira receita</b>
+            <p>Produção apurada por profissional e o faturamento SUS fechando o ciclo.</p></li>
+        </ol>
       </div>
+
+      <p class="cta__sign rv" style="--d:360ms">O futuro não é promessa.
+        <b>É escolha de infraestrutura hoje.</b></p>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap foot">
-    <a class="brand" href="#hero" aria-label="Portal AllRegTech — início">
-      <span class="brand-mark" style="--bm:96px"></span>
-    </a>
-    <span>Plataforma de gestão da saúde pública municipal · web e Android</span>
-    <span>allregtech.4120@gmail.com</span>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot__brand">
+        <a class="brand" href="#hero" aria-label="Portal AllRegTech — início">
+          <span class="brand-mark" style="--bm:112px"></span>
+        </a>
+        <p>Regulação, atenção básica, hospitalar, transporte sanitário e faturamento SUS na mesma
+          base de pacientes — no navegador da unidade e no celular do cidadão.</p>
+      </div>
+
+      <nav class="foot__col" aria-label="Seções do portfólio">
+        <span class="foot__t">Navegar</span>
+        <a href="#jornada">A jornada</a>
+        <a href="#video">Vídeo</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#app">Aplicativo</a>
+        <a href="#tecnologia">Tecnologia</a>
+      </nav>
+
+      <div class="foot__col">
+        <span class="foot__t">Conversar</span>
+        <a href="mailto:allregtech.4120@gmail.com">allregtech.4120@gmail.com</a>
+        <a href="#contato">Agendar demonstração</a>
+      </div>
+    </div>
+
+    <div class="foot__base">
+      <span>© 2026 AllRegTech</span>
+      <span>Plataforma de gestão da saúde pública municipal · web e Android</span>
+    </div>
   </div>
 </footer>
 
