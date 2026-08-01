@@ -909,8 +909,19 @@ img{max-width:100%}
 .node--wide{grid-column:span 2}
 @media (max-width:700px){ .node--wide{grid-column:span 1} }
 
-/* ───────── espaço do vídeo: cresce conforme chega ao centro ───────── */
+/* ───────── espaço do vídeo: texto de um lado, player do outro ───────── */
 #video{padding-block:clamp(70px,8vw,120px)}
+.vid-grid{display:grid; gap:clamp(30px,4vw,58px); align-items:center}
+@media (min-width:1000px){ .vid-grid{grid-template-columns:.82fr 1.18fr} }
+.vid-side{display:grid; gap:22px; align-content:center}
+.vid-chaps{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px}
+.vid-chaps li{
+  font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--ink-2);
+  padding:7px 13px; border-radius:999px; border:1px solid var(--line); background:var(--surface);
+  transition:border-color .3s, color .3s, translate .3s;
+}
+.vid-chaps li:hover{border-color:var(--accent); color:var(--accent); translate:0 -2px}
+.vid-meta{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin:0}
 .vslot{
   margin:0; border-radius:var(--r-l); overflow:hidden; aspect-ratio:16/9; position:relative;
   display:grid; place-items:center; will-change:transform, opacity; opacity:var(--fo,1);
@@ -1466,16 +1477,31 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
 <!-- ══════════════════ VÍDEO ══════════════════ -->
 <section class="sec" id="video">
   <div class="wrap">
-    <div class="sec__hd">
-      <p class="eyebrow rv">Veja rodando</p>
-      <h2 class="h-l rv">Quarenta minutos de rede, em três.</h2>
-      <p class="lede rv" style="--d:120ms">Um percurso gravado dentro do portal: entrada pela recepção da UBS,
-        solicitação na esteira da regulação, vaga casada, transporte e o aviso chegando no celular da paciente.</p>
-    </div>
+    <div class="vid-grid">
+      <div class="vid-side">
+        <div class="sec__hd" style="margin:0">
+          <p class="eyebrow rv">A apresentação</p>
+          <h2 class="h-l rv">Oito minutos, do prontuário perdido à rede operando junto.</h2>
+          <p class="lede rv" style="--d:120ms">Por que a rede se fragmenta em sistemas que não conversam,
+            o que cada domínio da plataforma resolve e o que muda quando todo mundo escreve no mesmo
+            cadastro. Termina na única pergunta que interessa à secretaria.</p>
+        </div>
 
-    <figure class="vslot" id="vslot">
-      <video src="video-allregtech.mp4" poster="video-capa.jpg" controls playsinline preload="none"></video>
-    </figure>
+        <ul class="vid-chaps">
+          <li class="rv" style="--d:180ms">O cenário de hoje</li>
+          <li class="rv" style="--d:230ms">Silos de dados</li>
+          <li class="rv" style="--d:280ms">Os domínios da plataforma</li>
+          <li class="rv" style="--d:330ms">Faturamento e gestão</li>
+          <li class="rv" style="--d:380ms">A pergunta do fecho</li>
+        </ul>
+
+        <p class="vid-meta rv" style="--d:430ms">8 min 18 s · assista sem sair da página</p>
+      </div>
+
+      <figure class="vslot" id="vslot">
+        <video src="video-allregtech.mp4" poster="video-capa.jpg" controls playsinline preload="none"></video>
+      </figure>
+    </div>
   </div>
 </section>
 
