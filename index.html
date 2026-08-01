@@ -1923,11 +1923,14 @@ footer{border-top:1px solid var(--line); padding:34px 0 60px}
       idxItems.push(li);
     });
   }
-  /* MODO LEVE: a hélice fixada em 3D derrubava o renderizador ao saltar entre
-     seções. A espiral se desenrola numa linha do tempo, mantendo palco escuro,
-     vidro e neon, sem sticky nem contexto 3D vivo por centenas de vh. */
-  var spiralOff = true;
-  if (modulos) modulos.classList.add("spiral-off");
+  /* A hélice 3D fixada volta a ser o padrão. Ela cai para a linha do tempo
+     (spiral-off) só onde não faz sentido: tela estreita, tela muito baixa ou
+     preferência por menos movimento. */
+  var spiralOff = reduce || window.innerWidth < 1000 || window.innerHeight < 540;
+  if (modulos && spiralOff) modulos.classList.add("spiral-off");
+  /* sem isso os 14 cards apareceriam empilhados no mesmo ponto antes do
+     primeiro updateSpiral posicionar cada um na hélice */
+  if (!spiralOff) spiralCards.forEach(function(c){ c.style.setProperty("--so", "0"); });
 
   /* o "no lugar de" saía nos painéis laterais da hélice; aqui vai para o card */
   spiralCards.forEach(function(c){
@@ -2377,14 +2380,14 @@ footer{border-top:1px solid var(--line); padding:34px 0 60px}
   /* nada de ResizeObserver aqui: remeasure() mexe no DOM (as contas do fio),
      o que dispararia o próprio observer e travaria o renderizador em laço. */
 
-  /* MODO LEVE: jornada e dia na rede também deixam de prender na tela.
-     Mantêm a revelação por scroll, mas sem trilhas de centenas de vh com
-     position:sticky + preserve-3d vivos ao mesmo tempo. */
-  document.getElementById("jornada").classList.add("j-flat");
-  if (pessoas) {
-    pessoas.classList.add("flat");
-    /* sem a fila presa na tela o relógio não avança: mostra a faixa do dia */
-    if (dayClock) dayClock.textContent = "07:10 → 17:40";
+  /* jornada e dia na rede voltam a prender na tela; viram lista só quando o
+     usuário pede menos movimento */
+  if (reduce) {
+    document.getElementById("jornada").classList.add("j-flat");
+    if (pessoas) {
+      pessoas.classList.add("flat");
+      if (dayClock) dayClock.textContent = "07:10 → 17:40";
+    }
   }
   remeasure();
 
