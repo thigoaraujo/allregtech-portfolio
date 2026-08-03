@@ -13,6 +13,7 @@
 <meta property="og:type" content="website">
 </head>
 <body>
+<div class="beams" aria-hidden="true"><i></i><i></i><i></i></div>
 
 
 <style>
@@ -95,6 +96,59 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden; overflow-x:clip; /* clip não cria contexto de rolagem: preserva o sticky */
 }
+
+/* ───────────────────────── feixes de luz no fundo ─────────────────────────
+   Camada fixa atras de TODO o conteudo. Funciona porque o background do body
+   e propagado para o canvas: um filho com z-index:-1 fica acima do fundo e
+   abaixo do conteudo. Secoes com fundo solido (ex.: #jornada) cobrem os feixes
+   naturalmente — a luz aparece onde o fundo e o --ground. */
+:root{
+  --beam-a:rgba(111,29,122,.20);
+  --beam-b:rgba(14,143,149,.15);
+  --beam-c:rgba(199,122,18,.11);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --beam-a:rgba(208,122,221,.26);
+    --beam-b:rgba(63,198,203,.19);
+    --beam-c:rgba(232,169,63,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --beam-a:rgba(208,122,221,.26);
+  --beam-b:rgba(63,198,203,.19);
+  --beam-c:rgba(232,169,63,.14);
+}
+:root[data-theme="light"]{
+  --beam-a:rgba(111,29,122,.20);
+  --beam-b:rgba(14,143,149,.15);
+  --beam-c:rgba(199,122,18,.11);
+}
+.beams{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  overflow:hidden; contain:strict;
+}
+.beams i{
+  position:absolute; top:-60vh; left:0;
+  width:var(--w); height:220vh;
+  background:linear-gradient(90deg, transparent 0%, var(--c) 46%, var(--c) 54%, transparent 100%);
+  filter:blur(var(--b));
+  opacity:0;
+  will-change:transform, opacity;
+  animation:beam-sweep var(--dur) linear var(--delay) infinite;
+}
+.beams i:nth-child(1){ --w:15vw; --b:46px; --c:var(--beam-a); --dur:23s; --delay:-3s }
+.beams i:nth-child(2){ --w:9vw;  --b:34px; --c:var(--beam-b); --dur:31s; --delay:-14s }
+.beams i:nth-child(3){ --w:22vw; --b:64px; --c:var(--beam-c); --dur:41s; --delay:-27s }
+@keyframes beam-sweep{
+  0%   { transform:rotate(17deg) translate3d(-45vw,0,0); opacity:0 }
+  14%  { opacity:1 }
+  86%  { opacity:1 }
+  100% { transform:rotate(17deg) translate3d(125vw,0,0); opacity:0 }
+}
+/* quem pediu menos movimento fica com o fundo limpo, sem animacao nenhuma */
+@media (prefers-reduced-motion:reduce){ .beams{ display:none } }
+@media print{ .beams{ display:none } }
 /* degradê nas bordas: onde o conteúdo é recortado, ele se dissolve em vez de ser cortado a faca */
 .fade-x::before, .fade-x::after, .fade-y::before, .fade-y::after{
   content:""; position:absolute; z-index:4; pointer-events:none;
