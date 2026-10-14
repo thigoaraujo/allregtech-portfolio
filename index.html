@@ -1,12 +1,15 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="utf-8">
-<meta name="color-scheme" content="dark">
-<title>Portal AllRegTech — a rede municipal de saúde em um só lugar</title>
+<meta name="color-scheme" content="light">
+<title>Portal AllRegTech · a rede municipal de saúde em um só lugar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Portal AllRegTech - plataforma de gestao da saude publica municipal: regulacao, UBS, UPA, transporte sanitario e o aplicativo Regula+.">
-<meta name="theme-color" content="#25082B">
+<meta name="theme-color" content="#3f2a6b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/logo-art.png">
 <meta property="og:title" content="Portal AllRegTech">
 <meta property="og:description" content="Uma rede de saude inteira. Um portal so.">
@@ -14,7 +17,6 @@
 <meta property="og:type" content="website">
 </head>
 <body>
-<div class="beams" aria-hidden="true"><i></i><i></i><i></i></div>
 
 
 <style>
@@ -1281,12 +1283,286 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
   *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important}
   .rv{opacity:1; transform:none}
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CAMADA LINHA (14/10/2026): o portfólio na mesma linguagem do portal.
+   Superfície branca sobre fundo lavanda, borda fina, sombra curta, Inter,
+   roxo #3f2a6b como marca e os painéis escuros iguais ao lado do login
+   (roxo com brilho radial, rede pontilhada e texto branco).
+   Fica no fim da folha: tudo acima continua valendo onde não for reescrito.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root, :root[data-theme]{
+  --ink:#1e1a2b; --ink-2:#524c66; --ink-3:#6b6580;
+  --ground:#f0eef6; --surface:#ffffff; --surface-2:#f7f5fb; --line:#e3dfee;
+  --accent:#3f2a6b; --accent-soft:#f1edfa; --accent-2:#6a44c2; --accent-clara:#d6ccef;
+  --deep:#3f2a6b; --deep-2:#2f2050; --on-deep:#ffffff; --on-deep-2:rgba(255,255,255,.74);
+  --teal:#0e6e55; --amber:#8a4b00;
+  --btn-bg:#3f2a6b; --btn-fg:#ffffff;
+  --shadow-s:0 1px 2px rgba(30,26,43,.05), 0 6px 20px -8px rgba(30,26,43,.14);
+  --shadow-l:0 2px 4px rgba(30,26,43,.06), 0 14px 32px -10px rgba(30,26,43,.22);
+  --glass-bg:rgba(255,255,255,.92); --glass-brd:#e3dfee; --glass-shine:rgba(255,255,255,0);
+  --glass-blur:blur(10px);
+  --r-s:8px; --r-m:14px; --r-l:20px;
+  --display:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --body:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --painel:
+    radial-gradient(120% 80% at 100% 0%, #786a97 0%, transparent 55%),
+    radial-gradient(90% 70% at 0% 100%, #2f2050 0%, transparent 60%),
+    #3f2a6b;
+  --pontos-escuros:radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px);
+  --pontos-claros:radial-gradient(rgba(30,26,43,.08) 1px, transparent 1px);
+  color-scheme:light;
+}
+
+/* base */
+body{ font-size:15px; line-height:1.6; font-feature-settings:"cv11","ss01"; font-variant-numeric:tabular-nums }
+.beams{ display:none !important }
+h1,h2,h3,h4{ font-weight:600; letter-spacing:-.03em; line-height:1.1 }
+.h-xl{ font-size:clamp(36px,4.2vw,58px); letter-spacing:-.035em }
+.h-l{ font-size:clamp(28px,2.8vw,42px) }
+.h-m{ font-size:clamp(22px,1.8vw,28px) }
+.eyebrow{ font-family:var(--body); font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:none; color:var(--accent-2) }
+.lede{ font-size:clamp(15px,1.05vw,17px) }
+:where(a,button,[tabindex]):focus-visible{ outline:2px solid #1d5fb8; outline-offset:2px }
+#bar{ height:3px; background:var(--accent-2) }
+
+/* botões do portal: retângulo de 8px, sem pular */
+.btn{ font-size:15px; font-weight:500; padding:12px 22px; border-radius:8px; transition:background .12s, border-color .12s, color .12s }
+.btn--primary{ box-shadow:none }
+.btn--primary:hover{ transform:none; box-shadow:none; background:#2f2050 }
+.btn--ghost{ background:var(--surface); border:1px solid #cfc8e0 }
+.btn--ghost:hover{ transform:none; background:var(--accent-soft); border-color:var(--accent); color:var(--accent) }
+.btn--onDeep{ background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.26) }
+.btn--onDeep:hover{ transform:none; background:rgba(255,255,255,.2) }
+
+/* topo: barra branca com fio, como o topo do portal */
+#nav{ padding:12px var(--pad) }
+#nav.stuck{ background:rgba(255,255,255,.97); border-bottom-color:var(--line) }
+.brand{ font-family:var(--body); font-weight:600; font-size:15px }
+.navlinks a{ font-size:14px; padding:8px 12px; border-radius:8px }
+.navlinks a:hover{ background:var(--accent-soft); color:var(--accent) }
+.navlinks a.on{ color:var(--accent); background:var(--accent-soft); font-weight:600 }
+#nav .btn{ padding:9px 18px; font-size:14px }
+
+/* vidro vira cartão: branco, borda fina, sombra curta. Sem desfoque de fundo em lugar
+   nenhum: o portal não usa, e sobre as cenas 3D fixadas ele travava a pintura da página */
+*, *::before, *::after{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
+.glass, .glass-lite{ box-shadow:var(--shadow-l) }
+.glass::before, .glass-lite::before{ display:none }
+
+/* herói: fundo lavanda com a malha de pontos do login */
+#hero{ background-image:var(--pontos-claros); background-size:22px 22px }
+#hero::before{ background:radial-gradient(50% 50% at 50% 50%, rgba(106,68,194,.10) 0%, transparent 70%) }
+.logo3d::after{ opacity:.35 }
+.hero-note{ font-size:13px; letter-spacing:0; color:var(--ink-3) }
+.stagegrid{ gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-m); box-shadow:var(--shadow-s) }
+.stagegrid div{ background:var(--surface); backdrop-filter:none; -webkit-backdrop-filter:none; padding:18px 20px }
+.stagegrid b{ font-weight:600; color:var(--accent) }
+.stagegrid span{ font-size:13px }
+.compo__main{ border-color:var(--line); box-shadow:var(--shadow-l) }
+.compo__stage::after{ background:radial-gradient(50% 50% at 50% 50%, rgba(63,42,107,.22), transparent 72%) !important }
+
+/* telas de exemplo (mock) com as peças do portal */
+.mk__bar{ background:var(--surface); }
+.mk__dot{ background:#e3dfee }
+.mk__tag{ font-size:11px; letter-spacing:.04em; color:var(--accent-2); font-weight:600 }
+.kan__col{ background:var(--surface-2); border:1px solid var(--line) }
+.kan__h{ letter-spacing:.03em; color:var(--ink-3) }
+.kan__c{ box-shadow:none }
+.chip{ font-weight:500; background:var(--accent-soft); color:var(--accent) }
+.chip--teal{ background:#e6f3ee; color:#0e6e55 }
+.chip--amber{ background:#fdf1dc; color:#8a4b00 }
+.row .av{ background:var(--accent-soft); color:var(--accent) }
+.bars i{ background:linear-gradient(180deg, #6a44c2, #d6ccef) }
+.beds i.ok{ background:#cfe9de } .beds i.bz{ background:#d6ccef } .beds i.wr{ background:#f6dcae }
+.phone{ background:var(--deep) }
+
+/* faixa dos módulos */
+.band{ background:var(--surface); --fade-c:var(--surface) }
+.band__chip{ font-weight:500; border:1px solid var(--line); background:var(--surface-2); box-shadow:none }
+.band__chip b{ font-size:11px; letter-spacing:.04em; color:var(--accent-2) }
+
+/* painéis escuros: o roxo do lado esquerdo do login */
+#jornada, #modulos, #tese, #tecnologia, #app{ background:var(--deep) }
+/* nada de fundo pintado nas partes fixadas (.j-pin, .rail-pin): com o 3D por cima, travava a pintura */
+#tese, #app, #tecnologia{ background:var(--painel) }
+#modulos:not(.spiral-off) .spiral-pin{ background:
+    radial-gradient(60% 50% at 18% 22%, rgba(255,255,255,.10), transparent 62%),
+    radial-gradient(55% 45% at 84% 78%, rgba(47,32,80,.9), transparent 62%) }
+#jornada .eyebrow, #modulos .eyebrow, #tecnologia .eyebrow, #app .eyebrow, #tese .eyebrow{ color:var(--accent-clara) }
+.j-nav b{ font-weight:600 }
+.j-nav span{ font-weight:500; font-size:14px; white-space:nowrap }
+.j-nav em::after{ background:#ffffff }
+.j-stage .num, :root[data-theme] .j-stage .num{ font-size:13px; letter-spacing:.04em; color:var(--accent-clara) }
+.j-feats li{ font-weight:500; border-radius:8px; background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.22); box-shadow:none }
+.j-art .mk{ border-color:rgba(255,255,255,.2); box-shadow:-24px 34px 70px rgba(18,10,36,.45) }
+.j-art::before, .j-art::after{ border-color:rgba(255,255,255,.16); background:rgba(255,255,255,.05) }
+
+/* espiral dos módulos: cartões de vidro claro sobre o roxo, sem neon */
+.spiral-stage .mod{
+  background:linear-gradient(152deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 24px 60px -20px rgba(18,10,36,.6), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.spiral-stage .mod.is-front{
+  background:#ffffff; border-color:#ffffff; color:var(--ink);
+  box-shadow:0 30px 70px -20px rgba(18,10,36,.7);
+}
+.spiral-stage .mod.is-front h3{ color:var(--ink) }
+.spiral-stage .mod.is-front p{ color:var(--ink-2) }
+.spiral-stage .mod.is-front .mod__k{ color:var(--accent-2); text-shadow:none }
+.spiral-stage .mod.is-front ul li{ background:var(--accent-soft); color:var(--accent); border-color:transparent }
+.spiral-stage .mod.is-front::before{ height:4px; background:linear-gradient(90deg, var(--deep), var(--accent-2)); box-shadow:none }
+.spiral-stage .mod.is-front::after{ background:linear-gradient(0deg, #fff 10%, transparent 100%) }
+.spiral-stage .mod::after{ background:linear-gradient(0deg, rgba(47,32,80,.95) 10%, transparent 100%) }
+.spiral-stage .mod__k{ color:var(--accent-clara) }
+.mod__k{ font-size:12px; letter-spacing:.04em; font-weight:600 }
+.mod h3{ font-weight:600 }
+.mod ul li{ font-weight:500; border-radius:8px }
+.spiral-idx li::before{ background:#ffffff; box-shadow:none }
+.spiral-idx li.on b{ color:#ffffff }
+.spiral-detail .chip{ background:rgba(255,255,255,.16); color:#ffffff }
+.spiral-hud{ box-shadow:0 14px 40px -12px rgba(18,10,36,.6) }
+.spiral-hud b{ color:#ffffff; text-shadow:none }
+#modulos.spiral-off .spiral-stage::before{ background:linear-gradient(180deg, transparent, rgba(255,255,255,.5) 7%, rgba(255,255,255,.5) 93%, transparent); box-shadow:none }
+#modulos.spiral-off .spiral-stage .mod::after{ background:#ffffff; box-shadow:0 0 0 5px rgba(255,255,255,.16) }
+#modulos.spiral-off .spiral-stage .mod:hover{ border-color:rgba(255,255,255,.5); box-shadow:0 26px 60px -18px rgba(18,10,36,.6) }
+
+/* cartões claros (fora da espiral) */
+.mod{ border-radius:var(--r-m); box-shadow:var(--shadow-s) }
+.mod:hover{ box-shadow:var(--shadow-l); border-color:#cfc8e0 }
+.mod::after{ display:none }
+
+/* um dia na rede */
+#pessoas{ background:var(--ground); border-color:var(--line); overflow-x:clip } /* a fila sangra até a borda, mas não abre rolagem lateral */
+#pessoas .rail-pin{ background:none }
+.rail-pin{ --fade-c:var(--ground) }
+.per{ border-radius:var(--r-m); background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-s) }
+.per.is-on{ border-color:var(--accent); box-shadow:var(--shadow-l), 0 0 0 3px rgba(63,42,107,.12) }
+.per:hover{ transform:translateY(-3px); box-shadow:var(--shadow-l) }
+.per__time{ font-size:13px; letter-spacing:.02em; color:var(--accent-2) }
+.per__ico{ border-radius:10px; font-family:var(--body); font-weight:600 }
+.per h3{ font-weight:600 }
+.per q{ border-left-color:var(--accent-2) }
+.per__mini{ background:var(--surface-2); border-color:var(--line) }
+.rail__bead.on{ background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 6px rgba(63,42,107,.12) }
+.day-clock__t{ font-weight:600; color:var(--accent) }
+.day-clock__bar i{ background:var(--accent-2) }
+.railctl button{ border-radius:8px; border:1px solid var(--line) }
+
+/* tese: o painel roxo com a rede ao fundo */
+.orbit__card{ --glass-bg:rgba(255,255,255,.12); --glass-brd:rgba(255,255,255,.24); box-shadow:0 14px 34px -16px rgba(0,0,0,.55) }
+.orbit__card b{ font-weight:600 }
+.orbit__card em{ font-size:11px; letter-spacing:.04em; color:var(--accent-clara) }
+.net-cap{ font-size:12px; letter-spacing:.04em; text-transform:none }
+.mark, :root[data-theme] .mark{ color:#ffffff; position:relative; z-index:0; -webkit-box-decoration-break:clone; box-decoration-break:clone }
+.mark{ background:linear-gradient(transparent 62%, rgba(255,255,255,.22) 62%, rgba(255,255,255,.22) 92%, transparent 92%); border-radius:4px }
+
+/* tecnologia */
+#tecnologia::before{ opacity:.6; background-image:linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) }
+.tec-facts{ background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.16) }
+.tec-facts div{ background:rgba(47,32,80,.72) }
+.tec-facts b{ font-weight:600; color:#ffffff }
+.choice, .node{ background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); box-shadow:none }
+.choice:hover, .node:hover{ border-color:rgba(255,255,255,.4); box-shadow:0 14px 34px -16px rgba(0,0,0,.55) }
+.choice__bar{ font-size:11px; letter-spacing:.06em; font-weight:600; color:var(--on-deep-2) }
+.choice__bar::before{ background:#ffffff; box-shadow:none }
+.choice .yes i{ background:#ffffff; color:var(--deep); border-color:#ffffff }
+.choice li.yes:hover i{ box-shadow:none }
+.choice b, .node b{ font-weight:600 }
+.arch__label{ font-size:11px; letter-spacing:.06em; color:var(--on-deep-2) }
+.arch__label::after{ background:linear-gradient(90deg, rgba(255,255,255,.3), transparent) }
+.arch__join::before{ background:rgba(255,255,255,.4) }
+.arch__join::after{ background:#ffffff; box-shadow:0 0 10px rgba(255,255,255,.7) }
+.node__k{ font-size:11px; letter-spacing:.04em; color:var(--accent-clara) }
+.node__k i{ background:#ffffff; box-shadow:none }
+
+/* vídeo */
+.vid-chaps li{ font-family:var(--body); font-size:12.5px; letter-spacing:0; border-radius:8px }
+.vid-chaps li:hover{ background:var(--accent-soft); translate:none }
+.vid-meta{ font-size:12px; letter-spacing:.04em }
+.vslot{ border:1px solid var(--line); box-shadow:var(--shadow-l); background:var(--painel) }
+
+/* aplicativo Regula+: celular no roxo do portal */
+#app::before{ background:radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,.12), transparent 70%) }
+.app-list li{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.18) }
+.app-list b{ font-size:12px; letter-spacing:.02em; font-weight:600; color:var(--accent-clara) }
+.phone3d__f--front{ background:linear-gradient(150deg,#2f2050,#1d1433) }
+.phone3d__f--back{ background:linear-gradient(150deg,#5b4391,#2f2050) }
+.phone3d__f--r, .phone3d__f--l{ background:linear-gradient(180deg,#5b4391,#2a1c4a) }
+.phone3d__f--t{ background:linear-gradient(90deg,#6a5590,#3f2a6b) }
+.phone3d__f--b{ background:linear-gradient(90deg,#2a1c4a,#3f2a6b) }
+.phone3d__scr{ color:var(--ink); background:var(--ground) }
+.pscr__status{ color:var(--ink-2) }
+.pscr__status i{ background:var(--ink-2) }
+.pscr__batt{ border-color:var(--ink-3) }
+.pscr__batt::after{ background:#0e6e55 }
+.pscr__top{ background:var(--deep); color:#fff; margin:0 0 8px; padding:12px 16px }
+.pscr__top em{ font-size:10px; letter-spacing:.02em; color:var(--accent-clara) }
+.pscr__top b{ font-weight:600 }
+.pscr__av{ background:#ffffff; color:var(--deep); box-shadow:none }
+.pscr__sec{ font-size:10px; letter-spacing:.04em; font-weight:600; color:var(--ink-3) }
+.pscr__card{ background:#ffffff; border:1px solid var(--line); box-shadow:0 1px 2px rgba(30,26,43,.05) }
+.pscr__card b{ color:var(--ink) }
+.pscr__card small{ color:var(--ink-2) }
+.pscr__card--hi{ background:var(--deep); border-color:var(--deep); box-shadow:0 10px 24px -12px rgba(63,42,107,.6) }
+.pscr__card--hi b{ color:#fff } .pscr__card--hi small{ color:rgba(255,255,255,.78) }
+.pscr__tag{ background:var(--accent-soft); color:var(--accent); letter-spacing:.02em }
+.pscr__card--hi .pscr__tag{ background:rgba(255,255,255,.2); color:#fff }
+.pscr__tag--go{ background:#e6f3ee; color:#0e6e55 }
+.pscr__tag--warn{ background:#fdf1dc; color:#8a4b00 }
+.pscr__dot{ background:#0e6e55; box-shadow:none }
+.pscr__nav{ background:#ffffff; border-top-color:var(--line) }
+.pscr__nav span{ color:var(--ink-3) }
+.pscr__nav span.on{ color:var(--accent) }
+.pscr__nav i{ background:#e3dfee }
+.pscr__nav span.on i{ background:var(--accent); box-shadow:none }
+
+/* convite final */
+.cta{ background:var(--painel); border-radius:var(--r-l) }
+.cta::before{ background:radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,.14), transparent 70%) }
+.cta .btn--primary{ background:#ffffff; color:var(--deep) }
+.cta .btn--primary:hover{ background:var(--accent-soft) }
+.cta .btn--primary::after{ border-radius:10px; border-color:rgba(255,255,255,.7); box-shadow:none }
+.cta__mail a{ color:#ffffff; border-bottom-color:rgba(255,255,255,.4) }
+.agenda{ background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.18); border-radius:var(--r-m) }
+.agenda::before{ background:rgba(255,255,255,.5) }
+.agenda::after{ background:#ffffff; box-shadow:0 0 10px rgba(255,255,255,.8) }
+.agenda li{ background:rgba(47,32,80,.7) }
+.agenda li:hover{ background:rgba(255,255,255,.08) }
+.agenda em{ font-size:11px; letter-spacing:.04em; color:var(--accent-clara) }
+.agenda b{ font-weight:600 }
+.cta .cta__sign{ font-weight:600 }
+.cta__sign b{ background:linear-gradient(100deg,#fff 0 38%, #d6ccef 46%, #ffffff 52%, #fff 60% 100%); background-size:280% 100%; -webkit-background-clip:text; background-clip:text }
+
+/* rodapé */
+footer{ background:var(--surface) }
+.foot__t{ font-size:12px; letter-spacing:.02em; text-transform:none; font-weight:600; color:var(--ink) }
+.foot__col a:hover{ translate:none }
+
+/* celular: a coluna do herói não pode passar da largura da tela */
+@media (max-width:1079px){
+  .hero-grid{ grid-template-columns:minmax(0,1fr) }
+  .hero-copy, .hero-copy > *, .compo{ min-width:0; max-width:100% }
+}
+@media (max-width:640px){
+  .btn{ padding:11px 18px }
+  #nav{ gap:12px }
+  #nav .brand-mark{ --bm:64px !important }
+  #nav .btn{ padding:8px 14px; font-size:13.5px; white-space:nowrap }
+  .hero-cta{ width:100% }
+  .hero-cta .btn{ flex:1 1 auto; justify-content:center }
+  .kan{ grid-template-columns:repeat(2,minmax(0,1fr)) }
+  .mk__title{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+}
+@media (max-width:420px){ .brand__sep, .brand__sep + *{ display:none } #nav .brand{ font-size:0 } }
 </style>
 
 <div id="bar"></div>
 
 <header id="nav">
-  <a class="brand" href="#hero" aria-label="Portal AllRegTech — início">
+  <a class="brand" href="#hero" aria-label="Portal AllRegTech · início">
     <span class="brand-mark" style="--bm:84px"></span><span class="brand__sep"></span>Portal
   </a>
   <nav class="navlinks">
@@ -1316,7 +1592,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
       <h1 class="h-xl rv" style="--d:80ms">Uma rede de saúde inteira. Um portal só.</h1>
       <p class="lede rv" style="--d:160ms">
         Da recepção da UBS ao faturamento no SUS, o Portal AllRegTech acompanha o paciente por
-        toda a rede municipal — sem planilha paralela, sem grupo de WhatsApp, sem trocar de sistema
+        toda a rede municipal, sem planilha paralela, sem grupo de WhatsApp, sem trocar de sistema
         no meio do caminho.
       </p>
       <div class="hero-cta rv" style="--d:240ms">
@@ -1332,7 +1608,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
         <div class="mk">
           <div class="mk__bar">
             <span class="mk__dot"></span><span class="mk__dot"></span><span class="mk__dot"></span>
-            <span class="mk__title">Regulação Assistencial — Quadro de solicitações</span>
+            <span class="mk__title">Regulação Assistencial · Quadro de solicitações</span>
             <span class="mk__tag">Ao vivo</span>
           </div>
           <div class="mk__body">
@@ -1387,7 +1663,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
     </div>
 
     <div class="stagegrid rv" style="--d:120ms">
-      <div><b class="cnt" data-to="53">0</b><span>unidades conectadas — UBS, UPA, central e apoio</span></div>
+      <div><b class="cnt" data-to="53">0</b><span>unidades conectadas: UBS, UPA, central e apoio</span></div>
       <div><b class="cnt" data-to="40" data-suf="+">0</b><span>painéis operacionais no mesmo login</span></div>
       <div><b class="cnt" data-to="80367" data-fmt="1">0</b><span>pacientes na fila estadual regulada</span></div>
       <div><b class="cnt" data-to="1">0</b><span>cadastro por CPF para toda a rede</span></div>
@@ -1402,8 +1678,8 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
     <span class="band__chip glass-lite"><b>02</b> Fila Estadual</span>
     <span class="band__chip glass-lite"><b>03</b> Controle de Retornos</span>
     <span class="band__chip glass-lite"><b>04</b> Executante</span>
-    <span class="band__chip glass-lite"><b>05</b> UBS — prontuário</span>
-    <span class="band__chip glass-lite"><b>06</b> UPA — leitos e ouvidoria</span>
+    <span class="band__chip glass-lite"><b>05</b> UBS · prontuário</span>
+    <span class="band__chip glass-lite"><b>06</b> UPA · leitos e ouvidoria</span>
     <span class="band__chip glass-lite"><b>07</b> Transporte Sanitário</span>
     <span class="band__chip glass-lite"><b>08</b> Patrimônio</span>
   </div>
@@ -1411,7 +1687,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
     <span class="band__chip glass-lite"><b>09</b> Regula+ · app do paciente</span>
     <span class="band__chip glass-lite"><b>10</b> Chat da Regulação</span>
     <span class="band__chip glass-lite"><b>11</b> Senhas e TV de chamada</span>
-    <span class="band__chip glass-lite"><b>12</b> APA — produção profissional</span>
+    <span class="band__chip glass-lite"><b>12</b> APA · produção profissional</span>
     <span class="band__chip glass-lite"><b>13</b> Faturamento SUS e auditoria</span>
     <span class="band__chip glass-lite"><b>14</b> Administração Global</span>
   </div>
@@ -1439,7 +1715,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <!-- 01 -->
           <article class="j-stage on">
             <div class="j-stage__copy">
-              <span class="num">01 — ATENÇÃO PRIMÁRIA</span>
+              <span class="num">01 · ATENÇÃO PRIMÁRIA</span>
               <h3>A UBS recebe, e o registro já nasce completo.</h3>
               <p>Acolhimento, evolução clínica, vacina com lote e validade, medicação externa pela
                 tabela SIGTAP, pedido de exame com os tubos certos. Cada profissional escreve na
@@ -1452,7 +1728,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
             </div>
             <div class="j-art">
               <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">UBS — Atendimento em andamento</span><span class="mk__tag">Ficha</span></div>
+                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">UBS · Atendimento em andamento</span><span class="mk__tag">Ficha</span></div>
                 <div class="mk__body">
                   <div class="row"><span class="av">MJ</span><span class="gr"><b style="font-size:12px">Maria J. · 47 anos</b><span class="line w70"></span></span><span class="chip chip--amber">Alergia: dipirona</span></div>
                   <div class="rows">
@@ -1468,11 +1744,11 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <!-- 02 -->
           <article class="j-stage">
             <div class="j-stage__copy">
-              <span class="num">02 — REGULAÇÃO</span>
+              <span class="num">02 · REGULAÇÃO</span>
               <h3>A solicitação entra numa esteira, não numa caixa de e-mail.</h3>
               <p>Oito etapas visíveis, do recebimento ao encerramento. O prazo conta só dias úteis,
-                o cartão mostra a especialidade pedida, e as decisões terminais — deferir, indeferir,
-                encerrar — ficam com o regulador master. A unidade opera contato e agenda.</p>
+                o cartão mostra a especialidade pedida, e as decisões terminais (deferir, indeferir,
+                encerrar) ficam com o regulador master. A unidade opera contato e agenda.</p>
               <ul class="j-feats">
                 <li>Kanban por categoria</li><li>SLA em dias úteis</li>
                 <li>Matching automático de vaga</li><li>Master × unidade</li>
@@ -1485,7 +1761,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
                 <div class="mk__body">
                   <div class="route"><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
                   <div class="rows">
-                    <div class="row"><span class="gr"><b style="font-size:12px">Vaga localizada — Cardiologia</b><span class="line w70"></span></span><span class="chip chip--teal">Hoje 14h</span></div>
+                    <div class="row"><span class="gr"><b style="font-size:12px">Vaga localizada · Cardiologia</b><span class="line w70"></span></span><span class="chip chip--teal">Hoje 14h</span></div>
                     <div class="row"><span class="gr"><b style="font-size:12px">Vence em 2 dias úteis</b><span class="line w50"></span></span><span class="chip chip--amber">SLA</span></div>
                     <div class="row"><span class="gr"><b style="font-size:12px">Aguardando decisão do master</b><span class="line w40"></span></span><span class="chip">Bloqueado p/ unidade</span></div>
                   </div>
@@ -1497,7 +1773,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <!-- 03 -->
           <article class="j-stage">
             <div class="j-stage__copy">
-              <span class="num">03 — TRANSPORTE</span>
+              <span class="num">03 · TRANSPORTE</span>
               <h3>O paciente sai da cidade e ninguém perde o rastro.</h3>
               <p>Motorista e casa de apoio têm cada um o seu painel. Embarque e chegada são
                 confirmados com foto pela câmera do próprio celular, e o operador vê a frota do
@@ -1509,7 +1785,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
             </div>
             <div class="j-art">
               <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">Transporte sanitário — rota do dia</span><span class="mk__tag">Veículo 07</span></div>
+                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">Transporte sanitário · rota do dia</span><span class="mk__tag">Veículo 07</span></div>
                 <div class="mk__body">
                   <div class="route"><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
                   <div class="rows">
@@ -1526,10 +1802,10 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <!-- 04 -->
           <article class="j-stage">
             <div class="j-stage__copy">
-              <span class="num">04 — URGÊNCIA</span>
+              <span class="num">04 · URGÊNCIA</span>
               <h3>A UPA absorve o agudo com o leito na tela.</h3>
               <p>Higienização de leitos, pré-internação e ouvidoria na ficha padrão do Ministério
-                vivem no mesmo hub — e cada um enxerga apenas a própria unidade, por regra de
+                vivem no mesmo hub, e cada um enxerga apenas a própria unidade, por regra de
                 acesso, não por combinado.</p>
               <ul class="j-feats">
                 <li>Higienização de leitos</li><li>Pré-internação</li>
@@ -1538,7 +1814,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
             </div>
             <div class="j-art">
               <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">UPA — Mapa de leitos</span><span class="mk__tag">Ala B</span></div>
+                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">UPA · Mapa de leitos</span><span class="mk__tag">Ala B</span></div>
                 <div class="mk__body">
                   <div class="beds">
                     <i class="bz"></i><i class="bz"></i><i class="ok"></i><i class="wr"></i><i class="bz"></i><i class="ok"></i>
@@ -1557,7 +1833,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <!-- 05 -->
           <article class="j-stage">
             <div class="j-stage__copy">
-              <span class="num">05 — GESTÃO</span>
+              <span class="num">05 · GESTÃO</span>
               <h3>A secretaria vê a rede inteira sem pedir relatório para ninguém.</h3>
               <p>Produção por profissional, faturamento SUS mês a mês, monitoria de qualidade e
                 uma matriz de permissões em que se enxerga, na mesma tela, quem acessa o quê em
@@ -1570,12 +1846,12 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
             </div>
             <div class="j-art">
               <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">Painel da Secretaria — julho</span><span class="mk__tag">Consolidado</span></div>
+                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">Painel da Secretaria · julho</span><span class="mk__tag">Consolidado</span></div>
                 <div class="mk__body">
                   <span class="bars"><i style="height:34%"></i><i style="height:52%"></i><i style="height:46%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:84%"></i><i style="height:66%"></i><i style="height:96%"></i></span>
                   <div class="rows">
                     <div class="row"><span class="gr"><b style="font-size:12px">Produção validada</b><span class="line w85"></span></span><span class="chip chip--teal">Automática</span></div>
-                    <div class="row"><span class="gr"><b style="font-size:12px">Faturamento — auditoria do mês</b><span class="line w50"></span></span><span class="chip">4 anexos</span></div>
+                    <div class="row"><span class="gr"><b style="font-size:12px">Faturamento · auditoria do mês</b><span class="line w50"></span></span><span class="chip">4 anexos</span></div>
                     <div class="row"><span class="gr"><b style="font-size:12px">Sem produção (vínculo ativo)</b><span class="line w40"></span></span><span class="chip chip--amber">3 casos</span></div>
                   </div>
                 </div>
@@ -1644,18 +1920,18 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <ul><li>80.367 pacientes</li><li>Busca no servidor</li></ul></article>
 
         <article class="mod" data-before="O retorno combinado no balcão e anotado num caderno."><span class="mod__k">Rede</span><h3>Controle de Retornos</h3>
-          <p>Fila própria para o retorno — o ponto exato onde o paciente costuma sumir do sistema.</p>
+          <p>Fila própria para o retorno: o ponto exato onde o paciente costuma sumir do sistema.</p>
           <ul><li>Fila dedicada</li><li>Reagendamento</li></ul></article>
 
         <article class="mod" data-before="Prestador agendando por telefone, sem conferir autorização."><span class="mod__k">Rede</span><h3>Executante</h3>
           <p>Módulo do prestador: admissão só por código de autorização, agendamento só contra vaga.</p>
           <ul><li>Código de autorização</li><li>Vaga obrigatória</li></ul></article>
 
-        <article class="mod" data-before="Ficha de papel por profissional, sem histórico compartilhado."><span class="mod__k">Assistência</span><h3>UBS — prontuário</h3>
+        <article class="mod" data-before="Ficha de papel por profissional, sem histórico compartilhado."><span class="mod__k">Assistência</span><h3>UBS · prontuário</h3>
           <p>Equipe e ACS por microárea, vacina com lote, CIAP por categoria e alergia sinalizada.</p>
           <ul><li>Farmácia</li><li>Laboratório</li><li>Evolução compartilhada</li></ul></article>
 
-        <article class="mod" data-before="Quadro branco na parede para leito e higienização."><span class="mod__k">Assistência</span><h3>UPA — módulos hospitalares</h3>
+        <article class="mod" data-before="Quadro branco na parede para leito e higienização."><span class="mod__k">Assistência</span><h3>UPA · módulos hospitalares</h3>
           <p>Hub extensível com ouvidoria na ficha do Ministério, higienização de leitos e pré-internação.</p>
           <ul><li>Mapa de leitos</li><li>Isolamento por unidade</li></ul></article>
 
@@ -1679,7 +1955,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <p>Fila por prioridade, rendimento do atendente e painel de TV com rechamada por voz.</p>
           <ul><li>Guichê fixável</li><li>TV com áudio</li></ul></article>
 
-        <article class="mod" data-before="Fechamento manual no fim do mês, divergência descoberta tarde."><span class="mod__k">Gestão</span><h3>APA — produção profissional</h3>
+        <article class="mod" data-before="Fechamento manual no fim do mês, divergência descoberta tarde."><span class="mod__k">Gestão</span><h3>APA · produção profissional</h3>
           <p>Importação SISS e Excel, calendário de produção, atestado do RH e relatório de governança.</p>
           <ul><li>Import .xlsx</li><li>Diagnóstico do arquivo</li></ul></article>
 
@@ -1749,7 +2025,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
             <span class="per__time">08:40 <s></s> Médico da UBS</span>
             <div class="per__who"><span class="per__ico">MD</span><h3>A consulta</h3></div>
             <div class="per__mini">
-              <div class="row"><span class="chip chip--amber">Alergia</span><span class="gr"><b>Dipirona — sinalizada na ficha</b></span></div>
+              <div class="row"><span class="chip chip--amber">Alergia</span><span class="gr"><b>Dipirona · sinalizada na ficha</b></span></div>
               <div class="row"><span class="chip chip--teal">Exame</span><span class="gr"><b>Hemograma · 3 tubos</b><span class="line w50"></span></span></div>
               <div class="row"><span class="chip">Encaminha</span><span class="gr"><b>Cardiologia · adulto</b></span></div>
             </div>
@@ -1761,7 +2037,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
             <div class="per__who"><span class="per__ico">RG</span><h3>A esteira</h3></div>
             <div class="per__mini">
               <div class="route"><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
-              <div class="row"><span class="gr"><b>Etapa 3 de 8 — em análise</b><span class="line w70"></span></span><span class="chip chip--amber">2 dias úteis</span></div>
+              <div class="row"><span class="gr"><b>Etapa 3 de 8 · em análise</b><span class="line w70"></span></span><span class="chip chip--amber">2 dias úteis</span></div>
             </div>
             <q>A fila deixou de ser uma planilha que só eu sabia ler.</q>
           </article>
@@ -1783,7 +2059,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
               <div class="route"><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
               <div class="row"><span class="chip chip--teal">Foto ok</span><span class="gr"><b>Embarque · UBS Centro</b><span class="line w40"></span></span></div>
             </div>
-            <q>A confirmação é a foto — acabou a discussão de horário.</q>
+            <q>A confirmação é a foto: acabou a discussão de horário.</q>
           </article>
 
           <article class="per glass-lite" data-min="782">
@@ -1919,7 +2195,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
     <p class="eyebrow rv">A ideia</p>
     <h2 class="h-l rv" style="--d:80ms">O sistema não pode acabar onde a <span class="mark">responsabilidade continua</span>.</h2>
     <p class="lede rv" style="--d:160ms">Quase todo software de saúde municipal cobre um pedaço e devolve o
-      paciente para o mundo — para a planilha, para o grupo de mensagens, para a ligação. O Portal
+      paciente para o mundo: para a planilha, para o grupo de mensagens, para a ligação. O Portal
       AllRegTech foi construído ao contrário: o paciente entra uma vez e a rede inteira enxerga
       onde ele está.</p>
   </div>
@@ -1954,7 +2230,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
           <li class="yes rv" style="--d:320ms"><i>✓</i><b>Stack que a equipe já sabe operar</b>
             <span>Node, PostgreSQL e nginx, sem peça exótica no caminho.</span></li>
           <li class="yes rv" style="--d:380ms"><i>✓</i><b>Processo supervisionado</b>
-            <span>Se cai, sobe sozinho — cada app com log próprio.</span></li>
+            <span>Se cai, sobe sozinho, cada app com log próprio.</span></li>
           <li class="yes rv" style="--d:440ms"><i>✓</i><b>Atualização sem instalar nada</b>
             <span>A recepção abre o navegador e já está na versão nova.</span></li>
         </ul>
@@ -2032,11 +2308,11 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
   <div class="wrap">
     <div class="foot">
       <div class="foot__brand">
-        <a class="brand" href="#hero" aria-label="Portal AllRegTech — início">
+        <a class="brand" href="#hero" aria-label="Portal AllRegTech · início">
           <span class="brand-mark" style="--bm:112px"></span>
         </a>
         <p>Regulação, atenção básica, hospitalar, transporte sanitário e faturamento SUS na mesma
-          base de pacientes — no navegador da unidade e no celular do cidadão.</p>
+          base de pacientes, no navegador da unidade e no celular do cidadão.</p>
       </div>
 
       <nav class="foot__col" aria-label="Seções do portfólio">
@@ -2245,8 +2521,8 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
         if (alpha < 0.008) continue;
         var teal = clamp((Math.sin(t0 * 0.85) + 1) / 2, 0, 1);  /* a luz varia de roxo a turquesa */
         nctx.strokeStyle = cfg.core
-          ? "rgba(" + Math.round(255 - teal * 130) + "," + Math.round(214 + teal * 26) + ",252," + alpha.toFixed(3) + ")"
-          : "rgba(" + Math.round(208 - teal * 130) + "," + Math.round(122 + teal * 78) + "," + Math.round(221 - teal * 10) + "," + alpha.toFixed(3) + ")";
+          ? "rgba(255,255,255," + alpha.toFixed(3) + ")"
+          : "rgba(214,204,239," + alpha.toFixed(3) + ")";
         nctx.lineWidth = cfg.w * (0.45 + depth * 0.95);
         nctx.beginPath(); nctx.moveTo(a.x, a.y); nctx.lineTo(b.x, b.y); nctx.stroke();
       }
@@ -2263,7 +2539,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
       var ax = NW / 2 + Math.sin(ang0) * radius * fa, ay = yr + (Math.cos(ang0) * radius * 0.06) * fa;
       var bx = NW / 2 + Math.sin(ang1) * radius * fb2, by = yr + (Math.cos(ang1) * radius * 0.06) * fb2;
       var da = clamp((fa - 0.68) / 0.62, 0, 1);
-      nctx.strokeStyle = "rgba(127,230,234," + (0.05 + da * 0.16).toFixed(3) + ")";
+      nctx.strokeStyle = "rgba(255,255,255," + (0.05 + da * 0.16).toFixed(3) + ")";
       nctx.beginPath(); nctx.moveTo(ax, ay); nctx.lineTo(bx, by); nctx.stroke();
     }
 
@@ -2274,7 +2550,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
       var axisY = NH * 0.46 + (sp - active) * rise * (PERSP / (PERSP - STAGE_Z));
       var dd = clamp((pt.f - 0.68) / 0.62, 0, 1);
       var ee = clamp(1 - Math.abs(sp - active) / 3.2, 0, 1);
-      nctx.strokeStyle = "rgba(208,122,221," + (0.09 + dd * ee * 0.3).toFixed(3) + ")";
+      nctx.strokeStyle = "rgba(214,204,239," + (0.09 + dd * ee * 0.3).toFixed(3) + ")";
       nctx.lineWidth = 1 + dd * 0.8;
       nctx.beginPath(); nctx.moveTo(NW / 2, axisY); nctx.lineTo(pt.x, pt.y); nctx.stroke();
     }
@@ -2287,9 +2563,9 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
       var near = clamp(1 - Math.abs(i - active), 0, 1);
       var rad = (2.4 + near * 3.6) * (0.6 + dep * 0.8);
       nctx.beginPath(); nctx.arc(q.x, q.y, rad * 4.5, 0, Math.PI * 2);
-      nctx.fillStyle = "rgba(208,122,221," + (0.10 * dep + near * 0.14).toFixed(3) + ")"; nctx.fill();
+      nctx.fillStyle = "rgba(214,204,239," + (0.10 * dep + near * 0.14).toFixed(3) + ")"; nctx.fill();
       nctx.beginPath(); nctx.arc(q.x, q.y, rad, 0, Math.PI * 2);
-      nctx.fillStyle = "rgba(" + (near > 0.6 ? "255,255,255," : "232,180,240,") + (0.35 + dep * 0.5).toFixed(3) + ")";
+      nctx.fillStyle = "rgba(" + (near > 0.6 ? "255,255,255," : "214,204,239,") + (0.35 + dep * 0.5).toFixed(3) + ")";
       nctx.fill();
     }
   }
@@ -2798,7 +3074,7 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
       for (var e = 0; e < edges.length; e++) {
         var p = pr[edges[e][0]], q = pr[edges[e][1]];
         var depth = (p.z + q.z) / 2;
-        ctx.strokeStyle = "rgba(208,122,221," + (0.05 + Math.max(0, depth + 1) * 0.13).toFixed(3) + ")";
+        ctx.strokeStyle = "rgba(214,204,239," + (0.05 + Math.max(0, depth + 1) * 0.13).toFixed(3) + ")";
         ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
       }
       for (var m = 0; m < N; m++) {
@@ -2807,12 +3083,12 @@ footer{border-top:1px solid var(--line); padding:44px 0 44px}
         var rad = (s.hub ? 3.4 : 1.9) * s.f;
         ctx.beginPath(); ctx.arc(s.x, s.y, rad, 0, Math.PI * 2);
         ctx.fillStyle = s.hub
-          ? "rgba(63,198,203," + Math.min(alpha + 0.24, 1).toFixed(3) + ")"
-          : "rgba(232,180,240," + alpha.toFixed(3) + ")";
+          ? "rgba(255,255,255," + Math.min(alpha + 0.24, 1).toFixed(3) + ")"
+          : "rgba(214,204,239," + alpha.toFixed(3) + ")";
         ctx.fill();
         if (s.hub && s.z > 0) {
           ctx.beginPath(); ctx.arc(s.x, s.y, rad * 3.4, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(63,198,203,.07)"; ctx.fill();
+          ctx.fillStyle = "rgba(255,255,255,.07)"; ctx.fill();
         }
       }
     }
