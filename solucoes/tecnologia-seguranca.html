@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tecnologia e segurança · AllRegTech</title>
+<meta name="description" content="Tecnologia e segurança da AllRegTech: HTTPS em todos os endereços, senhas com hash, acesso conferido no servidor, trilha de auditoria, backup diário cifrado fora do servidor e aceite LGPD versionado.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#482b78">
+<link rel="icon" href="../assets/logo-art.png">
+<meta property="og:title" content="Tecnologia e segurança · AllRegTech">
+<meta property="og:description" content="Como o acesso é protegido, onde os dados ficam e como o backup é feito.">
+<meta property="og:image" content="../video-capa.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var k="art-heroi:"+location.pathname;if(sessionStorage.getItem(k))document.documentElement.classList.add("heroi-ok");else sessionStorage.setItem(k,"1")}catch(e){}</script>
+<link rel="stylesheet" href="../assets/site.css?v=4">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cadeado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-globo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></symbol>
+    <symbol id="i-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-usuario-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></symbol>
+    <symbol id="i-trilha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h-5M15 8h-5M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></symbol>
+    <symbol id="i-banco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+    <symbol id="i-codigo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-servidor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+    <symbol id="i-pulso" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+    <symbol id="i-sinal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5M19.1 4.9C23 8.8 23 15.1 19.1 19"/></symbol>
+    <symbol id="i-celular" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-elo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </defs>
+</svg>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="caixa">
+    <a class="marca" href="../" aria-label="AllRegTech, início"><img src="../assets/logo-art.png" alt="AllRegTech" width="72" height="37"><span>Saúde pública</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="../#jornada">Jornada</a>
+      <a href="../#ecossistema">Integração</a>
+      <a href="../#solucoes">Soluções</a>
+      <a href="tecnologia-seguranca.html" aria-current="page">Segurança</a>
+      <a href="../#contato">Contato</a>
+    </nav>
+    <a class="btn btn-1 btn-p" href="../#contato">Agendar demonstração</a>
+    <details class="menu-cel">
+      <summary aria-label="Abrir menu"><svg><use href="#i-menu"/></svg></summary>
+      <nav aria-label="Principal">
+        <a href="../#jornada">Jornada do paciente</a>
+        <a href="../#ecossistema">Integração</a>
+        <a href="../#solucoes">Soluções</a>
+        <a href="tecnologia-seguranca.html">Segurança</a>
+        <a href="../#contato">Contato</a>
+        <a class="btn btn-1" href="../#contato">Agendar demonstração</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<section class="det-heroi" aria-labelledby="t-det">
+  <div class="caixa">
+    <div>
+      <nav class="migalha" aria-label="Você está em"><a href="../">Início</a> / Tecnologia e segurança</nav>
+      <p class="sobre">Tecnologia e segurança</p>
+      <h1 class="t-1" id="t-det" style="font-size:clamp(32px,4vw,48px)">Segurança que dá para mostrar, camada por camada.</h1>
+      <p class="lead" style="margin-top:16px">Como o acesso é protegido, onde os dados ficam e como o backup é feito. Aqui está só o que já funciona hoje.</p>
+      <div class="heroi-acoes">
+        <a class="btn btn-1" href="../#contato">Conversar com a equipe técnica</a>
+        <a class="mais mais-ancora" href="#como-funciona">O caminho de um acesso</a>
+      </div>
+    </div>
+    <figure style="margin:0" aria-label="Ilustração: camadas da plataforma, do navegador ao nginx com TLS, à aplicação Node.js, ao banco PostgreSQL e à cópia cifrada em um segundo servidor">
+      <div class="tela">
+        <div class="tela-barra"><b>Plataforma · camadas</b><span class="tag in sem">Esquema</span></div>
+        <div class="tela-corpo">
+          <div class="cartao-m"><div class="linha-m"><b>Navegador e app Android</b><span class="tag sem">Usuário</span></div></div>
+          <div class="cartao-m"><div class="linha-m"><b>Borda: nginx</b><span class="tag ok">HTTPS com TLS</span></div><small>Certificado Let's Encrypt · bloqueio de arquivos sensíveis</small></div>
+          <div class="cartao-m"><div class="linha-m"><b>Aplicação: Node.js</b><span class="tag in sem">PM2</span></div><small>Helmet e CSP · limite de login · acesso por papel · trilha de auditoria</small></div>
+          <div class="cartao-m"><div class="linha-m"><b>Banco: PostgreSQL</b><span class="tag ok">Backup diário</span></div><small>Senhas guardadas com hash (bcrypt)</small></div>
+          <div class="cartao-m"><div class="linha-m"><b>Segundo servidor</b><span class="tag ok">Cópia cifrada (GPG)</span></div><small>Fora do servidor principal · guardada por 30 dias</small></div>
+        </div>
+      </div>
+      <figcaption class="miudo" style="margin-top:12px">Ilustração simplificada, sem dados reais.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="secao" id="seguranca" aria-labelledby="t-seg">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">Segurança</p>
+      <h2 class="t-2" id="t-seg">Proteções em funcionamento, não promessas.</h2>
+    </div>
+    <div class="funcoes">
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-cadeado"/></svg></span><h3>Login protegido</h3><p>Senhas guardadas com hash (bcrypt) e limite de tentativas de login por usuário e por IP.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-globo"/></svg></span><h3>HTTPS em todos os endereços</h3><p>Certificados Let's Encrypt e nginx com TLS, que também bloqueia o acesso a arquivos sensíveis.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-escudo"/></svg></span><h3>Cabeçalhos de segurança</h3><p>Cabeçalhos de proteção e política de conteúdo (CSP) aplicados com Helmet.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-usuario-ok"/></svg></span><h3>Acesso conferido no servidor</h3><p>Painel e papel são checados no servidor. Esconder um botão na tela não basta.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-trilha"/></svg></span><h3>Trilha de auditoria</h3><p>Toda escrita na API fica registrada, com senhas e tokens mascarados.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-banco"/></svg></span><h3>Backup cifrado fora do servidor</h3><p>Backup diário do PostgreSQL, com cópias cifradas (GPG) enviadas a um segundo servidor e guardadas por 30 dias.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-branca" id="como-funciona" aria-labelledby="t-como">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">Como funciona</p>
+      <h2 class="t-2" id="t-como">O caminho de um acesso.</h2>
+    </div>
+    <ol class="fluxo surge">
+      <li><div><b>A conexão chega cifrada</b><span>O nginx só atende por HTTPS e bloqueia arquivos sensíveis.</span></div></li>
+      <li><div><b>O login é conferido</b><span>A senha é comparada pelo hash, e tentativas repetidas são limitadas.</span></div></li>
+      <li><div><b>Cada pedido passa pela regra de acesso</b><span>O servidor confere painel e papel antes de entregar o dado.</span></div></li>
+      <li><div><b>Toda alteração deixa rastro</b><span>A escrita entra na trilha de auditoria, sem expor senhas nem tokens.</span></div></li>
+      <li><div><b>O dia termina com backup</b><span>O banco é copiado, cifrado e enviado a um segundo servidor.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="secao" id="tecnologia" aria-labelledby="t-tec">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">Tecnologia</p>
+      <h2 class="t-2" id="t-tec">Ferramentas conhecidas, em servidor próprio.</h2>
+    </div>
+    <div class="confia">
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-codigo"/></svg></span><h3>Node.js e Express</h3><p>Frontend modular montado no servidor, sem bundler.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-banco"/></svg></span><h3>PostgreSQL</h3><p>Banco de dados relacional, com backup diário.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-globo"/></svg></span><h3>nginx</h3><p>TLS em todos os endereços e bloqueio de arquivos sensíveis.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-pulso"/></svg></span><h3>PM2</h3><p>Cada aplicação é um processo, com reinício automático e log próprio.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-sinal"/></svg></span><h3>Socket.IO</h3><p>Painel de senhas, TV e chat atualizados em tempo real.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-celular"/></svg></span><h3>Capacitor</h3><p>O Regula+ empacotado como aplicativo Android.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-elo"/></svg></span><h3>CADSUS e SIGTAP</h3><p>Consultados na origem.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-servidor"/></svg></span><h3>Servidor Linux</h3><p>Roda em VPS Linux, sem serviço cobrado por uso.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-branca" id="privacidade" aria-labelledby="t-priv">
+  <div class="caixa">
+    <div class="cab surge" style="margin-bottom:0">
+      <p class="sobre">Privacidade e LGPD</p>
+      <h2 class="t-2" id="t-priv">Menos exposição, mais registro.</h2>
+      <ul class="beneficios">
+        <li><span><b>Aceite registrado.</b> O termo LGPD do Regula+ é versionado, e cada aceite guarda CPF, versão, data, hora e IP.</span></li>
+        <li><span><b>Cada um vê o seu.</b> O servidor só entrega os painéis liberados para o papel da pessoa.</span></li>
+        <li><span><b>Registro sem segredos.</b> A trilha de auditoria mascara senhas e tokens.</span></li>
+        <li><span><b>Voz da TV sem nuvem.</b> A chamada usa a voz do próprio aparelho, sem enviar dados para fora.</span></li>
+      </ul>
+      <a class="mais" href="/privacidade.html">Ler a Política de Privacidade</a>
+    </div>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-outras" style="padding-bottom:clamp(40px,5vw,64px)">
+  <div class="caixa">
+    <h2 class="t-3" id="t-outras" style="margin-bottom:16px">Outras soluções</h2>
+    <nav class="outras" aria-label="Outras soluções">
+      <a href="regulacao.html">Regulação</a>
+      <a href="atencao-primaria.html">Atenção primária</a>
+      <a href="urgencia-hospitalar.html">Urgência e hospital</a>
+      <a href="transporte.html">Transporte sanitário</a>
+      <a href="regula-mais.html">Regula+</a>
+      <a href="recepcao-senhas.html">Recepção e senhas</a>
+      <a href="faturamento-sus.html">Faturamento SUS</a>
+      <a href="administracao.html">Administração</a>
+    </nav>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-conv" style="padding-top:0">
+  <div class="caixa">
+    <div class="convite surge" style="grid-template-columns:minmax(0,1fr)">
+      <div>
+        <h2 class="t-2" id="t-conv">Precisa responder a um questionário de segurança?</h2>
+        <p class="lead">Numa conversa técnica, mostramos as camadas, a trilha de auditoria e a rotina de backup.</p>
+        <div class="convite-acoes">
+          <a class="btn btn-1" href="mailto:diretoria@allregtech.com?subject=Conversa%20t%C3%A9cnica%20sobre%20seguran%C3%A7a">Agendar conversa técnica</a>
+          <a class="mais" href="../#solucoes">Voltar às soluções</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="caixa">
+    <div class="rodape-grade">
+      <div class="rodape-marca">
+        <img src="../assets/logo-art.png" alt="AllRegTech" width="84" height="43">
+        <p>Plataforma de gestão da saúde pública municipal, no navegador da unidade e no celular do cidadão.</p>
+      </div>
+      <div>
+        <h2>Soluções</h2>
+        <ul>
+          <li><a href="regulacao.html">Regulação</a></li>
+          <li><a href="atencao-primaria.html">Atenção primária</a></li>
+          <li><a href="urgencia-hospitalar.html">Urgência e hospital</a></li>
+          <li><a href="transporte.html">Transporte sanitário</a></li>
+          <li><a href="regula-mais.html">Regula+</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plataforma</h2>
+        <ul>
+          <li><a href="recepcao-senhas.html">Recepção e senhas</a></li>
+          <li><a href="faturamento-sus.html">Faturamento SUS</a></li>
+          <li><a href="administracao.html">Administração</a></li>
+          <li><a href="tecnologia-seguranca.html" aria-current="page">Tecnologia e segurança</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="mailto:diretoria@allregtech.com">diretoria@allregtech.com</a></li>
+          <li><a href="../#contato">Agendar demonstração</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+          <li><a href="/material/">Área restrita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-base"><span>© 2026 AllRegTech</span><span>Plataforma de gestão da saúde pública municipal · web e Android</span></div>
+  </div>
+</footer>
+
+<script src="../assets/site.js?v=4" defer></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administração e pessoas · AllRegTech</title>
+<meta name="description" content="Administração da AllRegTech: usuários vinculados a unidades, permissão por painel e papel conferida no servidor, e gestão de pessoas com ponto por selfie e GPS, ausências, contracheque e capacitação.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#482b78">
+<link rel="icon" href="../assets/logo-art.png">
+<meta property="og:title" content="Administração e pessoas · AllRegTech">
+<meta property="og:description" content="Cada pessoa vê o que precisa, na unidade em que trabalha. E o RH na mesma plataforma.">
+<meta property="og:image" content="../video-capa.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var k="art-heroi:"+location.pathname;if(sessionStorage.getItem(k))document.documentElement.classList.add("heroi-ok");else sessionStorage.setItem(k,"1")}catch(e){}</script>
+<link rel="stylesheet" href="../assets/site.css?v=4">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-usuarios" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-matriz" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></symbol>
+    <symbol id="i-predio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
+    <symbol id="i-aviso" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+    <symbol id="i-banco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </defs>
+</svg>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="caixa">
+    <a class="marca" href="../" aria-label="AllRegTech, início"><img src="../assets/logo-art.png" alt="AllRegTech" width="72" height="37"><span>Saúde pública</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="../#jornada">Jornada</a>
+      <a href="../#ecossistema">Integração</a>
+      <a href="../#solucoes" aria-current="page">Soluções</a>
+      <a href="tecnologia-seguranca.html">Segurança</a>
+      <a href="../#contato">Contato</a>
+    </nav>
+    <a class="btn btn-1 btn-p" href="../#contato">Agendar demonstração</a>
+    <details class="menu-cel">
+      <summary aria-label="Abrir menu"><svg><use href="#i-menu"/></svg></summary>
+      <nav aria-label="Principal">
+        <a href="../#jornada">Jornada do paciente</a>
+        <a href="../#ecossistema">Integração</a>
+        <a href="../#solucoes">Soluções</a>
+        <a href="tecnologia-seguranca.html">Segurança</a>
+        <a href="../#contato">Contato</a>
+        <a class="btn btn-1" href="../#contato">Agendar demonstração</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<section class="det-heroi" aria-labelledby="t-det">
+  <div class="caixa">
+    <div>
+      <nav class="migalha" aria-label="Você está em"><a href="../">Início</a> / <a href="../#solucoes">Soluções</a> / Administração</nav>
+      <p class="sobre">Administração e pessoas</p>
+      <h1 class="t-1" id="t-det" style="font-size:clamp(32px,4vw,48px)">Cada pessoa vê o que precisa, na unidade em que trabalha.</h1>
+      <p class="lead" style="margin-top:16px">Usuários, unidades, papéis e permissões num só lugar, com o acesso conferido no servidor. E a gestão de pessoas na mesma plataforma.</p>
+      <div class="heroi-acoes">
+        <a class="btn btn-1" href="../#contato">Ver numa demonstração</a>
+        <a class="mais mais-ancora" href="#pessoas">Gestão de pessoas</a>
+      </div>
+    </div>
+    <figure style="margin:0" aria-label="Telas reais do sistema, com dados fictícios">
+      <div class="vitrine"><div class="janela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Admin · Governança</span></div><img src="../assets/telas/admin-permissoes.webp" srcset="../assets/telas/admin-permissoes-p.webp 800w, ../assets/telas/admin-permissoes.webp 1600w" sizes="(max-width:900px) 92vw, 600px" width="1600" height="1000" alt="Raio-x de acesso com a matriz de permissões por papel e a distribuição de perfis, com dados fictícios" fetchpriority="high" decoding="async"></div></div>
+      <figcaption class="vitrine-legenda">Telas reais do sistema, com dados fictícios.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-faz">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">O que a administração faz</p>
+      <h2 class="t-2" id="t-faz">Acesso certo, para a pessoa certa, em cada unidade.</h2>
+    </div>
+    <div class="funcoes">
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-usuarios"/></svg></span><h3>Usuários e unidades</h3><p>Criar, editar e ativar usuários, e vincular a mesma pessoa a mais de uma unidade.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-escudo"/></svg></span><h3>Permissão por painel</h3><p>Acesso definido por usuário e por papel. A regra é conferida no servidor, não só escondida na tela.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-matriz"/></svg></span><h3>Papéis clínicos</h3><p>Matriz de permissões editável para cada papel, como recepção, enfermagem ou médico.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-predio"/></svg></span><h3>Admin Master e admin da unidade</h3><p>O Admin Master cria e edita unidades, nomeia os admins de cada uma e acompanha conexões e presença.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-aviso"/></svg></span><h3>Avisos internos</h3><p>Avisos com imagem para as equipes e lista de aniversariantes.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-banco"/></svg></span><h3>SCNES</h3><p>Importação e conciliação dos dados do SCNES.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-branca" id="pessoas" aria-labelledby="t-pessoas">
+  <div class="caixa">
+    <div class="sol">
+      <div class="sol-texto surge">
+        <p class="sobre">Gestão de pessoas</p>
+        <h2 class="t-2" id="t-pessoas">O RH na mesma plataforma em que a equipe trabalha.</h2>
+        <ul class="beneficios">
+          <li><span><b>Ponto por selfie e GPS.</b> Registro pelo celular, espelho de ponto, carga horária, painel do RH e exportação em CSV.</span></li>
+          <li><span><b>Ausências e férias.</b> Ausência com anexo e PDF, férias, lançamentos, importação de ponto e indicadores do RH.</span></li>
+          <li><span><b>Contracheque.</b> Disponível na mesma plataforma do ponto.</span></li>
+          <li><span><b>Capacitação com certificado.</b> Cursos com progresso e retomada, tentativas, acompanhamento da cobertura e certificado emitido ao concluir.</span></li>
+          <li><span><b>Monitoria de qualidade.</b> No mesmo lugar que os indicadores do RH.</span></li>
+        </ul>
+        <p class="aviso-dev"><span><b>Em preparação:</b> assinatura digital com gov.br e ICP-Brasil, que depende de credencial.</span></p>
+      </div>
+      <figure class="sol-arte surge" style="margin:0" aria-label="Ilustração: registro de ponto pelo celular, com selfie e localização, dados fictícios">
+        <div class="cel" style="max-width:280px;margin-inline:auto">
+          <div class="cel-tela">
+            <div class="cel-topo"><small>Ponto do servidor</small><b>Bom dia, servidor</b></div>
+            <div class="cel-corpo">
+              <div class="cartao-m cel-destaque"><b>Registrar entrada</b><small>Selfie e localização da UBS Centro</small></div>
+              <div class="cartao-m"><div class="linha-m"><b>Entrada 07:58</b><span class="tag ok">Registrado</span></div></div>
+              <div class="cartao-m"><div class="linha-m"><b>Saída</b><span class="tag sem">Pendente</span></div></div>
+              <div class="cartao-m"><div class="linha-m"><b>Curso em andamento</b><span class="tag in sem">60%</span></div><div class="fio c50"></div></div>
+            </div>
+            <div class="cel-nav"><span class="on">Ponto</span><span>Ausências</span><span>Cursos</span></div>
+          </div>
+        </div>
+        <figcaption class="miudo" style="margin-top:12px;text-align:center">Tela ilustrativa, com dados fictícios.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="como-funciona" aria-labelledby="t-como">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">Como funciona</p>
+      <h2 class="t-2" id="t-como">Da unidade nova ao primeiro acesso.</h2>
+    </div>
+    <ol class="fluxo surge">
+      <li><div><b>O Admin Master cria a unidade</b><span>Com apoio da importação e conciliação do SCNES.</span></div></li>
+      <li><div><b>A unidade ganha seu admin</b><span>O admin da unidade cuida da própria equipe.</span></div></li>
+      <li><div><b>Usuários são cadastrados</b><span>Cada pessoa é vinculada a uma ou mais unidades.</span></div></li>
+      <li><div><b>Papel e painéis são definidos</b><span>A matriz de permissões diz o que cada papel pode abrir.</span></div></li>
+      <li><div><b>O servidor confere cada acesso</b><span>Quem não tem permissão não recebe o dado, e toda alteração fica registrada.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-outras" style="padding-top:0;padding-bottom:clamp(40px,5vw,64px)">
+  <div class="caixa">
+    <h2 class="t-3" id="t-outras" style="margin-bottom:16px">Outras soluções</h2>
+    <nav class="outras" aria-label="Outras soluções">
+      <a href="regulacao.html">Regulação</a>
+      <a href="atencao-primaria.html">Atenção primária</a>
+      <a href="urgencia-hospitalar.html">Urgência e hospital</a>
+      <a href="transporte.html">Transporte sanitário</a>
+      <a href="regula-mais.html">Regula+</a>
+      <a href="recepcao-senhas.html">Recepção e senhas</a>
+      <a href="faturamento-sus.html">Faturamento SUS</a>
+      <a href="tecnologia-seguranca.html">Tecnologia e segurança</a>
+    </nav>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-conv" style="padding-top:0">
+  <div class="caixa">
+    <div class="convite surge" style="grid-template-columns:minmax(0,1fr)">
+      <div>
+        <h2 class="t-2" id="t-conv">Quer ver acessos e RH funcionando?</h2>
+        <p class="lead">Numa demonstração com dados fictícios, criamos um usuário, damos o papel e mostramos o ponto registrado pelo celular.</p>
+        <div class="convite-acoes">
+          <a class="btn btn-1" href="mailto:diretoria@allregtech.com?subject=Demonstra%C3%A7%C3%A3o%20da%20administra%C3%A7%C3%A3o">Agendar demonstração</a>
+          <a class="mais" href="../#solucoes">Voltar às soluções</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="caixa">
+    <div class="rodape-grade">
+      <div class="rodape-marca">
+        <img src="../assets/logo-art.png" alt="AllRegTech" width="84" height="43">
+        <p>Plataforma de gestão da saúde pública municipal, no navegador da unidade e no celular do cidadão.</p>
+      </div>
+      <div>
+        <h2>Soluções</h2>
+        <ul>
+          <li><a href="regulacao.html">Regulação</a></li>
+          <li><a href="atencao-primaria.html">Atenção primária</a></li>
+          <li><a href="urgencia-hospitalar.html">Urgência e hospital</a></li>
+          <li><a href="transporte.html">Transporte sanitário</a></li>
+          <li><a href="regula-mais.html">Regula+</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plataforma</h2>
+        <ul>
+          <li><a href="recepcao-senhas.html">Recepção e senhas</a></li>
+          <li><a href="faturamento-sus.html">Faturamento SUS</a></li>
+          <li><a href="administracao.html" aria-current="page">Administração</a></li>
+          <li><a href="tecnologia-seguranca.html">Tecnologia e segurança</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="mailto:diretoria@allregtech.com">diretoria@allregtech.com</a></li>
+          <li><a href="../#contato">Agendar demonstração</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+          <li><a href="/material/">Área restrita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-base"><span>© 2026 AllRegTech</span><span>Plataforma de gestão da saúde pública municipal · web e Android</span></div>
+  </div>
+</footer>
+
+<script src="../assets/site.js?v=4" defer></script>
+</body>
+</html>

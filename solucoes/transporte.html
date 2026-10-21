@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transporte sanitário · AllRegTech</title>
+<meta name="description" content="Transporte sanitário da AllRegTech: agendamentos com protocolo, embarque validado por QR Code, estação do motorista, casa de apoio, relatórios e BPA do transporte.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#482b78">
+<link rel="icon" href="../assets/logo-art.png">
+<meta property="og:title" content="Transporte sanitário · AllRegTech">
+<meta property="og:description" content="Do agendamento ao embarque validado por QR Code, cada viagem fica registrada.">
+<meta property="og:image" content="../video-capa.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var k="art-heroi:"+location.pathname;if(sessionStorage.getItem(k))document.documentElement.classList.add("heroi-ok");else sessionStorage.setItem(k,"1")}catch(e){}</script>
+<link rel="stylesheet" href="../assets/site.css?v=4">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-agenda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="16" y="3" width="5" height="5" rx="1"/><rect x="3" y="16" width="5" height="5" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01M12 3h.01M12 16v.01M16 12h1M21 12v.01M12 21v-1"/></symbol>
+    <symbol id="i-carro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="i-casa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-estrela" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+    <symbol id="i-relatorio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 18v-2M12 18v-4M16 18v-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </defs>
+</svg>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="caixa">
+    <a class="marca" href="../" aria-label="AllRegTech, início"><img src="../assets/logo-art.png" alt="AllRegTech" width="72" height="37"><span>Saúde pública</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="../#jornada">Jornada</a>
+      <a href="../#ecossistema">Integração</a>
+      <a href="../#solucoes" aria-current="page">Soluções</a>
+      <a href="tecnologia-seguranca.html">Segurança</a>
+      <a href="../#contato">Contato</a>
+    </nav>
+    <a class="btn btn-1 btn-p" href="../#contato">Agendar demonstração</a>
+    <details class="menu-cel">
+      <summary aria-label="Abrir menu"><svg><use href="#i-menu"/></svg></summary>
+      <nav aria-label="Principal">
+        <a href="../#jornada">Jornada do paciente</a>
+        <a href="../#ecossistema">Integração</a>
+        <a href="../#solucoes">Soluções</a>
+        <a href="tecnologia-seguranca.html">Segurança</a>
+        <a href="../#contato">Contato</a>
+        <a class="btn btn-1" href="../#contato">Agendar demonstração</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<section class="det-heroi" aria-labelledby="t-det">
+  <div class="caixa">
+    <div>
+      <nav class="migalha" aria-label="Você está em"><a href="../">Início</a> / <a href="../#solucoes">Soluções</a> / Transporte sanitário</nav>
+      <p class="sobre">Transporte sanitário</p>
+      <h1 class="t-1" id="t-det" style="font-size:clamp(32px,4vw,48px)">Cada embarque confirmado, cada viagem registrada.</h1>
+      <p class="lead" style="margin-top:16px">O agendamento nasce com protocolo, o motorista valida o embarque por QR Code e a casa de apoio confirma a chegada. A gestão vê a viagem inteira.</p>
+      <div class="heroi-acoes">
+        <a class="btn btn-1" href="../#contato">Ver numa demonstração</a>
+        <a class="mais mais-ancora" href="#como-funciona">Como funciona</a>
+      </div>
+    </div>
+    <figure style="margin:0" aria-label="Telas reais do sistema, com dados fictícios">
+      <div class="vitrine"><div class="dupla"><div class="janela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Transporte · Agendamentos</span></div><img src="../assets/telas/transporte-agenda.webp" srcset="../assets/telas/transporte-agenda-p.webp 800w, ../assets/telas/transporte-agenda.webp 1600w" sizes="(max-width:900px) 92vw, 600px" width="1600" height="1000" alt="Agendamentos do transporte do dia, com destino, embarque, veículo e presença, com dados fictícios" fetchpriority="high" decoding="async"></div><div class="aparelho"><img src="../assets/telas/transporte-motorista.webp" srcset="../assets/telas/transporte-motorista-p.webp 420w, ../assets/telas/transporte-motorista.webp 780w" sizes="(max-width:560px) 150px, 200px" width="780" height="1040" alt="Tela do motorista no celular, com os passageiros do dia e a validação por QR Code, com dados fictícios" loading="lazy" decoding="async"></div></div></div>
+      <figcaption class="vitrine-legenda">Telas reais do sistema, com dados fictícios.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-faz">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">O que o transporte faz</p>
+      <h2 class="t-2" id="t-faz">Do pedido de viagem ao relatório do mês.</h2>
+    </div>
+    <div class="funcoes">
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-agenda"/></svg></span><h3>Agendamentos com protocolo</h3><p>Cadastro do paciente, agendamento, atribuição, execução e cancelamento, com registro do acompanhante.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-qr"/></svg></span><h3>Embarque por QR Code</h3><p>O QR Code é validado no embarque e na casa de apoio. Fica registrado quem embarcou e quem chegou.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-carro"/></svg></span><h3>Estação do motorista</h3><p>No celular, o motorista vê a viagem do dia, valida os embarques e consulta o histórico.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-casa"/></svg></span><h3>Casa de apoio</h3><p>Tela própria para receber o paciente e confirmar a chegada.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-estrela"/></svg></span><h3>Pesquisa de satisfação</h3><p>O paciente avalia o atendimento respondendo por um link.</p></article>
+      <article class="card surge"><span class="ico"><svg aria-hidden="true"><use href="#i-relatorio"/></svg></span><h3>Frota, relatórios e BPA</h3><p>Veículos, motoristas, viagens e notas fiscais, com relatórios em PDF e XLSX, guias e o BPA do transporte.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="secao secao-branca" id="como-funciona" aria-labelledby="t-como">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">Como funciona</p>
+      <h2 class="t-2" id="t-como">O caminho de uma viagem.</h2>
+    </div>
+    <ol class="fluxo surge">
+      <li><div><b>O agendamento é feito</b><span>O paciente e o acompanhante entram com protocolo, data e destino.</span></div></li>
+      <li><div><b>A viagem é montada</b><span>O agendamento é atribuído a um veículo e a um motorista.</span></div></li>
+      <li><div><b>O motorista valida o embarque</b><span>O QR Code é lido no celular e o embarque fica registrado.</span></div></li>
+      <li><div><b>A casa de apoio confirma</b><span>A chegada também é validada por QR Code, na tela da casa de apoio.</span></div></li>
+      <li><div><b>O paciente avalia</b><span>A pesquisa de satisfação chega por link.</span></div></li>
+      <li><div><b>A gestão fecha o mês</b><span>Relatórios de viagens e veículos, guias e o BPA do transporte.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-outras" style="padding-bottom:clamp(40px,5vw,64px)">
+  <div class="caixa">
+    <h2 class="t-3" id="t-outras" style="margin-bottom:16px">Outras soluções</h2>
+    <nav class="outras" aria-label="Outras soluções">
+      <a href="regulacao.html">Regulação</a>
+      <a href="atencao-primaria.html">Atenção primária</a>
+      <a href="urgencia-hospitalar.html">Urgência e hospital</a>
+      <a href="regula-mais.html">Regula+</a>
+      <a href="recepcao-senhas.html">Recepção e senhas</a>
+      <a href="faturamento-sus.html">Faturamento SUS</a>
+      <a href="administracao.html">Administração</a>
+      <a href="tecnologia-seguranca.html">Tecnologia e segurança</a>
+    </nav>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="t-conv" style="padding-top:0">
+  <div class="caixa">
+    <div class="convite surge" style="grid-template-columns:minmax(0,1fr)">
+      <div>
+        <h2 class="t-2" id="t-conv">Quer ver o transporte funcionando?</h2>
+        <p class="lead">Numa demonstração com dados fictícios, seguimos uma viagem do agendamento até a chegada na casa de apoio.</p>
+        <div class="convite-acoes">
+          <a class="btn btn-1" href="mailto:diretoria@allregtech.com?subject=Demonstra%C3%A7%C3%A3o%20do%20transporte%20sanit%C3%A1rio">Agendar demonstração</a>
+          <a class="mais" href="../#solucoes">Voltar às soluções</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="caixa">
+    <div class="rodape-grade">
+      <div class="rodape-marca">
+        <img src="../assets/logo-art.png" alt="AllRegTech" width="84" height="43">
+        <p>Plataforma de gestão da saúde pública municipal, no navegador da unidade e no celular do cidadão.</p>
+      </div>
+      <div>
+        <h2>Soluções</h2>
+        <ul>
+          <li><a href="regulacao.html">Regulação</a></li>
+          <li><a href="atencao-primaria.html">Atenção primária</a></li>
+          <li><a href="urgencia-hospitalar.html">Urgência e hospital</a></li>
+          <li><a href="transporte.html" aria-current="page">Transporte sanitário</a></li>
+          <li><a href="regula-mais.html">Regula+</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plataforma</h2>
+        <ul>
+          <li><a href="recepcao-senhas.html">Recepção e senhas</a></li>
+          <li><a href="faturamento-sus.html">Faturamento SUS</a></li>
+          <li><a href="administracao.html">Administração</a></li>
+          <li><a href="tecnologia-seguranca.html">Tecnologia e segurança</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="mailto:diretoria@allregtech.com">diretoria@allregtech.com</a></li>
+          <li><a href="../#contato">Agendar demonstração</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+          <li><a href="/material/">Área restrita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape-base"><span>© 2026 AllRegTech</span><span>Plataforma de gestão da saúde pública municipal · web e Android</span></div>
+  </div>
+</footer>
+
+<script src="../assets/site.js?v=4" defer></script>
+</body>
+</html>

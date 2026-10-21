@@ -1,3113 +1,396 @@
 <!doctype html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="color-scheme" content="light">
-<title>Portal AllRegTech · a rede municipal de saúde em um só lugar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Portal AllRegTech - plataforma de gestao da saude publica municipal: regulacao, UBS, UPA, transporte sanitario e o aplicativo Regula+.">
-<meta name="theme-color" content="#3f2a6b">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>AllRegTech · gestão da saúde pública municipal</title>
+<meta name="description" content="AllRegTech: plataforma da saúde pública municipal. Recepção, UBS, UPA, regulação, transporte sanitário e faturamento SUS sobre o mesmo cadastro por CPF, com o aplicativo Regula+ para o cidadão.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#482b78">
 <link rel="icon" href="assets/logo-art.png">
-<meta property="og:title" content="Portal AllRegTech">
-<meta property="og:description" content="Uma rede de saude inteira. Um portal so.">
+<meta property="og:title" content="AllRegTech · gestão da saúde pública municipal">
+<meta property="og:description" content="Da senha na recepção ao fechamento do BPA, cada etapa do atendimento registrada no mesmo cadastro.">
 <meta property="og:image" content="video-capa.jpg">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var k="art-heroi:"+location.pathname;if(sessionStorage.getItem(k))document.documentElement.classList.add("heroi-ok");else sessionStorage.setItem(k,"1")}catch(e){}</script>
+<link rel="stylesheet" href="assets/site.css?v=4">
 </head>
 <body>
-
-
-<style>
-/* ───────────────────────── tokens ───────────────────────── */
-:root{
-  --ink:#1A1220;
-  --ink-2:#5A4C63;
-  --ink-3:#8B7F94;
-  --ground:#FBFAFC;
-  --surface:#FFFFFF;
-  --surface-2:#F4F0F7;
-  --line:#E7E1EB;
-  --accent:#6F1D7A;
-  --accent-soft:#F3E6F5;
-  --deep:#25082B;
-  --deep-2:#3A1442;
-  --on-deep:#F6EAF8;
-  --on-deep-2:#C7A7CE;
-  --teal:#0E8F95;
-  --amber:#C77A12;
-  --btn-bg:#6F1D7A;
-  --btn-fg:#FFFFFF;
-  --shadow-s:0 1px 2px rgba(37,8,43,.06), 0 6px 16px rgba(37,8,43,.06);
-  --shadow-l:0 2px 6px rgba(37,8,43,.08), 0 28px 60px rgba(37,8,43,.14);
-  --glass-bg:rgba(255,255,255,.58);
-  --glass-brd:rgba(255,255,255,.9);
-  --glass-shine:rgba(255,255,255,.75);
-  --glass-blur:saturate(1.7) blur(20px);
-  --logo-art:url("assets/logo-art.png");
-  --logo-dark:url("assets/logo-art-dark.png");
-  --r-s:10px; --r-m:18px; --r-l:28px;
-  --display:"Segoe UI Variable Display","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,"Helvetica Neue",sans-serif;
-  --body:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,"Helvetica Neue",sans-serif;
-  --mono:ui-monospace,"Cascadia Code","Cascadia Mono",Consolas,"SF Mono",monospace;
-  --maxw:1500px;
-  --pad:clamp(20px,3.4vw,52px);
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --ink:#F4ECF7; --ink-2:#B7A6C0; --ink-3:#8B7C95;
-    --ground:#120B16; --surface:#1B1121; --surface-2:#241830; --line:#33253C;
-    --accent:#D07ADD; --accent-soft:#2C1533;
-    --deep:#0C060F; --deep-2:#1D1024; --on-deep:#F6EAF8; --on-deep-2:#B99CC1;
-    --teal:#3FC6CB; --amber:#E8A93F;
-    --btn-bg:#D07ADD; --btn-fg:#1E0824;
-    --shadow-s:0 1px 2px rgba(0,0,0,.5), 0 6px 16px rgba(0,0,0,.35);
-    --shadow-l:0 2px 6px rgba(0,0,0,.5), 0 28px 60px rgba(0,0,0,.55);
-    --glass-bg:rgba(52,32,63,.5); --glass-brd:rgba(255,255,255,.14); --glass-shine:rgba(255,255,255,.22);
-  }
-}
-:root[data-theme="dark"]{
-  --ink:#F4ECF7; --ink-2:#B7A6C0; --ink-3:#8B7C95;
-  --ground:#120B16; --surface:#1B1121; --surface-2:#241830; --line:#33253C;
-  --accent:#D07ADD; --accent-soft:#2C1533;
-  --deep:#0C060F; --deep-2:#1D1024; --on-deep:#F6EAF8; --on-deep-2:#B99CC1;
-  --teal:#3FC6CB; --amber:#E8A93F;
-  --btn-bg:#D07ADD; --btn-fg:#1E0824;
-  --shadow-s:0 1px 2px rgba(0,0,0,.5), 0 6px 16px rgba(0,0,0,.35);
-  --shadow-l:0 2px 6px rgba(0,0,0,.5), 0 28px 60px rgba(0,0,0,.55);
-  --glass-bg:rgba(52,32,63,.5); --glass-brd:rgba(255,255,255,.14); --glass-shine:rgba(255,255,255,.22);
-}
-:root[data-theme="light"]{
-  --ink:#1A1220; --ink-2:#5A4C63; --ink-3:#8B7F94;
-  --ground:#FBFAFC; --surface:#FFFFFF; --surface-2:#F4F0F7; --line:#E7E1EB;
-  --accent:#6F1D7A; --accent-soft:#F3E6F5;
-  --deep:#25082B; --deep-2:#3A1442; --on-deep:#F6EAF8; --on-deep-2:#C7A7CE;
-  --teal:#0E8F95; --amber:#C77A12;
-  --btn-bg:#6F1D7A; --btn-fg:#FFFFFF;
-  --shadow-s:0 1px 2px rgba(37,8,43,.06), 0 6px 16px rgba(37,8,43,.06);
-  --shadow-l:0 2px 6px rgba(37,8,43,.08), 0 28px 60px rgba(37,8,43,.14);
-  --glass-bg:rgba(255,255,255,.58); --glass-brd:rgba(255,255,255,.9); --glass-shine:rgba(255,255,255,.75);
-}
-
-/* ───────────────────────── base ───────────────────────── */
-*{box-sizing:border-box}
-html{scroll-behavior:auto}
-body{
-  margin:0; background:var(--ground); color:var(--ink);
-  font-family:var(--body); font-size:16px; line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden; overflow-x:clip; /* clip não cria contexto de rolagem: preserva o sticky */
-}
-
-/* ───────────────────────── feixes de luz no fundo ─────────────────────────
-   Camada fixa atras de TODO o conteudo. Funciona porque o background do body
-   e propagado para o canvas: um filho com z-index:-1 fica acima do fundo e
-   abaixo do conteudo. Secoes com fundo solido (ex.: #jornada) cobrem os feixes
-   naturalmente — a luz aparece onde o fundo e o --ground. */
-:root{
-  --beam-a:rgba(111,29,122,.20);
-  --beam-b:rgba(14,143,149,.15);
-  --beam-c:rgba(199,122,18,.11);
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --beam-a:rgba(208,122,221,.26);
-    --beam-b:rgba(63,198,203,.19);
-    --beam-c:rgba(232,169,63,.14);
-  }
-}
-:root[data-theme="dark"]{
-  --beam-a:rgba(208,122,221,.26);
-  --beam-b:rgba(63,198,203,.19);
-  --beam-c:rgba(232,169,63,.14);
-}
-:root[data-theme="light"]{
-  --beam-a:rgba(111,29,122,.20);
-  --beam-b:rgba(14,143,149,.15);
-  --beam-c:rgba(199,122,18,.11);
-}
-.beams{
-  position:fixed; inset:0; z-index:-1; pointer-events:none;
-  overflow:hidden; contain:strict;
-}
-.beams i{
-  position:absolute; top:-60vh; left:0;
-  width:var(--w); height:220vh;
-  background:linear-gradient(90deg, transparent 0%, var(--c) 46%, var(--c) 54%, transparent 100%);
-  filter:blur(var(--b));
-  opacity:0;
-  will-change:transform, opacity;
-  animation:beam-sweep var(--dur) linear var(--delay) infinite;
-}
-.beams i:nth-child(1){ --w:15vw; --b:46px; --c:var(--beam-a); --dur:23s; --delay:-3s }
-.beams i:nth-child(2){ --w:9vw;  --b:34px; --c:var(--beam-b); --dur:31s; --delay:-14s }
-.beams i:nth-child(3){ --w:22vw; --b:64px; --c:var(--beam-c); --dur:41s; --delay:-27s }
-@keyframes beam-sweep{
-  0%   { transform:rotate(17deg) translate3d(-45vw,0,0); opacity:0 }
-  14%  { opacity:1 }
-  86%  { opacity:1 }
-  100% { transform:rotate(17deg) translate3d(125vw,0,0); opacity:0 }
-}
-/* quem pediu menos movimento fica com o fundo limpo, sem animacao nenhuma */
-@media (prefers-reduced-motion:reduce){ .beams{ display:none } }
-@media print{ .beams{ display:none } }
-/* degradê nas bordas: onde o conteúdo é recortado, ele se dissolve em vez de ser cortado a faca */
-.fade-x::before, .fade-x::after, .fade-y::before, .fade-y::after{
-  content:""; position:absolute; z-index:4; pointer-events:none;
-}
-.fade-x::before, .fade-x::after{top:0; bottom:0; width:clamp(72px,11vw,190px)}
-.fade-x::before{left:0; background:linear-gradient(90deg, var(--fade-c,var(--ground)) 0%, transparent 100%)}
-.fade-x::after{right:0; background:linear-gradient(270deg, var(--fade-c,var(--ground)) 0%, transparent 100%)}
-.fade-y::before, .fade-y::after{left:0; right:0; height:clamp(28px,5vh,76px)}
-.fade-y::before{top:0; background:linear-gradient(180deg, var(--fade-c,var(--ground)) 0%, transparent 100%)}
-.fade-y::after{bottom:0; background:linear-gradient(0deg, var(--fade-c,var(--ground)) 0%, transparent 100%)}
-h1,h2,h3,h4{font-family:var(--display); text-wrap:balance; margin:0; font-weight:700; letter-spacing:-.022em; line-height:1.06}
-p{margin:0}
-a{color:inherit}
-img{max-width:100%}
-:where(a,button,[tabindex]):focus-visible{outline:3px solid var(--accent); outline-offset:3px; border-radius:6px}
-
-.wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:var(--pad)}
-.eyebrow{
-  font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--accent); font-weight:600;
-}
-.lede{font-size:clamp(16px,1.15vw,18.5px); color:var(--ink-2); max-width:56ch}
-.h-xl{font-size:clamp(38px,4.6vw,68px); letter-spacing:-.035em}
-.h-l{font-size:clamp(28px,3.1vw,46px); letter-spacing:-.03em}
-.h-m{font-size:clamp(23px,2vw,31px); letter-spacing:-.025em}
-.h-s{font-size:20px; letter-spacing:-.015em}
-
-.btn{
-  display:inline-flex; align-items:center; gap:9px; border:0; cursor:pointer;
-  font-family:var(--body); font-size:16px; font-weight:600; text-decoration:none;
-  padding:14px 26px; border-radius:999px; transition:transform .18s, box-shadow .18s, background .18s;
-}
-.btn--primary{background:var(--btn-bg); color:var(--btn-fg); box-shadow:var(--shadow-s)}
-.btn--primary:hover{transform:translateY(-2px); box-shadow:var(--shadow-l)}
-.btn--ghost{background:transparent; color:var(--ink); border:1.5px solid var(--line)}
-.btn--ghost:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px)}
-.btn--onDeep{background:rgba(255,255,255,.1); color:var(--on-deep); border:1.5px solid rgba(255,255,255,.24)}
-.btn--onDeep:hover{background:rgba(255,255,255,.18); transform:translateY(-2px)}
-
-/* ───────────────────────── scroll progress + nav ───────────────────────── */
-#bar{
-  position:fixed; inset:0 auto auto 0; height:3px; width:0%; z-index:60;
-  background:linear-gradient(90deg,var(--accent),var(--teal)); transition:width .08s linear;
-}
-#nav{
-  position:fixed; top:0; left:0; right:0; z-index:50;
-  display:flex; align-items:center; gap:20px;
-  padding:14px var(--pad); transition:background .3s, border-color .3s, backdrop-filter .3s;
-  border-bottom:1px solid transparent;
-}
-#nav.stuck{
-  background:color-mix(in srgb, var(--ground) 82%, transparent);
-  backdrop-filter:saturate(1.6) blur(18px);
-  border-bottom-color:var(--line);
-}
-.brand{display:flex; align-items:center; gap:12px; font-family:var(--display); font-weight:700; letter-spacing:-.02em; text-decoration:none; font-size:16px; color:var(--ink)}
-.brand__sep{width:1px; height:20px; background:var(--line); display:block}
-.navlinks{display:flex; gap:4px; margin-left:auto}
-.navlinks a{
-  text-decoration:none; font-size:14.5px; font-weight:500; color:var(--ink-2);
-  padding:8px 14px; border-radius:999px; transition:color .2s, background .2s;
-}
-.navlinks a:hover{color:var(--ink); background:var(--surface-2)}
-.navlinks a.on{color:var(--accent); background:var(--accent-soft)}
-#nav .btn{padding:10px 20px; font-size:14.5px}
-@media (max-width:940px){ .navlinks{display:none} #nav .btn{margin-left:auto} }
-
-/* ───────────────────────── reveal ───────────────────────── */
-.rv{opacity:0; transform:translateY(30px); transition:opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1); transition-delay:var(--d,0ms)}
-.rv.in{opacity:1; transform:none}
-
-/* ───────── vidro ───────── */
-/* .glass = vidro completo (com desfoque do fundo). Custa uma superfície de composição
-   por elemento, então fica reservado a poucos elementos-chave.
-   .glass-lite = mesma linguagem visual sem o desfoque, para quando há muitos. */
-.glass, .glass-lite{
-  background:var(--glass-bg);
-  border:1px solid var(--glass-brd);
-  box-shadow:var(--shadow-l), inset 0 1px 0 var(--glass-shine);
-  position:relative;
-}
-.glass{-webkit-backdrop-filter:var(--glass-blur); backdrop-filter:var(--glass-blur)}
-.glass::before, .glass-lite::before{ /* brilho diagonal de borda, como um vidro pegando luz */
-  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:linear-gradient(135deg, var(--glass-shine) 0%, transparent 32%, transparent 68%, rgba(255,255,255,.16) 100%);
-  opacity:.55; }
-.glass > *, .glass-lite > *{position:relative; z-index:1}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-  .glass{background:var(--surface)}
-}
-
-/* ───────── logo ART em placa 3D extrudada ───────── */
-.brand-mark{
-  width:var(--bm,120px); aspect-ratio:460/235; display:block; flex:none;
-  background:var(--logo-art) center/contain no-repeat;
-}
-/* a própria marca é extrudada: camadas da arte empilhadas em Z, fundo transparente */
-.logo3d{--w:296px; width:var(--w); aspect-ratio:460/235; perspective:1000px; position:relative}
-.logo3d::after{ /* luz difusa por trás das letras */
-  content:""; position:absolute; inset:-40% -16%; z-index:-1; pointer-events:none;
-  background:radial-gradient(50% 50% at 50% 52%, color-mix(in srgb,var(--accent) 34%,transparent), transparent 68%);
-  filter:blur(16px); opacity:.7;
-}
-.logo3d__tilt{
-  width:100%; height:100%; transform-style:preserve-3d;
-  transform:rotateX(var(--lx,0deg)) rotateY(var(--ly,0deg));
-  transition:transform .35s cubic-bezier(.2,.7,.3,1);
-}
-/* giro leve de vai e vem: a marca nunca chega a ficar de perfil */
-.logo3d__obj{position:relative; width:100%; height:100%; transform-style:preserve-3d; animation:logosway 13s ease-in-out infinite}
-@keyframes logosway{
-  0%,100%{transform:rotateY(-19deg) rotateX(6deg)}
-  50%{transform:rotateY(19deg) rotateX(-5deg)}
-}
-/* as camadas de espessura usam uma silhueta já escura: nada de filter por camada,
-   que com animação 3D contínua rasteriza tudo de novo a cada quadro */
-.logo3d__l{
-  position:absolute; inset:0; background:var(--logo-dark) center/contain no-repeat;
-  transform:translateZ(calc(var(--i) * -4px));
-}
-.logo3d__l--face{
-  background-image:var(--logo-art); transform:translateZ(2.6px);
-  filter:drop-shadow(0 3px 7px rgba(0,0,0,.4));
-}
-/* faísca de luz atravessando as letras, recortada pela silhueta da marca */
-.logo3d__shine{
-  position:absolute; inset:0; pointer-events:none; overflow:hidden; transform:translateZ(3.4px);
-  -webkit-mask:var(--logo-art) center/contain no-repeat;
-  mask:var(--logo-art) center/contain no-repeat;
-}
-.logo3d__shine::after{ /* só o transform anima: fica no compositor, não repinta */
-  content:""; position:absolute; top:-20%; bottom:-20%; left:-60%; width:46%;
-  background:linear-gradient(102deg, transparent, rgba(255,255,255,.92), transparent);
-  animation:logoshine 6.5s ease-in-out infinite;
-}
-@keyframes logoshine{
-  0%, 58%{transform:translateX(0)}
-  100%{transform:translateX(560%)}
-}
-@media (max-width:1079px){ .logo3d{--w:238px; margin-inline:auto} }
-@media (max-height:780px){ .logo3d{--w:236px} }
-@media (prefers-reduced-motion:reduce){
-  .logo3d__obj{animation:none !important; transform:rotateY(-15deg) rotateX(4deg)}
-  .logo3d__shine{animation:none !important; opacity:.25}
-  .logo3d__tilt{transition:none}
-}
-
-/* ───────── motor de deslocamento ligado ao scroll ───────── */
-.fly{
-  transform:translate3d(var(--fx,0px), var(--fy,0px), var(--fz,0px)) rotate(var(--fr,0deg)) scale(var(--fsc,1));
-  opacity:var(--fo,1);
-}
-/* faixa que corre na horizontal enquanto a página desce */
-.band{
-  padding:26px 0; border-block:1px solid var(--line); background:var(--surface-2);
-  overflow:hidden; position:relative; --fade-c:var(--surface-2);
-}
-.band__row{display:flex; gap:12px; width:max-content; padding:5px 0}
-.band__row + .band__row{margin-top:12px}
-.band__chip{
-  flex:none; display:flex; align-items:center; gap:10px; padding:11px 20px; border-radius:999px;
-  font-size:14px; font-weight:600; white-space:nowrap; letter-spacing:-.01em; border-radius:999px;
-}
-.band__chip b{font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; color:var(--accent); font-weight:700}
-
-/* ───────────────────────── hero ───────────────────────── */
-#hero{position:relative; padding:104px 0 26px; overflow:hidden}
-#hero::before{
-  content:""; position:absolute; z-index:0; left:50%; top:-14%; translate:-50% 0;
-  width:min(1300px,130vw); aspect-ratio:1/.7; pointer-events:none;
-  background:radial-gradient(50% 50% at 50% 50%, color-mix(in srgb,var(--accent) 24%,transparent) 0%, transparent 70%);
-}
-.hero-grid{position:relative; z-index:1; display:grid; gap:28px; justify-items:center; text-align:center}
-.hero-copy{display:grid; gap:16px; justify-items:center}
-.hero-grid .h-xl{max-width:15ch}
-.hero-grid .lede{text-align:center}
-.hero-cta{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
-.hero-note{font-family:var(--mono); font-size:12px; color:var(--ink-3); letter-spacing:.04em}
-
-.stagegrid{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--glass-brd);
-  border:1px solid var(--glass-brd); border-radius:var(--r-m); overflow:hidden; margin-top:34px; width:100%;
-  box-shadow:var(--shadow-l);
-}
-.stagegrid div{
-  background:var(--glass-bg); padding:16px 18px;
-  -webkit-backdrop-filter:var(--glass-blur); backdrop-filter:var(--glass-blur);
-}
-.stagegrid b{display:block; font-family:var(--display); font-size:clamp(24px,2.2vw,33px); letter-spacing:-.03em; font-variant-numeric:tabular-nums}
-.stagegrid span{font-size:12.5px; color:var(--ink-2); display:block; margin-top:2px; line-height:1.38}
-@media (max-width:760px){ .stagegrid{grid-template-columns:repeat(2,1fr)} }
-
-/* desktop: copy à esquerda, cena 3D à direita, números atravessando embaixo */
-@media (min-width:1080px){
-  #hero{padding:112px 0 34px}
-  .hero-grid{
-    grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
-    grid-template-areas:"copy art" "stats stats";
-    column-gap:clamp(34px,3.6vw,64px); row-gap:0;
-    align-items:center; text-align:left; justify-items:stretch;
-  }
-  .hero-copy{grid-area:copy; justify-items:start; gap:18px}
-  .hero-grid .lede{text-align:left}
-  .hero-cta{justify-content:flex-start}
-  .compo{grid-area:art; margin-top:0}
-  .stagegrid{grid-area:stats; margin-top:44px}
-}
-
-/* ───────────────────────── hero composition (3D) ───────────────────────── */
-.compo{position:relative; margin-top:64px; perspective:1700px; perspective-origin:50% 32%}
-.compo__stage{
-  position:relative; transform-style:preserve-3d; will-change:transform;
-  transform:rotateX(var(--rx,15deg)) rotateY(var(--ry,0deg)) rotateZ(var(--rz,0deg));
-  transition:transform .45s cubic-bezier(.2,.7,.3,1);
-}
-.compo__stage::after{ /* sombra projetada no "chão" da cena */
-  content:""; position:absolute; left:8%; right:8%; bottom:-6%; height:70px; z-index:-1;
-  background:radial-gradient(50% 50% at 50% 50%, rgba(37,8,43,.34), transparent 72%);
-  filter:blur(22px); transform:translateZ(-160px);
-}
-@media (prefers-color-scheme:dark){ :root:not([data-theme]) .compo__stage::after{background:radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.75), transparent 72%)} }
-:root[data-theme="dark"] .compo__stage::after{background:radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.75), transparent 72%)}
-.compo__main{
-  border-radius:var(--r-l); overflow:hidden; box-shadow:var(--shadow-l);
-  border:1px solid var(--line); background:var(--surface); will-change:transform;
-  transform:translateZ(0) translateY(var(--ty,0px)) scale(var(--sc,1));
-}
-.compo__float{position:absolute; border-radius:var(--r-m); overflow:hidden; will-change:transform}
-.compo__float--l{width:214px; left:-14px; bottom:7%; transform:translate3d(var(--fx,0px),var(--fy,0px),120px)}
-.compo__float--r{width:236px; right:6px; top:11%; padding:15px; transform:translate3d(var(--fx,0px),var(--fy,0px),160px)}
-@media (max-width:900px){ .compo__float{display:none} .compo__stage{transform:none} }
-
-/* ── mock UI kit (usado no herói, na jornada e nos cards) ── */
-.mk{font-family:var(--body); font-size:12px; color:var(--ink)}
-.mk__bar{display:flex; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--line); background:var(--surface-2)}
-.mk__dot{width:9px; height:9px; border-radius:50%; background:var(--line)}
-.mk__title{font-weight:600; font-size:12.5px; letter-spacing:-.01em}
-.mk__tag{margin-left:auto; font-family:var(--mono); font-size:10.5px; color:var(--ink-3); letter-spacing:.08em; text-transform:uppercase}
-.mk__body{padding:16px; display:grid; gap:12px}
-.kan{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
-.kan__col{background:var(--surface-2); border-radius:var(--r-s); padding:9px; display:grid; gap:7px; align-content:start}
-.kan__h{font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-3)}
-.kan__c{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px; display:grid; gap:5px; box-shadow:var(--shadow-s)}
-.kan__c b{font-size:11px; font-weight:600}
-.line{height:6px; border-radius:99px; background:var(--line)}
-.line.w70{width:70%} .line.w50{width:50%} .line.w85{width:85%} .line.w40{width:40%}
-.chip{
-  display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:600; padding:3px 8px;
-  border-radius:999px; background:var(--accent-soft); color:var(--accent); letter-spacing:.01em;
-}
-.chip--teal{background:color-mix(in srgb,var(--teal) 14%,transparent); color:var(--teal)}
-.chip--amber{background:color-mix(in srgb,var(--amber) 16%,transparent); color:var(--amber)}
-.rows{display:grid; gap:8px}
-.row{display:flex; align-items:center; gap:10px; padding:9px 11px; border:1px solid var(--line); border-radius:10px; background:var(--surface)}
-.row .av{width:24px; height:24px; border-radius:50%; background:var(--accent-soft); display:grid; place-items:center; font-size:9.5px; font-weight:700; color:var(--accent); font-family:var(--mono)}
-.row .gr{flex:1; display:grid; gap:5px}
-.bars{display:flex; align-items:flex-end; gap:7px; height:78px}
-.bars i{flex:1; border-radius:6px 6px 2px 2px; background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 35%,transparent)); display:block}
-.beds{display:grid; grid-template-columns:repeat(6,1fr); gap:7px}
-.beds i{aspect-ratio:1; border-radius:7px; background:var(--surface-2); border:1px solid var(--line); display:block}
-.beds i.ok{background:color-mix(in srgb,var(--teal) 22%,transparent); border-color:transparent}
-.beds i.bz{background:color-mix(in srgb,var(--accent) 26%,transparent); border-color:transparent}
-.beds i.wr{background:color-mix(in srgb,var(--amber) 28%,transparent); border-color:transparent}
-.route{display:flex; align-items:center; gap:0; padding:6px 2px}
-.route i{width:11px; height:11px; border-radius:50%; background:var(--accent); flex:none; display:block}
-.route i.pale{background:var(--line)}
-.route s{flex:1; height:2px; background:var(--line); display:block; text-decoration:none}
-.route s.done{background:var(--accent)}
-
-.phone{width:100%; background:var(--deep); padding:9px 9px 0; border-radius:var(--r-m)}
-.phone__scr{background:var(--surface); border-radius:14px 14px 0 0; padding:14px; display:grid; gap:11px}
-.phone__hd{display:flex; align-items:center; gap:8px}
-.phone__hd b{font-size:12.5px; font-weight:700; letter-spacing:-.01em}
-
-/* ───────────────────────── jornada (pinned) ───────────────────────── */
-#jornada{background:var(--deep); color:var(--on-deep); position:relative}
-#jornada .eyebrow{color:var(--on-deep-2)}
-.j-intro{padding:clamp(80px,11vw,140px) 0 0; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--pad)}
-.j-intro .lede{color:var(--on-deep-2)}
-.j-intro h2{margin:14px 0 0}
-.j-track{height:600vh; position:relative}
-.j-pin{position:sticky; top:0; height:100svh; display:flex; align-items:center; overflow:hidden; --fade-c:var(--deep)}
-.j-inner{
-  max-width:var(--maxw); margin-inline:auto; padding-inline:var(--pad); width:100%;
-  display:grid; grid-template-columns:210px 1fr; gap:clamp(24px,5vw,72px); align-items:center;
-}
-.j-nav{list-style:none; margin:0; padding:0; display:grid; gap:2px}
-.j-nav li{display:flex; align-items:center; gap:12px; padding:10px 0; opacity:.34; transition:opacity .4s}
-.j-nav li.on{opacity:1}
-.j-nav b{font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--on-deep-2); width:20px}
-.j-nav span{font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:-.01em}
-.j-nav em{
-  display:block; height:2px; background:rgba(255,255,255,.16); border-radius:2px; margin-left:auto; width:46px; position:relative; overflow:hidden;
-}
-.j-nav em::after{content:""; position:absolute; inset:0 100% 0 0; background:var(--accent); transition:right .3s linear}
-.j-nav li.on em::after{right:calc(100% - var(--p,0%) )}
-
-.j-stages{display:grid; position:relative}
-.j-stage{
-  grid-area:1/1; display:grid; grid-template-columns:1fr .92fr; gap:clamp(24px,4vw,56px); align-items:center;
-  opacity:0; pointer-events:none; transition:opacity .5s cubic-bezier(.2,.7,.3,1);
-}
-.j-stage.on{opacity:1; pointer-events:auto}
-/* a copy entra pela esquerda, o painel atravessa vindo da direita */
-.j-stage__copy{transform:translate3d(-90px,0,0); opacity:0; transition:transform .85s cubic-bezier(.2,.75,.25,1) .04s, opacity .6s ease .04s}
-.j-stage.on .j-stage__copy{transform:none; opacity:1}
-.j-stage h3{font-size:clamp(28px,3.6vw,46px); letter-spacing:-.03em; margin:10px 0 14px}
-.j-stage p{color:var(--on-deep-2); max-width:44ch; font-size:16.5px}
-.j-stage .num{font-family:var(--mono); font-size:12px; letter-spacing:.18em; color:var(--accent); font-weight:600}
-:root[data-theme="light"] .j-stage .num, :root:not([data-theme]) .j-stage .num{color:#D796E0}
-@media (prefers-color-scheme:dark){ :root:not([data-theme]) .j-stage .num{color:var(--accent)} }
-.j-feats{list-style:none; margin:20px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px}
-.j-feats li{
-  font-size:13px; font-weight:500; padding:7px 14px; border-radius:999px;
-  background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.17); color:var(--on-deep);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
-}
-/* painéis da jornada em planos 3D empilhados, entrando pela direita */
-.j-art{
-  position:relative; perspective:1400px; perspective-origin:20% 50%;
-  transform:translate3d(140px,0,0); opacity:0;
-  transition:transform .95s cubic-bezier(.2,.75,.25,1) .1s, opacity .7s ease .1s;
-}
-.j-stage.on .j-art{transform:none; opacity:1}
-.j-art .mk{
-  position:relative; z-index:2; border-radius:var(--r-m); overflow:hidden;
-  border:1px solid rgba(255,255,255,.14); background:var(--surface);
-  box-shadow:-34px 44px 90px rgba(0,0,0,.5);
-  transform:rotateY(-13deg) rotateX(6deg) translateZ(-70px) translateX(30px);
-  transform-origin:left center;
-  transition:transform 1s cubic-bezier(.2,.7,.3,1);
-}
-.j-stage.on .j-art .mk{transform:rotateY(-6deg) rotateX(2.5deg) translateZ(0) translateX(0)}
-.j-art::before, .j-art::after{ /* planos-fantasma atrás, sugerindo a pilha de painéis */
-  content:""; position:absolute; inset:8% 0 8% 6%; border-radius:var(--r-m);
-  border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.035);
-  transform-origin:left center; transition:transform 1s cubic-bezier(.2,.7,.3,1), opacity .8s; opacity:0;
-}
-.j-art::before{z-index:1; transform:rotateY(-13deg) translateZ(-120px) translateX(46px)}
-.j-art::after{z-index:0; transform:rotateY(-13deg) translateZ(-190px) translateX(70px)}
-.j-stage.on .j-art::before{opacity:.9; transform:rotateY(-6deg) translateZ(-46px) translateX(24px)}
-.j-stage.on .j-art::after{opacity:.55; transform:rotateY(-6deg) translateZ(-92px) translateX(46px)}
-@media (max-width:1000px){ .j-stage{grid-template-columns:1fr} .j-art{display:none} .j-inner{grid-template-columns:1fr} .j-nav{display:none} }
-
-.j-flat .j-track{height:auto}
-.j-flat .j-pin{position:static; height:auto; padding:clamp(40px,7vw,80px) 0}
-.j-flat .j-stages{display:flex; flex-direction:column; gap:clamp(56px,9vw,110px)}
-.j-flat .j-stage{opacity:1; pointer-events:auto}
-.j-flat .j-stage__copy, .j-flat .j-art{transform:none; opacity:1}
-.j-flat .j-nav{display:none}
-.j-flat .j-inner{grid-template-columns:1fr}
-@media (max-width:900px){
-  .j-track{height:auto}
-  .j-pin{position:static; height:auto; padding:clamp(40px,7vw,80px) 0}
-  .j-stages{display:flex; flex-direction:column; gap:64px}
-  .j-stage{opacity:1; pointer-events:auto}
-  .j-stage__copy, .j-art{transform:none; opacity:1}
-}
-
-/* ───────────────────────── seções claras ───────────────────────── */
-.sec{padding:clamp(84px,11vw,150px) 0}
-/* NÃO usar content-visibility aqui: ele estima a altura das seções fora da tela,
-   o que invalida as posições cacheadas em measureAll() e deixa os títulos que
-   entram por scroll presos em opacidade zero. */
-.sec__hd{display:grid; gap:14px; max-width:70ch; margin-bottom:clamp(36px,5vw,60px)}
-
-/* módulos */
-/* ───── espiral dos módulos: hélice 3D iluminada, percorrida pelo scroll ───── */
-#modulos{position:relative}
-#modulos{background:var(--deep); color:var(--on-deep)}
-#modulos .lede{color:var(--on-deep-2)}
-#modulos .eyebrow{color:#E8B4F0}
-#modulos:not(.spiral-off) .spiral-pin{
-  background:
-    radial-gradient(60% 50% at 18% 22%, rgba(208,122,221,.20), transparent 62%),
-    radial-gradient(55% 45% at 84% 78%, rgba(63,198,203,.16), transparent 62%);
-}
-.spiral-track{position:relative; height:620vh}
-.spiral-pin{
-  position:sticky; top:0; height:100svh; overflow:hidden;
-  perspective:1500px; perspective-origin:50% 46%; --fade-c:var(--deep);
-}
-#spiralNeon{position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; display:block}
-.spiral-stage{position:absolute; inset:0; transform-style:preserve-3d; transform:translateZ(-400px); z-index:1}
-/* índice dos catorze, à esquerda */
-.spiral-idx{
-  position:absolute; left:clamp(16px,3vw,52px); top:50%; translate:0 -50%; z-index:4;
-  width:196px; list-style:none; margin:0; padding:0; display:grid; gap:1px;
-}
-.spiral-idx li{
-  display:flex; align-items:center; gap:10px; padding:5px 0 5px 12px; position:relative;
-  opacity:.3; transition:opacity .4s, color .4s; color:var(--on-deep);
-}
-.spiral-idx li::before{
-  content:""; position:absolute; left:0; top:50%; translate:0 -50%; width:2px; height:0;
-  background:#E8B4F0; border-radius:2px; transition:height .4s; box-shadow:0 0 10px rgba(232,180,240,.9);
-}
-.spiral-idx li.on{opacity:1}
-.spiral-idx li.on::before{height:78%}
-.spiral-idx li.near{opacity:.62}
-.spiral-idx b{font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--on-deep-2); font-variant-numeric:tabular-nums}
-.spiral-idx span{font-size:12.5px; font-weight:500; letter-spacing:-.01em; line-height:1.25}
-.spiral-idx li.on b{color:#E8B4F0}
-
-/* o que aquele módulo substitui, à direita */
-.spiral-detail{
-  position:absolute; right:clamp(16px,3vw,52px); top:50%; translate:0 -50%; z-index:4;
-  width:248px; border-radius:16px; padding:18px; display:grid; gap:9px;
-  --glass-bg:rgba(255,255,255,.07); --glass-brd:rgba(255,255,255,.17); --glass-shine:rgba(255,255,255,.26);
-}
-.spiral-detail em{
-  font-family:var(--mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
-  font-style:normal; color:rgba(246,234,248,.5);
-}
-.spiral-detail strong{font-family:var(--display); font-size:14px; font-weight:600; letter-spacing:-.01em; color:#fff}
-.spiral-detail p{font-size:12.5px; line-height:1.5; color:var(--on-deep-2)}
-.spiral-detail hr{border:0; height:1px; background:rgba(255,255,255,.12); margin:2px 0}
-.spiral-detail .chip{background:rgba(127,230,234,.2); color:#BDF6F8; align-self:start}
-@media (max-width:1240px){ .spiral-idx, .spiral-detail{display:none} }
-
-.spiral-hud{
-  position:absolute; left:50%; bottom:clamp(18px,4vh,44px); translate:-50% 0; z-index:5;
-  display:flex; align-items:center; gap:14px; padding:11px 20px; border-radius:999px;
-  --glass-bg:rgba(255,255,255,.08); --glass-brd:rgba(255,255,255,.2); --glass-shine:rgba(255,255,255,.3);
-  box-shadow:0 0 30px rgba(208,122,221,.28), 0 14px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.28);
-}
-.spiral-hud b{font-family:var(--mono); font-size:12.5px; letter-spacing:.1em; color:#E8B4F0; font-variant-numeric:tabular-nums; text-shadow:0 0 12px rgba(232,180,240,.7)}
-.spiral-hud span{font-family:var(--display); font-weight:600; font-size:14.5px; letter-spacing:-.015em; white-space:nowrap; color:var(--on-deep)}
-.spiral-hud em{width:1px; height:16px; background:rgba(255,255,255,.24); display:block}
-.spiral-hud i{font-family:var(--mono); font-size:11px; color:var(--on-deep-2); font-style:normal; font-variant-numeric:tabular-nums}
-
-.mod{
-  background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m);
-  padding:24px; display:grid; gap:9px; align-content:start; position:relative; overflow:hidden;
-  transform-style:preserve-3d; opacity:var(--fo,1);
-  filter:blur(var(--fb,0px));
-  transform:
-    translate3d(var(--fx,0px),var(--fy,0px),var(--fz,0px))
-    rotateX(var(--frx,0deg)) rotateY(var(--fry,0deg)) rotate(var(--frz,0deg))
-    scale(var(--fsc,1))
-    translateY(var(--lift,0px)) rotateX(var(--mx,0deg)) rotateY(var(--my,0deg));
-  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s, border-color .3s;
-}
-.mod.flying{transition:box-shadow .3s, border-color .3s}
-/* brilho que varre o card no momento em que ele aterrissa */
-.mod::before{
-  content:""; position:absolute; inset:-1px; z-index:3; border-radius:inherit; pointer-events:none;
-  background:linear-gradient(104deg, transparent 38%, var(--glass-shine) 48%, rgba(255,255,255,.35) 52%, transparent 64%);
-  transform:translateX(var(--sheen,-130%)); opacity:var(--sheeno,0); }
-
-/* posição e acabamento de cada card na hélice */
-.spiral-stage .mod{
-  position:absolute; left:50%; top:50%; width:min(360px,86vw); height:288px; margin:0;
-  backface-visibility:hidden; opacity:var(--so,1); filter:none; color:var(--on-deep);
-  /* sem backdrop-filter: com 14 cards em 3D isso cria 14 superfícies de composição */
-  background:linear-gradient(152deg, rgba(84,40,96,.66), rgba(34,12,42,.72));
-  border:1px solid rgba(255,255,255,.17);
-  box-shadow:0 0 26px rgba(208,122,221,.14), 0 30px 70px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.28);
-  transform:
-    translate(-50%,-50%)
-    translateY(var(--sy,0px))
-    rotateY(var(--sa,0deg))
-    translateZ(var(--sr,440px))
-    translateY(var(--lift,0px)) rotateX(var(--mx,0deg)) rotateY(var(--my,0deg));
-  transition:box-shadow .35s, border-color .35s;
-}
-.spiral-stage .mod__k{color:#E8B4F0}
-.spiral-stage .mod h3{color:var(--on-deep)}
-.spiral-stage .mod p{color:var(--on-deep-2)}
-.spiral-stage .mod ul li{background:rgba(255,255,255,.08); color:var(--on-deep-2); border:1px solid rgba(255,255,255,.1)}
-/* o card da frente acende */
-.spiral-stage .mod.is-front{
-  border-color:rgba(232,180,240,.7);
-  box-shadow:
-    0 0 0 1px rgba(232,180,240,.45),
-    0 0 70px rgba(208,122,221,.45),
-    0 0 140px rgba(208,122,221,.2),
-    0 36px 80px rgba(0,0,0,.6),
-    inset 0 1px 0 rgba(255,255,255,.4);
-}
-.spiral-stage .mod.is-front .mod__k{text-shadow:0 0 14px rgba(232,180,240,.6)}
-/* filete neon no topo do card da frente */
-.spiral-stage .mod.is-front::before{
-  content:""; position:absolute; inset:0 auto auto 0; width:100%; height:2px; z-index:4;
-  background:linear-gradient(90deg, transparent, #E8B4F0 22%, #7FE6EA 55%, transparent);
-  opacity:1; transform:none; box-shadow:0 0 14px rgba(232,180,240,.9);
-}
-/* o texto que sobrar se dissolve no rodapé do card, em vez de ser cortado */
-.spiral-stage .mod::after{
-  content:""; position:absolute; inset:auto 0 0 0; height:56px; z-index:2; pointer-events:none;
-  background:linear-gradient(0deg, rgba(18,7,22,.92) 10%, transparent 100%); opacity:1; border-radius:0;
-  width:auto;
-}
-.spiral-stage .mod:hover{transform:
-  translate(-50%,-50%) translateY(var(--sy,0px)) rotateY(var(--sa,0deg)) translateZ(var(--sr,440px))
-  translateY(var(--lift,0px)) rotateX(var(--mx,0deg)) rotateY(var(--my,0deg))}
-
-/* ───── modo leve: a espiral se desenrola numa linha do tempo com espinha de luz ─────
-   mesma linguagem (vidro, neon, palco escuro), sem sticky nem contexto 3D vivo */
-#modulos.spiral-off .spiral-track{height:auto}
-#modulos.spiral-off .spiral-pin{position:static; height:auto; overflow:visible; perspective:none; padding-block:20px}
-#modulos.spiral-off .spiral-hud, #modulos.spiral-off .spiral-idx,
-#modulos.spiral-off .spiral-detail, #modulos.spiral-off #spiralNeon{display:none}
-#modulos.spiral-off .spiral-pin::before, #modulos.spiral-off .spiral-pin::after{display:none}
-
-#modulos.spiral-off .spiral-stage{
-  position:relative; transform:none; display:flex; flex-direction:column; gap:26px;
-  max-width:1080px; margin-inline:auto; padding-inline:var(--pad);
-}
-#modulos.spiral-off .spiral-stage::before{ /* a espinha */
-  content:""; position:absolute; left:50%; top:10px; bottom:10px; width:2px; translate:-50% 0;
-  background:linear-gradient(180deg, transparent, #E8B4F0 7%, #7FE6EA 50%, #E8B4F0 93%, transparent);
-  opacity:.55; box-shadow:0 0 20px rgba(208,122,221,.55);
-}
-#modulos.spiral-off .spiral-stage .mod{
-  position:relative; left:auto; top:auto; height:auto; opacity:var(--fo,1);
-  width:calc(50% - 38px); transform:
-    translate3d(var(--fx,0px),var(--fy,0px),0) rotate(var(--frz,0deg)) scale(var(--fsc,1))
-    translateY(var(--lift,0px));
-}
-#modulos.spiral-off .spiral-stage .mod:nth-child(odd){align-self:flex-start}
-#modulos.spiral-off .spiral-stage .mod:nth-child(even){align-self:flex-end}
-/* a conta que encosta na espinha */
-#modulos.spiral-off .spiral-stage .mod::after{
-  content:""; position:absolute; top:30px; inset-inline:auto; width:12px; height:12px; border-radius:50%;
-  background:#E8B4F0; height:12px; opacity:1;
-  box-shadow:0 0 0 5px rgba(232,180,240,.14), 0 0 16px rgba(232,180,240,.9);
-}
-#modulos.spiral-off .spiral-stage .mod:nth-child(odd)::after{right:-44px}
-#modulos.spiral-off .spiral-stage .mod:nth-child(even)::after{left:-44px}
-#modulos.spiral-off .spiral-stage .mod:hover{
-  border-color:rgba(232,180,240,.65);
-  box-shadow:0 0 0 1px rgba(232,180,240,.35), 0 0 50px rgba(208,122,221,.32),
-             0 26px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.32);
-}
-/* o "no lugar de" migra para dentro do card */
-.mod__before{
-  margin-top:8px; padding-top:9px; border-top:1px solid rgba(255,255,255,.12);
-  font-size:12px; line-height:1.45; color:rgba(246,234,248,.55);
-}
-.mod__before b{font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:rgba(246,234,248,.42); display:block; margin-bottom:3px}
-#modulos:not(.spiral-off) .mod__before{display:none}
-@media (max-width:820px){
-  #modulos.spiral-off .spiral-stage{gap:18px}
-  #modulos.spiral-off .spiral-stage::before{left:9px}
-  #modulos.spiral-off .spiral-stage .mod{width:100%; align-self:stretch !important; padding-left:34px}
-  #modulos.spiral-off .spiral-stage .mod::after{left:-31px !important; right:auto !important}
-}
-/* título que se monta palavra a palavra, cada uma vindo de um lado */
-.word{
-  display:inline-block; will-change:transform, opacity; opacity:var(--fo,1);
-  transform:translate3d(var(--fx,0px),var(--fy,0px),0) rotate(var(--frz,0deg));
-}
-.mod::after{
-  content:""; position:absolute; inset:auto -30% -60% auto; width:220px; height:220px; border-radius:50%;
-  background:radial-gradient(circle, color-mix(in srgb,var(--accent) 16%,transparent), transparent 70%);
-  opacity:0; transition:opacity .4s; pointer-events:none;
-}
-.mod:hover{--lift:-8px; box-shadow:var(--shadow-l); border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
-.mod:hover::after{opacity:1}
-.mod--wide{grid-column:span 3}
-.mod__k{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3)}
-.mod h3{font-size:21px; letter-spacing:-.02em}
-.mod p{font-size:15px; color:var(--ink-2); line-height:1.55}
-.mod ul{margin:6px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:6px}
-.mod ul li{font-size:12px; font-weight:600; color:var(--ink-2); background:var(--surface-2); padding:5px 11px; border-radius:999px}
-.mod--art{padding:0; grid-column:span 3; display:grid}
-.mod--art .mk{border-radius:var(--r-m); overflow:hidden}
-@media (max-width:1000px){ .mods{grid-template-columns:repeat(4,1fr)} .mod--wide,.mod--art{grid-column:span 4} }
-@media (max-width:660px){ .mods{grid-template-columns:1fr} .mod,.mod--wide,.mod--art{grid-column:span 1} }
-
-/* personas — faixa horizontal com snap */
-#pessoas{background:var(--surface-2); border-block:1px solid var(--line); position:relative}
-#pessoas .rail-pin{
-  background:
-    radial-gradient(70% 90% at 12% 20%, color-mix(in srgb,var(--accent) 12%,transparent), transparent 60%),
-    radial-gradient(60% 80% at 88% 80%, color-mix(in srgb,var(--teal) 12%,transparent), transparent 60%);
-}
-.rail{
-  position:relative; display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory;
-  padding:16px var(--pad) 26px; margin-inline:calc(var(--pad)*-1); scrollbar-width:thin; perspective:1600px;
-}
-.rail::-webkit-scrollbar{height:8px}
-.rail::-webkit-scrollbar-thumb{background:var(--line); border-radius:99px}
-.per{
-  scroll-snap-align:center; flex:0 0 min(318px,80vw); border-radius:var(--r-m); padding:22px;
-  display:grid; gap:12px; align-content:start; position:relative; z-index:1; transform-style:preserve-3d;
-  opacity:var(--po,1);
-  transform:translateZ(var(--pz,0px)) rotateY(var(--pry,0deg)) scale(var(--psc,1));
-  transition:box-shadow .35s, border-color .35s;
-}
-.per.is-on{border-color:color-mix(in srgb,var(--accent) 55%,var(--glass-brd)); box-shadow:var(--shadow-l), 0 0 0 1px color-mix(in srgb,var(--accent) 25%,transparent), inset 0 1px 0 var(--glass-shine)}
-.per__time{
-  display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; font-weight:700;
-  letter-spacing:.08em; color:var(--accent); font-variant-numeric:tabular-nums;
-}
-.per__time s{flex:1; height:1px; background:var(--line); text-decoration:none; display:block}
-.per__who{display:flex; align-items:center; gap:10px}
-.per__mini{
-  border:1px solid var(--line); border-radius:12px; padding:10px; display:grid; gap:7px;
-  background:color-mix(in srgb,var(--surface) 55%,transparent);
-}
-.per__mini .row{padding:7px 9px; border-radius:8px}
-.per__mini b{font-size:11px; font-weight:600}
-
-/* o fio do dia, com uma conta para cada momento */
-.rail__thread{position:absolute; left:0; bottom:56px; height:2px; z-index:0; pointer-events:none;
-  background:linear-gradient(90deg, transparent 0, var(--line) 3%, var(--line) 97%, transparent 100%)}
-.rail__bead{
-  position:absolute; bottom:50px; width:13px; height:13px; border-radius:50%; z-index:0; pointer-events:none;
-  background:var(--ground); border:2px solid var(--line); translate:-50% 0;
-  transition:background .35s, border-color .35s, box-shadow .35s, scale .35s;
-}
-.rail__bead.on{
-  background:var(--accent); border-color:var(--accent); scale:1.15;
-  box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 16%,transparent);
-}
-@media (max-width:999px){ .rail__thread, .rail__bead{display:none} }
-
-/* cabeçalho do dia, com relógio que avança conforme a página desce */
-.day-hd{display:flex; align-items:flex-end; gap:clamp(20px,3vw,44px); flex-wrap:wrap; justify-content:space-between}
-.day-clock{display:grid; gap:7px; min-width:min(300px,100%); flex:0 1 300px}
-.day-clock__t{
-  font-family:var(--mono); font-weight:700; font-size:clamp(24px,2.4vw,34px); line-height:1;
-  letter-spacing:-.03em; color:var(--accent); font-variant-numeric:tabular-nums;
-}
-.day-clock__l{font-size:12.5px; color:var(--ink-2); line-height:1.4}
-.day-clock__bar{display:block; height:3px; background:var(--line); border-radius:99px; overflow:hidden}
-.day-clock__bar i{display:block; height:100%; width:0%; border-radius:99px; background:linear-gradient(90deg,var(--accent),var(--teal))}
-
-/* ── desktop: a seção prende e os perfis atravessam a tela da direita para a esquerda ── */
-.rail-track{position:relative}
-.rail-pin__inner{width:100%; display:grid; gap:22px}
-.rail-pin{--fade-c:var(--surface-2)}
-@media (max-width:999px){ .rail-pin::before, .rail-pin::after{display:none} }
-@media (min-width:1000px){
-  #pessoas{padding-block:0}
-  #pessoas .rail-track{height:400vh}
-  #pessoas .rail-pin{position:sticky; top:0; height:100svh; display:flex; align-items:center; overflow:hidden}
-  #pessoas .rail{
-    overflow:visible; width:max-content; scroll-snap-type:none; margin-inline:0;
-    padding:22px var(--pad) 86px; transform:translate3d(var(--rx,0px),0,0); will-change:transform;
-  }
-  #pessoas .railctl{display:none}
-  #pessoas.flat .rail-track{height:auto}
-  #pessoas.flat{padding-block:clamp(56px,6.5vw,104px)}
-  #pessoas.flat .rail-pin{position:static; height:auto; overflow:visible}
-  #pessoas.flat .rail{overflow-x:auto; width:auto; transform:none; margin-inline:calc(var(--pad)*-1)}
-  #pessoas.flat .railctl{display:flex}
-  /* o fio e as contas dependiam da fila presa na tela; fora disso desalinham */
-  #pessoas.flat .rail__thread, #pessoas.flat .rail__bead{display:none}
-  #pessoas.flat .day-clock__bar{display:none}
-}
-.per:hover{transform:translateY(-5px) rotateX(3deg) rotateY(-4deg); box-shadow:var(--shadow-l)}
-.per__ico{width:40px; height:40px; border-radius:12px; background:var(--accent-soft); color:var(--accent); display:grid; place-items:center; font-family:var(--mono); font-weight:700; font-size:14px}
-.per h3{font-size:19px}
-.per p{font-size:14.5px; color:var(--ink-2); line-height:1.55}
-.per q{display:block; font-style:italic; color:var(--ink); font-size:14.5px; border-left:2px solid var(--accent); padding-left:12px; quotes:none}
-.railctl{display:flex; gap:8px; margin-left:auto}
-.railctl button{
-  width:42px; height:42px; border-radius:50%; border:1.5px solid var(--line); background:var(--surface);
-  color:var(--ink); cursor:pointer; font-size:16px; display:grid; place-items:center; transition:.2s;
-}
-.railctl button:hover{border-color:var(--accent); color:var(--accent)}
-.rail-hd{display:flex; align-items:flex-end; gap:24px; flex-wrap:wrap}
-
-/* statement — com a malha 3D das unidades ao fundo */
-#tese{background:var(--deep); color:var(--on-deep); text-align:center; position:relative; overflow:hidden}
-#net{
-  position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none; z-index:0;
-  -webkit-mask-image:radial-gradient(58% 60% at 50% 50%, #000 35%, transparent 78%);
-  mask-image:radial-gradient(58% 60% at 50% 50%, #000 35%, transparent 78%);
-}
-#tese .wrap{display:grid; gap:26px; justify-items:center; position:relative; z-index:1}
-#tese{padding-block:clamp(96px,13vw,180px)}
-.net-cap{
-  position:absolute; z-index:1; left:50%; bottom:26px; translate:-50% 0;
-  font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--on-deep-2); opacity:.65;
-}
-/* placas de vidro que atravessam a cena enquanto a malha gira */
-.orbit{position:absolute; inset:0; z-index:1; pointer-events:none}
-.orbit__card{
-  position:absolute; left:var(--ox); top:var(--oy); width:206px; padding:14px 16px;
-  border-radius:16px; display:grid; gap:5px; text-align:left;
-  --glass-bg:rgba(255,255,255,.09); --glass-brd:rgba(255,255,255,.2); --glass-shine:rgba(255,255,255,.3);
-}
-.orbit__card b{font-family:var(--display); font-size:19px; letter-spacing:-.02em; color:var(--on-deep); font-variant-numeric:tabular-nums}
-.orbit__card span{font-size:12px; line-height:1.4; color:var(--on-deep-2)}
-.orbit__card em{font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; font-style:normal; color:#E8B4F0}
-@media (max-width:1180px){ .orbit{display:none} }
-#tese h2{max-width:20ch; font-size:clamp(30px,5vw,64px)}
-#tese p{color:var(--on-deep-2); max-width:56ch}
-.mark{color:#E8B4F0}
-@media (prefers-color-scheme:dark){ :root:not([data-theme]) .mark{color:var(--accent)} }
-:root[data-theme="dark"] .mark{color:var(--accent)}
-
-/* ───────── tecnologia: prancha de arquitetura sobre papel-milimetrado escuro ───────── */
-#tecnologia{background:var(--deep); color:var(--on-deep); position:relative; overflow:hidden}
-#tecnologia::before{
-  content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
-  background-image:
-    linear-gradient(rgba(208,122,221,.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(208,122,221,.09) 1px, transparent 1px);
-  background-size:46px 46px;
-  -webkit-mask-image:radial-gradient(80% 70% at 50% 42%, #000 30%, transparent 82%);
-  mask-image:radial-gradient(80% 70% at 50% 42%, #000 30%, transparent 82%);
-}
-#tecnologia .wrap{position:relative; z-index:1}
-#tecnologia .lede{color:var(--on-deep-2)}
-#tecnologia .eyebrow{color:#E8B4F0}
-
-/* topo em duas colunas: argumento à esquerda, as escolhas à direita */
-.tec-top{display:grid; gap:clamp(28px,4vw,64px); align-items:center; margin-bottom:clamp(36px,5vw,64px)}
-@media (min-width:1000px){ .tec-top{grid-template-columns:1fr .92fr} }
-.tec-facts{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:26px;
-  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.12); border-radius:14px; overflow:hidden}
-.tec-facts div{background:rgba(20,8,24,.72); padding:14px 16px}
-.tec-facts b{display:block; font-family:var(--mono); font-size:clamp(19px,2vw,26px); color:#E8B4F0; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
-.tec-facts span{display:block; font-size:11.5px; color:var(--on-deep-2); margin-top:3px; line-height:1.35}
-
-/* cartão das escolhas: o que ficou de fora e o que entrou */
-.choice{
-  border-radius:var(--r-m); overflow:hidden;
-  border:1px solid rgba(255,255,255,.14);
-  background:linear-gradient(155deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
-  transition:border-color .4s, box-shadow .4s;
-}
-.choice:hover{border-color:rgba(232,180,240,.45); box-shadow:0 0 40px rgba(208,122,221,.18), inset 0 1px 0 rgba(255,255,255,.26)}
-.choice__bar{
-  display:flex; align-items:center; gap:10px; padding:12px 16px;
-  border-bottom:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04);
-  font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
-  color:rgba(246,234,248,.5);
-}
-.choice__bar::before{
-  content:""; width:6px; height:6px; border-radius:50%; background:#7FE6EA;
-  box-shadow:0 0 8px #7FE6EA; flex:none;
-}
-.choice ul{list-style:none; margin:0; padding:4px 0}
-.choice li{
-  display:grid; grid-template-columns:24px 1fr; gap:3px 13px; align-items:start;
-  padding:12px 16px; transition:background .35s;
-}
-.choice li + li{border-top:1px solid rgba(255,255,255,.055)}
-.choice li:hover{background:rgba(255,255,255,.045)}
-.choice i{
-  grid-row:span 2; width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
-  font-style:normal; font-size:12px; line-height:1; margin-top:1px; flex:none;
-  transition:transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s;
-}
-.choice li:hover i{transform:scale(1.12)}
-.choice .no i{background:rgba(255,255,255,.06); color:rgba(246,234,248,.42); border:1px solid rgba(255,255,255,.13)}
-.choice .yes i{background:rgba(127,230,234,.13); color:#7FE6EA; border:1px solid rgba(127,230,234,.4)}
-.choice li.yes:hover i{box-shadow:0 0 16px rgba(127,230,234,.5)}
-.choice b{font-family:var(--display); font-size:14.5px; letter-spacing:-.01em; color:#fff}
-.choice .no b{color:rgba(246,234,248,.66)}
-.choice span{font-size:12.5px; color:var(--on-deep-2); line-height:1.45}
-
-.arch{display:grid; gap:0; margin-top:8px}
-.arch__tier{
-  display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  padding:20px 0; position:relative;
-}
-.arch__label{
-  font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
-  color:rgba(246,234,248,.42); grid-column:1/-1; display:flex; align-items:center; gap:12px;
-}
-.arch__label::after{content:""; flex:1; height:1px; background:linear-gradient(90deg, rgba(208,122,221,.35), transparent)}
-/* trilho vertical ligando as camadas */
-.arch__join{
-  height:34px; position:relative;
-}
-.arch__join::before{
-  content:""; position:absolute; left:50%; top:0; bottom:0; width:1px; translate:-50% 0;
-  background:linear-gradient(180deg, rgba(208,122,221,.7), rgba(63,198,203,.45));
-}
-/* pulso descendo o trilho: o dado indo da borda para a aplicação, e daí para o banco */
-.arch__join::after{
-  content:""; position:absolute; left:50%; top:0; width:7px; height:7px; border-radius:50%;
-  translate:-50% 0; background:#7FE6EA; box-shadow:0 0 14px rgba(127,230,234,.95);
-  animation:flowdown 2.6s cubic-bezier(.5,0,.5,1) infinite;
-}
-.arch__join:nth-of-type(4)::after{animation-delay:1.3s}
-@keyframes flowdown{
-  0%{top:-4px; opacity:0}
-  18%{opacity:1}
-  82%{opacity:1}
-  100%{top:calc(100% - 3px); opacity:0}
-}
-@media (prefers-reduced-motion:reduce){
-  .arch__join::after{animation:none; top:50%; translate:-50% -50%}
-}
-.node{
-  border-radius:14px; padding:16px 17px; display:grid; gap:6px; align-content:start; position:relative;
-  background:linear-gradient(155deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.2);
-  transition:border-color .3s, box-shadow .3s, transform .3s cubic-bezier(.2,.7,.3,1);
-}
-.node:hover{
-  transform:translateY(-4px); border-color:rgba(232,180,240,.6);
-  box-shadow:0 0 34px rgba(208,122,221,.3), inset 0 1px 0 rgba(255,255,255,.3);
-}
-.node__k{
-  font-family:var(--mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
-  color:#E8B4F0; display:flex; align-items:center; gap:7px;
-}
-.node__k i{width:6px; height:6px; border-radius:50%; background:#7FE6EA; box-shadow:0 0 8px #7FE6EA; display:block}
-.node b{font-family:var(--display); font-size:16.5px; letter-spacing:-.02em; color:#fff}
-.node span{font-size:13px; color:var(--on-deep-2); line-height:1.45}
-.node--wide{grid-column:span 2}
-@media (max-width:700px){ .node--wide{grid-column:span 1} }
-
-/* ───────── espaço do vídeo: texto de um lado, player do outro ───────── */
-#video{padding-block:clamp(70px,8vw,120px)}
-.vid-grid{display:grid; gap:clamp(30px,4vw,58px); align-items:center}
-@media (min-width:1000px){ .vid-grid{grid-template-columns:.82fr 1.18fr} }
-.vid-side{display:grid; gap:22px; align-content:center}
-.vid-chaps{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px}
-.vid-chaps li{
-  font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--ink-2);
-  padding:7px 13px; border-radius:999px; border:1px solid var(--line); background:var(--surface);
-  transition:border-color .3s, color .3s, translate .3s;
-}
-.vid-chaps li:hover{border-color:var(--accent); color:var(--accent); translate:0 -2px}
-.vid-meta{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin:0}
-.vslot{
-  margin:0; border-radius:var(--r-l); overflow:hidden; aspect-ratio:16/9; position:relative;
-  display:grid; place-items:center; will-change:transform, opacity; opacity:var(--fo,1);
-  transform:translate3d(var(--fx,0px),var(--fy,0px),0) scale(var(--fsc,1));
-  background:linear-gradient(155deg, var(--deep), var(--deep-2));
-}
-.vslot video{width:100%; height:100%; object-fit:cover; display:block}
-.vslot__ph{display:grid; gap:16px; justify-items:center; text-align:center; padding:24px; color:var(--on-deep)}
-.vslot__play{
-  width:78px; height:78px; border-radius:50%; display:grid; place-items:center; cursor:pointer;
-  background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.3); color:#fff; font-size:26px;
-  -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); transition:transform .25s, background .25s;
-}
-.vslot__play:hover{transform:scale(1.08); background:rgba(255,255,255,.2)}
-.vslot__ph b{font-family:var(--display); font-size:clamp(19px,2vw,26px); letter-spacing:-.02em}
-.vslot__ph span{font-size:14px; color:var(--on-deep-2); max-width:46ch}
-.vslot__grid{
-  position:absolute; inset:0; pointer-events:none; opacity:.5;
-  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
-  background-size:56px 56px;
-  -webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 75%);
-  mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 75%);
-}
-
-/* ───────── celular 3D do Regula+ ───────── */
-#app{background:var(--deep); color:var(--on-deep); position:relative; overflow:hidden}
-#app::before{
-  content:""; position:absolute; inset:auto -10% -40% 40%; width:70%; aspect-ratio:1/.8; pointer-events:none;
-  background:radial-gradient(50% 50% at 50% 50%, rgba(208,122,221,.3), transparent 70%);
-}
-.app-grid{display:grid; grid-template-columns:1fr; gap:clamp(40px,6vw,80px); align-items:center; position:relative}
-@media (min-width:1000px){ .app-grid{grid-template-columns:1fr .82fr} }
-#app .lede{color:var(--on-deep-2)}
-.app-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:10px}
-.app-list li{
-  display:flex; align-items:center; gap:14px; padding:13px 16px; border-radius:14px;
-  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.13); font-size:14.5px;
-}
-.app-list b{font-family:var(--mono); font-size:10px; letter-spacing:.12em; color:#E8B4F0; flex:none; width:54px}
-.app-list span{color:var(--on-deep-2)}
-.app-list strong{color:var(--on-deep); font-weight:600}
-
-.phone3d{--w:286px; --h:580px; --d:26px; width:var(--w); height:var(--h); perspective:1200px; margin-inline:auto; position:relative}
-.phone3d::after{
-  content:""; position:absolute; left:-24%; right:-24%; bottom:-9%; height:90px; z-index:-1;
-  background:radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.6), transparent 72%); filter:blur(18px);
-}
-.phone3d__tilt{
-  width:100%; height:100%; transform-style:preserve-3d;
-  transform:rotateX(var(--px,0deg)) rotateY(var(--py,0deg));
-  transition:transform .4s cubic-bezier(.2,.7,.3,1);
-}
-.phone3d__obj{position:relative; width:100%; height:100%; transform-style:preserve-3d; animation:phonesway 13s ease-in-out infinite}
-@keyframes phonesway{
-  0%,100%{transform:rotateY(-21deg) rotateX(7deg)}
-  50%{transform:rotateY(19deg) rotateX(-5deg)}
-}
-/* backface-visibility + a face da frente por último no DOM: assim a tela vence
-   tanto no caminho 3D quanto se o contexto for achatado por algum ancestral */
-.phone3d__f{position:absolute; top:0; left:0; backface-visibility:hidden}
-.phone3d__f--front, .phone3d__f--back{width:var(--w); height:var(--h); border-radius:38px}
-.phone3d__f--front{
-  z-index:2; transform:translateZ(calc(var(--d)/2)); overflow:hidden; padding:9px;
-  background:linear-gradient(150deg,#2E1136,#150818);
-  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.16);
-}
-.phone3d__f--back{
-  transform:rotateY(180deg) translateZ(calc(var(--d)/2));
-  background:linear-gradient(150deg,#5A1264,#25082B);
-  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.1);
-}
-.phone3d__f--r, .phone3d__f--l{width:var(--d); height:var(--h); border-radius:8px; background:linear-gradient(180deg,#6A1A75,#2A0A31)}
-.phone3d__f--r{transform:translateX(calc(var(--w)/2 - var(--d)/2)) rotateY(90deg) translateZ(calc(var(--w)/2))}
-.phone3d__f--l{transform:translateX(calc(var(--w)/2 - var(--d)/2)) rotateY(-90deg) translateZ(calc(var(--w)/2))}
-.phone3d__f--t, .phone3d__f--b{width:var(--w); height:var(--d); border-radius:8px}
-.phone3d__f--t{transform:translateY(calc(var(--h)/2 - var(--d)/2)) rotateX(90deg) translateZ(calc(var(--h)/2)); background:linear-gradient(90deg,#8E2E9B,#4A0F53)}
-.phone3d__f--b{transform:translateY(calc(var(--h)/2 - var(--d)/2)) rotateX(-90deg) translateZ(calc(var(--h)/2)); background:linear-gradient(90deg,#25082B,#3C0B43)}
-/* a tela é o app rodando: barra de status, saudação, cartões e barra de abas */
-.phone3d__scr{
-  width:100%; height:100%; border-radius:30px; overflow:hidden;
-  display:grid; grid-template-rows:auto auto 1fr auto; color:#F6EAF8;
-  background:
-    radial-gradient(90% 55% at 50% 0%, rgba(208,122,221,.34), transparent 62%),
-    linear-gradient(180deg,#3B1044 0%, #26092C 46%, #180620 100%);
-}
-.pscr__status{
-  display:flex; align-items:center; justify-content:space-between; padding:9px 16px 2px;
-  font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; color:rgba(246,234,248,.8);
-}
-.pscr__status span{display:flex; align-items:center; gap:3px}
-.pscr__status i{display:block; width:3px; border-radius:1px; background:rgba(246,234,248,.75)}
-.pscr__batt{width:16px; height:8px; border:1px solid rgba(246,234,248,.6); border-radius:2px; position:relative; display:block}
-.pscr__batt::after{content:""; position:absolute; inset:1.5px; right:5px; background:#C6F5C0; border-radius:1px}
-
-.pscr__top{padding:8px 16px 12px; display:flex; align-items:center; gap:10px}
-.pscr__top div{display:grid; gap:1px; min-width:0}
-.pscr__top em{font-family:var(--mono); font-size:9px; letter-spacing:.14em; font-style:normal; color:#E8B4F0}
-.pscr__top b{font-family:var(--display); font-size:16px; letter-spacing:-.02em; color:#fff}
-.pscr__av{
-  width:34px; height:34px; border-radius:12px; flex:none; margin-left:auto; display:grid; place-items:center;
-  font-family:var(--mono); font-size:11px; font-weight:700; color:#fff;
-  background:linear-gradient(150deg,#C061CE,#6A1A75); box-shadow:0 0 16px rgba(208,122,221,.45);
-}
-
-.pscr__body{padding:2px 12px 12px; display:grid; gap:8px; align-content:start; overflow:hidden}
-.pscr__sec{
-  font-family:var(--mono); font-size:8.5px; letter-spacing:.16em; text-transform:uppercase;
-  color:rgba(246,234,248,.5); padding:6px 2px 1px;
-}
-.pscr__card{
-  border-radius:14px; padding:11px 12px; display:grid; gap:5px; position:relative; overflow:hidden;
-  background:linear-gradient(150deg, rgba(255,255,255,.13), rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
-}
-.pscr__card--hi{
-  background:linear-gradient(150deg, rgba(208,122,221,.42), rgba(122,32,134,.5));
-  border-color:rgba(232,180,240,.55); box-shadow:0 0 24px rgba(208,122,221,.35), inset 0 1px 0 rgba(255,255,255,.32);
-}
-.pscr__card b{font-size:12px; font-weight:600; color:#fff}
-.pscr__card small{font-size:10px; color:rgba(246,234,248,.7); line-height:1.35}
-.pscr__tag{
-  align-self:start; font-size:8.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-  padding:3px 8px; border-radius:99px; background:rgba(255,255,255,.18); color:#fff;
-}
-.pscr__tag--go{background:rgba(127,230,234,.24); color:#BDF6F8}
-.pscr__tag--warn{background:rgba(240,190,110,.24); color:#F6DAAE}
-.pscr__dot{position:absolute; top:12px; right:12px; width:7px; height:7px; border-radius:50%; background:#7FE6EA; box-shadow:0 0 10px #7FE6EA}
-
-.pscr__nav{
-  display:flex; padding:6px 4px 12px; border-top:1px solid rgba(255,255,255,.12);
-  background:rgba(16,5,20,.72);
-}
-.pscr__nav span{
-  flex:1; text-align:center; padding:6px 0 2px; font-size:8.5px; font-weight:600;
-  color:rgba(246,234,248,.45); letter-spacing:.02em;
-}
-.pscr__nav span.on{color:#E8B4F0}
-.pscr__nav i{display:block; width:16px; height:16px; margin:0 auto 4px; border-radius:6px; background:rgba(246,234,248,.28)}
-.pscr__nav span.on i{background:linear-gradient(150deg,#E8B4F0,#B44FC4); box-shadow:0 0 12px rgba(232,180,240,.7)}
-@media (prefers-reduced-motion:reduce){
-  .phone3d__obj{animation:none !important; transform:rotateY(-18deg) rotateX(5deg)}
-  .phone3d__tilt{transition:none}
-}
-@media (max-width:520px){ .phone3d{--w:238px; --h:484px; --d:22px} }
-
-/* cta */
-#contato{padding:clamp(90px,12vw,160px) 0}
-.cta{
-  border-radius:var(--r-l); padding:clamp(40px,6vw,80px); text-align:center;
-  background:linear-gradient(150deg,var(--deep),var(--deep-2)); color:var(--on-deep);
-  display:grid; gap:22px; justify-items:center; position:relative; overflow:hidden;
-}
-.cta::before{
-  content:""; position:absolute; inset:auto auto -50% 50%; translate:-50% 0; width:120%; aspect-ratio:2/1;
-  background:radial-gradient(50% 50% at 50% 50%, rgba(208,122,221,.35), transparent 70%); pointer-events:none;
-  animation:ctaGlow 17s ease-in-out infinite alternate;
-}
-/* a luz do fundo respira e passeia devagar, para o cartão nunca ficar parado */
-@keyframes ctaGlow{
-  0%{transform:translate(-9%,5%) scale(1); opacity:.7}
-  50%{transform:translate(2%,-2%) scale(1.1); opacity:.95}
-  100%{transform:translate(9%,-5%) scale(1.18); opacity:.8}
-}
-.cta > *{position:relative}
-.cta p{color:var(--on-deep-2); max-width:48ch}
-.cta .btn--primary{background:#fff; color:#25082B}
-
-/* fecho em duas colunas: o convite e a agenda da sessão */
-.cta__grid{display:grid; gap:clamp(28px,4vw,56px); align-items:start; text-align:left; width:100%}
-@media (min-width:900px){ .cta__grid{grid-template-columns:1fr .84fr} }
-.cta__lead{display:grid; gap:18px; justify-items:start}
-.cta__mail{font-size:13.5px}
-.cta__mail a{color:#E8B4F0; text-decoration:none; border-bottom:1px solid rgba(232,180,240,.38); transition:color .25s, border-color .25s}
-.cta__mail a:hover{color:#fff; border-color:#fff}
-
-.agenda{
-  list-style:none; margin:0; padding:0; display:grid; gap:1px; text-align:left; position:relative;
-  border-radius:var(--r-m); overflow:hidden;
-  background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.16);
-}
-/* trilho da sessão, com o pulso descendo os quatro blocos */
-.agenda::before{
-  content:""; position:absolute; left:0; top:0; bottom:0; width:2px; pointer-events:none;
-  background:linear-gradient(180deg, rgba(127,230,234,.75), rgba(208,122,221,.4));
-  opacity:.6;
-}
-.agenda::after{
-  content:""; position:absolute; left:-2px; width:6px; height:6px; border-radius:50%; pointer-events:none;
-  background:#7FE6EA; box-shadow:0 0 13px rgba(127,230,234,.95);
-  animation:agendaFlow 5.6s cubic-bezier(.5,0,.5,1) infinite;
-}
-@keyframes agendaFlow{
-  0%{top:-7px; opacity:0}
-  12%{opacity:1}
-  86%{opacity:1}
-  100%{top:100%; opacity:0}
-}
-.agenda li{
-  background:rgba(20,8,24,.68); padding:15px 18px; display:grid; gap:4px;
-  transition:background .35s, padding-left .35s cubic-bezier(.2,.7,.3,1);
-}
-.agenda li:hover{background:rgba(255,255,255,.06); padding-left:24px}
-.agenda em{
-  font-style:normal; font-family:var(--mono); font-size:10px; letter-spacing:.16em;
-  text-transform:uppercase; color:#7FE6EA;
-}
-.agenda b{font-family:var(--display); font-size:16px; letter-spacing:-.01em; color:#fff}
-.agenda p{font-size:13px; line-height:1.45; margin:0; max-width:none}
-
-.cta .cta__sign{
-  width:100%; max-width:none; margin:0; text-align:center;
-  padding-top:clamp(22px,3vw,32px); border-top:1px solid rgba(255,255,255,.14);
-  font-family:var(--display); font-size:clamp(17px,2.1vw,26px); letter-spacing:-.02em;
-}
-/* a assinatura recebe um brilho que atravessa a frase de tempos em tempos */
-.cta__sign b{
-  color:#fff;
-  /* o branco é dominante e o realce apenas atravessa: o padrão se repete,
-     então a frase nunca fica sem fundo (e sem cor) em nenhum momento */
-  background:linear-gradient(100deg,#fff 0 38%, #E8B4F0 46%, #7FE6EA 52%, #fff 60% 100%);
-  background-size:280% 100%; background-repeat:repeat;
-  -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent; color:transparent;
-  animation:signShine 9s linear infinite;
-}
-@keyframes signShine{
-  from{background-position:280% 0}
-  to{background-position:0 0}
-}
-/* halo saindo do botão principal, chamando o clique sem piscar */
-.cta .btn--primary{position:relative}
-.cta .btn--primary::after{
-  content:""; position:absolute; inset:-4px; border-radius:999px; pointer-events:none;
-  border:2px solid rgba(232,180,240,.85); box-shadow:0 0 18px rgba(232,180,240,.45);
-  animation:ctaPulse 3.4s cubic-bezier(.2,.7,.3,1) infinite;
-}
-@keyframes ctaPulse{
-  0%{transform:scale(1); opacity:.9}
-  45%{transform:scale(1.13); opacity:.45}
-  80%{transform:scale(1.24); opacity:0}
-  100%{transform:scale(1.24); opacity:0}
-}
-@media (prefers-reduced-motion:reduce){
-  .cta::before, .agenda::after, .cta__sign b, .cta .btn--primary::after{animation:none}
-  .agenda::after{display:none}
-  .cta__sign b{background:none; -webkit-text-fill-color:#fff; color:#fff}
-}
-
-footer{border-top:1px solid var(--line); padding:44px 0 44px}
-.foot{display:grid; gap:clamp(22px,4vw,52px); align-items:start; font-size:13.5px; color:var(--ink-3)}
-@media (min-width:820px){ .foot{grid-template-columns:1.5fr .75fr .75fr} }
-.foot .brand{font-size:15px}
-.foot__brand{display:grid; gap:13px; justify-items:start; max-width:44ch}
-.foot__brand p{margin:0; font-size:13.5px; line-height:1.55; color:var(--ink-2)}
-.foot__col{display:grid; gap:9px; justify-items:start}
-.foot__t{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3)}
-.foot__col a{color:var(--ink-2); text-decoration:none; transition:color .25s, translate .25s}
-.foot__col a:hover{color:var(--accent); translate:3px 0}
-.foot__base{
-  display:flex; gap:14px; flex-wrap:wrap; justify-content:space-between; align-items:center;
-  margin-top:clamp(24px,3vw,38px); padding-top:18px; border-top:1px solid var(--line);
-  font-size:12.5px; color:var(--ink-3);
-}
-
-/* ───────── telas baixas: o conteúdo fixado encolhe para caber inteiro ───────── */
-@media (max-height:820px) and (min-width:1000px){
-  .rail-pin__inner{gap:14px}
-  .day-hd{gap:18px}
-  .day-hd .sec__hd h2{font-size:clamp(19px,1.7vw,25px)}
-  .day-clock{flex:0 1 250px}
-  .day-clock__t{font-size:32px}
-  .per{padding:16px; gap:8px; flex-basis:min(296px,80vw)}
-  .per__mini{padding:8px; gap:5px}
-  .per__mini .row{padding:6px 8px}
-  .per h3{font-size:17px}
-  .per q{font-size:13px}
-  .per__ico{width:32px; height:32px; border-radius:10px; font-size:12px}
-  #pessoas .rail{padding:14px var(--pad) 66px}
-  .rail__thread{bottom:38px}
-  .rail__bead{bottom:32px; width:11px; height:11px}
-
-  .j-stage h3{font-size:clamp(22px,2.5vw,32px); margin:6px 0 10px}
-  .j-stage p{font-size:15px}
-  .j-feats{margin-top:13px}
-  .j-feats li{padding:5px 11px; font-size:12px}
-
-  .spiral-stage .mod{height:252px; width:min(330px,86vw); padding:19px; gap:7px}
-  .spiral-stage .mod h3{font-size:19px}
-  .spiral-stage .mod p{font-size:14px}
-}
-@media (max-height:660px) and (min-width:1000px){
-  .per{flex-basis:min(272px,80vw)}
-  .per q{display:none}
-  .day-hd .sec__hd h2{font-size:20px}
-  .spiral-stage .mod{height:224px}
-  .spiral-stage .mod ul{display:none}
-}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important}
-  .rv{opacity:1; transform:none}
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   CAMADA LINHA (14/10/2026): o portfólio na mesma linguagem do portal.
-   Superfície branca sobre fundo lavanda, borda fina, sombra curta, Inter,
-   roxo #3f2a6b como marca e os painéis escuros iguais ao lado do login
-   (roxo com brilho radial, rede pontilhada e texto branco).
-   Fica no fim da folha: tudo acima continua valendo onde não for reescrito.
-   ═══════════════════════════════════════════════════════════════════════════ */
-:root, :root[data-theme]{
-  --ink:#1e1a2b; --ink-2:#524c66; --ink-3:#6b6580;
-  --ground:#f0eef6; --surface:#ffffff; --surface-2:#f7f5fb; --line:#e3dfee;
-  --accent:#3f2a6b; --accent-soft:#f1edfa; --accent-2:#6a44c2; --accent-clara:#d6ccef;
-  --deep:#3f2a6b; --deep-2:#2f2050; --on-deep:#ffffff; --on-deep-2:rgba(255,255,255,.74);
-  --teal:#0e6e55; --amber:#8a4b00;
-  --btn-bg:#3f2a6b; --btn-fg:#ffffff;
-  --shadow-s:0 1px 2px rgba(30,26,43,.05), 0 6px 20px -8px rgba(30,26,43,.14);
-  --shadow-l:0 2px 4px rgba(30,26,43,.06), 0 14px 32px -10px rgba(30,26,43,.22);
-  --glass-bg:rgba(255,255,255,.92); --glass-brd:#e3dfee; --glass-shine:rgba(255,255,255,0);
-  --glass-blur:blur(10px);
-  --r-s:8px; --r-m:14px; --r-l:20px;
-  --display:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --body:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --mono:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --painel:
-    radial-gradient(120% 80% at 100% 0%, #786a97 0%, transparent 55%),
-    radial-gradient(90% 70% at 0% 100%, #2f2050 0%, transparent 60%),
-    #3f2a6b;
-  --pontos-escuros:radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px);
-  --pontos-claros:radial-gradient(rgba(30,26,43,.08) 1px, transparent 1px);
-  color-scheme:light;
-}
-
-/* base */
-body{ font-size:15px; line-height:1.6; font-feature-settings:"cv11","ss01"; font-variant-numeric:tabular-nums }
-.beams{ display:none !important }
-h1,h2,h3,h4{ font-weight:600; letter-spacing:-.03em; line-height:1.1 }
-.h-xl{ font-size:clamp(36px,4.2vw,58px); letter-spacing:-.035em }
-.h-l{ font-size:clamp(28px,2.8vw,42px) }
-.h-m{ font-size:clamp(22px,1.8vw,28px) }
-.eyebrow{ font-family:var(--body); font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:none; color:var(--accent-2) }
-.lede{ font-size:clamp(15px,1.05vw,17px) }
-:where(a,button,[tabindex]):focus-visible{ outline:2px solid #1d5fb8; outline-offset:2px }
-#bar{ height:3px; background:var(--accent-2) }
-
-/* botões do portal: retângulo de 8px, sem pular */
-.btn{ font-size:15px; font-weight:500; padding:12px 22px; border-radius:8px; transition:background .12s, border-color .12s, color .12s }
-.btn--primary{ box-shadow:none }
-.btn--primary:hover{ transform:none; box-shadow:none; background:#2f2050 }
-.btn--ghost{ background:var(--surface); border:1px solid #cfc8e0 }
-.btn--ghost:hover{ transform:none; background:var(--accent-soft); border-color:var(--accent); color:var(--accent) }
-.btn--onDeep{ background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.26) }
-.btn--onDeep:hover{ transform:none; background:rgba(255,255,255,.2) }
-
-/* topo: barra branca com fio, como o topo do portal */
-#nav{ padding:12px var(--pad) }
-#nav.stuck{ background:rgba(255,255,255,.97); border-bottom-color:var(--line) }
-.brand{ font-family:var(--body); font-weight:600; font-size:15px }
-.navlinks a{ font-size:14px; padding:8px 12px; border-radius:8px }
-.navlinks a:hover{ background:var(--accent-soft); color:var(--accent) }
-.navlinks a.on{ color:var(--accent); background:var(--accent-soft); font-weight:600 }
-#nav .btn{ padding:9px 18px; font-size:14px }
-
-/* vidro vira cartão: branco, borda fina, sombra curta. Sem desfoque de fundo em lugar
-   nenhum: o portal não usa, e sobre as cenas 3D fixadas ele travava a pintura da página */
-*, *::before, *::after{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important }
-.glass, .glass-lite{ box-shadow:var(--shadow-l) }
-.glass::before, .glass-lite::before{ display:none }
-
-/* herói: fundo lavanda com a malha de pontos do login */
-#hero{ background-image:var(--pontos-claros); background-size:22px 22px }
-#hero::before{ background:radial-gradient(50% 50% at 50% 50%, rgba(106,68,194,.10) 0%, transparent 70%) }
-.logo3d::after{ opacity:.35 }
-.hero-note{ font-size:13px; letter-spacing:0; color:var(--ink-3) }
-.stagegrid{ gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-m); box-shadow:var(--shadow-s) }
-.stagegrid div{ background:var(--surface); backdrop-filter:none; -webkit-backdrop-filter:none; padding:18px 20px }
-.stagegrid b{ font-weight:600; color:var(--accent) }
-.stagegrid span{ font-size:13px }
-.compo__main{ border-color:var(--line); box-shadow:var(--shadow-l) }
-.compo__stage::after{ background:radial-gradient(50% 50% at 50% 50%, rgba(63,42,107,.22), transparent 72%) !important }
-
-/* telas de exemplo (mock) com as peças do portal */
-.mk__bar{ background:var(--surface); }
-.mk__dot{ background:#e3dfee }
-.mk__tag{ font-size:11px; letter-spacing:.04em; color:var(--accent-2); font-weight:600 }
-.kan__col{ background:var(--surface-2); border:1px solid var(--line) }
-.kan__h{ letter-spacing:.03em; color:var(--ink-3) }
-.kan__c{ box-shadow:none }
-.chip{ font-weight:500; background:var(--accent-soft); color:var(--accent) }
-.chip--teal{ background:#e6f3ee; color:#0e6e55 }
-.chip--amber{ background:#fdf1dc; color:#8a4b00 }
-.row .av{ background:var(--accent-soft); color:var(--accent) }
-.bars i{ background:linear-gradient(180deg, #6a44c2, #d6ccef) }
-.beds i.ok{ background:#cfe9de } .beds i.bz{ background:#d6ccef } .beds i.wr{ background:#f6dcae }
-.phone{ background:var(--deep) }
-
-/* faixa dos módulos */
-.band{ background:var(--surface); --fade-c:var(--surface) }
-.band__chip{ font-weight:500; border:1px solid var(--line); background:var(--surface-2); box-shadow:none }
-.band__chip b{ font-size:11px; letter-spacing:.04em; color:var(--accent-2) }
-
-/* painéis escuros: o roxo do lado esquerdo do login */
-#jornada, #modulos, #tese, #tecnologia, #app{ background:var(--deep) }
-/* nada de fundo pintado nas partes fixadas (.j-pin, .rail-pin): com o 3D por cima, travava a pintura */
-#tese, #app, #tecnologia{ background:var(--painel) }
-#modulos:not(.spiral-off) .spiral-pin{ background:
-    radial-gradient(60% 50% at 18% 22%, rgba(255,255,255,.10), transparent 62%),
-    radial-gradient(55% 45% at 84% 78%, rgba(47,32,80,.9), transparent 62%) }
-#jornada .eyebrow, #modulos .eyebrow, #tecnologia .eyebrow, #app .eyebrow, #tese .eyebrow{ color:var(--accent-clara) }
-.j-nav b{ font-weight:600 }
-.j-nav span{ font-weight:500; font-size:14px; white-space:nowrap }
-.j-nav em::after{ background:#ffffff }
-.j-stage .num, :root[data-theme] .j-stage .num{ font-size:13px; letter-spacing:.04em; color:var(--accent-clara) }
-.j-feats li{ font-weight:500; border-radius:8px; background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.22); box-shadow:none }
-.j-art .mk{ border-color:rgba(255,255,255,.2); box-shadow:-24px 34px 70px rgba(18,10,36,.45) }
-.j-art::before, .j-art::after{ border-color:rgba(255,255,255,.16); background:rgba(255,255,255,.05) }
-
-/* espiral dos módulos: cartões de vidro claro sobre o roxo, sem neon */
-.spiral-stage .mod{
-  background:linear-gradient(152deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-  border:1px solid rgba(255,255,255,.22);
-  box-shadow:0 24px 60px -20px rgba(18,10,36,.6), inset 0 1px 0 rgba(255,255,255,.18);
-}
-.spiral-stage .mod.is-front{
-  background:#ffffff; border-color:#ffffff; color:var(--ink);
-  box-shadow:0 30px 70px -20px rgba(18,10,36,.7);
-}
-.spiral-stage .mod.is-front h3{ color:var(--ink) }
-.spiral-stage .mod.is-front p{ color:var(--ink-2) }
-.spiral-stage .mod.is-front .mod__k{ color:var(--accent-2); text-shadow:none }
-.spiral-stage .mod.is-front ul li{ background:var(--accent-soft); color:var(--accent); border-color:transparent }
-.spiral-stage .mod.is-front::before{ height:4px; background:linear-gradient(90deg, var(--deep), var(--accent-2)); box-shadow:none }
-.spiral-stage .mod.is-front::after{ background:linear-gradient(0deg, #fff 10%, transparent 100%) }
-.spiral-stage .mod::after{ background:linear-gradient(0deg, rgba(47,32,80,.95) 10%, transparent 100%) }
-.spiral-stage .mod__k{ color:var(--accent-clara) }
-.mod__k{ font-size:12px; letter-spacing:.04em; font-weight:600 }
-.mod h3{ font-weight:600 }
-.mod ul li{ font-weight:500; border-radius:8px }
-.spiral-idx li::before{ background:#ffffff; box-shadow:none }
-.spiral-idx li.on b{ color:#ffffff }
-.spiral-detail .chip{ background:rgba(255,255,255,.16); color:#ffffff }
-.spiral-hud{ box-shadow:0 14px 40px -12px rgba(18,10,36,.6) }
-.spiral-hud b{ color:#ffffff; text-shadow:none }
-#modulos.spiral-off .spiral-stage::before{ background:linear-gradient(180deg, transparent, rgba(255,255,255,.5) 7%, rgba(255,255,255,.5) 93%, transparent); box-shadow:none }
-#modulos.spiral-off .spiral-stage .mod::after{ background:#ffffff; box-shadow:0 0 0 5px rgba(255,255,255,.16) }
-#modulos.spiral-off .spiral-stage .mod:hover{ border-color:rgba(255,255,255,.5); box-shadow:0 26px 60px -18px rgba(18,10,36,.6) }
-
-/* cartões claros (fora da espiral) */
-.mod{ border-radius:var(--r-m); box-shadow:var(--shadow-s) }
-.mod:hover{ box-shadow:var(--shadow-l); border-color:#cfc8e0 }
-.mod::after{ display:none }
-
-/* um dia na rede */
-#pessoas{ background:var(--ground); border-color:var(--line); overflow-x:clip } /* a fila sangra até a borda, mas não abre rolagem lateral */
-#pessoas .rail-pin{ background:none }
-.rail-pin{ --fade-c:var(--ground) }
-.per{ border-radius:var(--r-m); background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-s) }
-.per.is-on{ border-color:var(--accent); box-shadow:var(--shadow-l), 0 0 0 3px rgba(63,42,107,.12) }
-.per:hover{ transform:translateY(-3px); box-shadow:var(--shadow-l) }
-.per__time{ font-size:13px; letter-spacing:.02em; color:var(--accent-2) }
-.per__ico{ border-radius:10px; font-family:var(--body); font-weight:600 }
-.per h3{ font-weight:600 }
-.per q{ border-left-color:var(--accent-2) }
-.per__mini{ background:var(--surface-2); border-color:var(--line) }
-.rail__bead.on{ background:var(--accent); border-color:var(--accent); box-shadow:0 0 0 6px rgba(63,42,107,.12) }
-.day-clock__t{ font-weight:600; color:var(--accent) }
-.day-clock__bar i{ background:var(--accent-2) }
-.railctl button{ border-radius:8px; border:1px solid var(--line) }
-
-/* tese: o painel roxo com a rede ao fundo */
-.orbit__card{ --glass-bg:rgba(255,255,255,.12); --glass-brd:rgba(255,255,255,.24); box-shadow:0 14px 34px -16px rgba(0,0,0,.55) }
-.orbit__card b{ font-weight:600 }
-.orbit__card em{ font-size:11px; letter-spacing:.04em; color:var(--accent-clara) }
-.net-cap{ font-size:12px; letter-spacing:.04em; text-transform:none }
-.mark, :root[data-theme] .mark{ color:#ffffff; position:relative; z-index:0; -webkit-box-decoration-break:clone; box-decoration-break:clone }
-.mark{ background:linear-gradient(transparent 62%, rgba(255,255,255,.22) 62%, rgba(255,255,255,.22) 92%, transparent 92%); border-radius:4px }
-
-/* tecnologia */
-#tecnologia::before{ opacity:.6; background-image:linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px) }
-.tec-facts{ background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.16) }
-.tec-facts div{ background:rgba(47,32,80,.72) }
-.tec-facts b{ font-weight:600; color:#ffffff }
-.choice, .node{ background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18); box-shadow:none }
-.choice:hover, .node:hover{ border-color:rgba(255,255,255,.4); box-shadow:0 14px 34px -16px rgba(0,0,0,.55) }
-.choice__bar{ font-size:11px; letter-spacing:.06em; font-weight:600; color:var(--on-deep-2) }
-.choice__bar::before{ background:#ffffff; box-shadow:none }
-.choice .yes i{ background:#ffffff; color:var(--deep); border-color:#ffffff }
-.choice li.yes:hover i{ box-shadow:none }
-.choice b, .node b{ font-weight:600 }
-.arch__label{ font-size:11px; letter-spacing:.06em; color:var(--on-deep-2) }
-.arch__label::after{ background:linear-gradient(90deg, rgba(255,255,255,.3), transparent) }
-.arch__join::before{ background:rgba(255,255,255,.4) }
-.arch__join::after{ background:#ffffff; box-shadow:0 0 10px rgba(255,255,255,.7) }
-.node__k{ font-size:11px; letter-spacing:.04em; color:var(--accent-clara) }
-.node__k i{ background:#ffffff; box-shadow:none }
-
-/* vídeo */
-.vid-chaps li{ font-family:var(--body); font-size:12.5px; letter-spacing:0; border-radius:8px }
-.vid-chaps li:hover{ background:var(--accent-soft); translate:none }
-.vid-meta{ font-size:12px; letter-spacing:.04em }
-.vslot{ border:1px solid var(--line); box-shadow:var(--shadow-l); background:var(--painel) }
-
-/* aplicativo Regula+: celular no roxo do portal */
-#app::before{ background:radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,.12), transparent 70%) }
-.app-list li{ background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.18) }
-.app-list b{ font-size:12px; letter-spacing:.02em; font-weight:600; color:var(--accent-clara) }
-.phone3d__f--front{ background:linear-gradient(150deg,#2f2050,#1d1433) }
-.phone3d__f--back{ background:linear-gradient(150deg,#5b4391,#2f2050) }
-.phone3d__f--r, .phone3d__f--l{ background:linear-gradient(180deg,#5b4391,#2a1c4a) }
-.phone3d__f--t{ background:linear-gradient(90deg,#6a5590,#3f2a6b) }
-.phone3d__f--b{ background:linear-gradient(90deg,#2a1c4a,#3f2a6b) }
-.phone3d__scr{ color:var(--ink); background:var(--ground) }
-.pscr__status{ color:var(--ink-2) }
-.pscr__status i{ background:var(--ink-2) }
-.pscr__batt{ border-color:var(--ink-3) }
-.pscr__batt::after{ background:#0e6e55 }
-.pscr__top{ background:var(--deep); color:#fff; margin:0 0 8px; padding:12px 16px }
-.pscr__top em{ font-size:10px; letter-spacing:.02em; color:var(--accent-clara) }
-.pscr__top b{ font-weight:600 }
-.pscr__av{ background:#ffffff; color:var(--deep); box-shadow:none }
-.pscr__sec{ font-size:10px; letter-spacing:.04em; font-weight:600; color:var(--ink-3) }
-.pscr__card{ background:#ffffff; border:1px solid var(--line); box-shadow:0 1px 2px rgba(30,26,43,.05) }
-.pscr__card b{ color:var(--ink) }
-.pscr__card small{ color:var(--ink-2) }
-.pscr__card--hi{ background:var(--deep); border-color:var(--deep); box-shadow:0 10px 24px -12px rgba(63,42,107,.6) }
-.pscr__card--hi b{ color:#fff } .pscr__card--hi small{ color:rgba(255,255,255,.78) }
-.pscr__tag{ background:var(--accent-soft); color:var(--accent); letter-spacing:.02em }
-.pscr__card--hi .pscr__tag{ background:rgba(255,255,255,.2); color:#fff }
-.pscr__tag--go{ background:#e6f3ee; color:#0e6e55 }
-.pscr__tag--warn{ background:#fdf1dc; color:#8a4b00 }
-.pscr__dot{ background:#0e6e55; box-shadow:none }
-.pscr__nav{ background:#ffffff; border-top-color:var(--line) }
-.pscr__nav span{ color:var(--ink-3) }
-.pscr__nav span.on{ color:var(--accent) }
-.pscr__nav i{ background:#e3dfee }
-.pscr__nav span.on i{ background:var(--accent); box-shadow:none }
-
-/* convite final */
-.cta{ background:var(--painel); border-radius:var(--r-l) }
-.cta::before{ background:radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,.14), transparent 70%) }
-.cta .btn--primary{ background:#ffffff; color:var(--deep) }
-.cta .btn--primary:hover{ background:var(--accent-soft) }
-.cta .btn--primary::after{ border-radius:10px; border-color:rgba(255,255,255,.7); box-shadow:none }
-.cta__mail a{ color:#ffffff; border-bottom-color:rgba(255,255,255,.4) }
-.agenda{ background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.18); border-radius:var(--r-m) }
-.agenda::before{ background:rgba(255,255,255,.5) }
-.agenda::after{ background:#ffffff; box-shadow:0 0 10px rgba(255,255,255,.8) }
-.agenda li{ background:rgba(47,32,80,.7) }
-.agenda li:hover{ background:rgba(255,255,255,.08) }
-.agenda em{ font-size:11px; letter-spacing:.04em; color:var(--accent-clara) }
-.agenda b{ font-weight:600 }
-.cta .cta__sign{ font-weight:600 }
-.cta__sign b{ background:linear-gradient(100deg,#fff 0 38%, #d6ccef 46%, #ffffff 52%, #fff 60% 100%); background-size:280% 100%; -webkit-background-clip:text; background-clip:text }
-
-/* rodapé */
-footer{ background:var(--surface) }
-.foot__t{ font-size:12px; letter-spacing:.02em; text-transform:none; font-weight:600; color:var(--ink) }
-.foot__col a:hover{ translate:none }
-
-/* celular: a coluna do herói não pode passar da largura da tela */
-@media (max-width:1079px){
-  .hero-grid{ grid-template-columns:minmax(0,1fr) }
-  .hero-copy, .hero-copy > *, .compo{ min-width:0; max-width:100% }
-}
-@media (max-width:640px){
-  .btn{ padding:11px 18px }
-  #nav{ gap:12px }
-  #nav .brand-mark{ --bm:64px !important }
-  #nav .btn{ padding:8px 14px; font-size:13.5px; white-space:nowrap }
-  .hero-cta{ width:100% }
-  .hero-cta .btn{ flex:1 1 auto; justify-content:center }
-  .kan{ grid-template-columns:repeat(2,minmax(0,1fr)) }
-  .mk__title{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
-}
-@media (max-width:420px){ .brand__sep, .brand__sep + *{ display:none } #nav .brand{ font-size:0 } }
-</style>
-
-<div id="bar"></div>
-
-<header id="nav">
-  <a class="brand" href="#hero" aria-label="Portal AllRegTech · início">
-    <span class="brand-mark" style="--bm:84px"></span><span class="brand__sep"></span>Portal
-  </a>
-  <nav class="navlinks">
-    <a href="#jornada">A jornada</a>
-    <a href="#video">Vídeo</a>
-    <a href="#modulos">Módulos</a>
-    <a href="#pessoas">Um dia na rede</a>
-    <a href="#app">Aplicativo</a>
-    <a href="#tecnologia">Tecnologia</a>
-  </nav>
-  <a class="btn btn--primary" href="#contato">Agendar demonstração</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-esteto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 12 0V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 12 0v-4"/><circle cx="20" cy="10" r="2"/></symbol>
+    <symbol id="i-regula" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></symbol>
+    <symbol id="i-carro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="i-cel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-hosp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v4M14 8h-4M14 14h-4M14 18h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></symbol>
+    <symbol id="i-senha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 17v2M13 11v2"/></symbol>
+    <symbol id="i-recibo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8M12 17.5v-11"/></symbol>
+    <symbol id="i-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-pessoas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4.27 21a2 2 0 0 0 1.73 1H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"/><path d="m9 18-1.5-1.5"/><circle cx="5" cy="14" r="3"/></symbol>
+    <symbol id="i-banco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+    <symbol id="i-termo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></symbol>
+    <symbol id="i-conversa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-cpf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10h2M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></symbol>
+    <symbol id="i-pulso" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </defs>
+</svg>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="caixa">
+    <a class="marca" href="./" aria-label="AllRegTech, início"><img src="assets/logo-art.png" alt="AllRegTech" width="72" height="37"><span>Saúde pública</span></a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#jornada">Jornada</a>
+      <a href="#ecossistema">Integração</a>
+      <a href="#solucoes">Soluções</a>
+      <a href="#confianca">Segurança</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-1 btn-p" href="#contato">Agendar demonstração</a>
+    <details class="menu-cel">
+      <summary aria-label="Abrir menu"><svg><use href="#i-menu"/></svg></summary>
+      <nav aria-label="Seções">
+        <a href="#jornada">Jornada do paciente</a>
+        <a href="#ecossistema">Integração</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#confianca">Segurança</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn-1" href="#contato">Agendar demonstração</a>
+      </nav>
+    </details>
+  </div>
 </header>
 
-<!-- ══════════════════ HERÓI ══════════════════ -->
-<section id="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="logo3d rv" id="logo3d" aria-hidden="true">
-        <div class="logo3d__tilt" id="logoTilt">
-          <div class="logo3d__obj" id="logoObj">
-            <span class="logo3d__l logo3d__l--face"></span>
-            <span class="logo3d__shine"></span>
-          </div>
-        </div>
-      </div>
-      <p class="eyebrow rv">Plataforma de gestão da saúde pública municipal</p>
-      <h1 class="h-xl rv" style="--d:80ms">Uma rede de saúde inteira. Um portal só.</h1>
-      <p class="lede rv" style="--d:160ms">
-        Da recepção da UBS ao faturamento no SUS, o Portal AllRegTech acompanha o paciente por
-        toda a rede municipal, sem planilha paralela, sem grupo de WhatsApp, sem trocar de sistema
-        no meio do caminho.
-      </p>
-      <div class="hero-cta rv" style="--d:240ms">
-        <a class="btn btn--primary" href="#contato">Agendar demonstração</a>
-        <a class="btn btn--ghost" href="#jornada">Ver a jornada do paciente</a>
-      </div>
-      <p class="hero-note rv" style="--d:300ms">Em operação · 53 unidades · web + aplicativo Android</p>
-    </div>
+<main id="conteudo">
 
-    <div class="compo rv" style="--d:380ms" id="pCompo">
-      <div class="compo__stage" id="pStage">
-      <div class="compo__main" id="pMain">
-        <div class="mk">
-          <div class="mk__bar">
-            <span class="mk__dot"></span><span class="mk__dot"></span><span class="mk__dot"></span>
-            <span class="mk__title">Regulação Assistencial · Quadro de solicitações</span>
-            <span class="mk__tag">Ao vivo</span>
-          </div>
-          <div class="mk__body">
-            <div class="kan">
-              <div class="kan__col">
-                <div class="kan__h">Recebido</div>
-                <div class="kan__c"><b>Cardiologia · adulto</b><span class="line w70"></span><span class="chip">UBS Centro</span></div>
-                <div class="kan__c"><b>Ortopedia · joelho</b><span class="line w50"></span><span class="chip">UBS Norte</span></div>
-              </div>
-              <div class="kan__col">
-                <div class="kan__h">Em análise</div>
-                <div class="kan__c"><b>Ressonância</b><span class="line w85"></span><span class="chip chip--amber">SLA 2 dias</span></div>
-              </div>
-              <div class="kan__col">
-                <div class="kan__h">Vaga ofertada</div>
-                <div class="kan__c"><b>Oftalmologia</b><span class="line w40"></span><span class="chip chip--teal">Transporte ok</span></div>
-                <div class="kan__c"><b>Endoscopia</b><span class="line w70"></span><span class="chip chip--teal">12/08 · 09h</span></div>
-              </div>
-              <div class="kan__col">
-                <div class="kan__h">Concluído</div>
-                <div class="kan__c"><b>Dermatologia</b><span class="line w50"></span><span class="chip">Paciente avisado</span></div>
-              </div>
-            </div>
-            <div class="rows">
-              <div class="row"><span class="av">MS</span><span class="gr"><span class="line w50"></span><span class="line w85" style="opacity:.5"></span></span><span class="chip chip--teal">Agendado</span></div>
-              <div class="row"><span class="av">JP</span><span class="gr"><span class="line w70"></span><span class="line w40" style="opacity:.5"></span></span><span class="chip chip--amber">Aguardando vaga</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="compo__float compo__float--l glass fly" id="pLeft" data-fly="thru" data-x0="18" data-x1="-46" data-y0="34" data-y1="-30">
-        <div class="phone">
-          <div class="phone__scr">
-            <div class="phone__hd"><span class="per__ico" style="width:28px;height:28px;border-radius:9px;font-size:11px">R+</span><b>Regula+</b></div>
-            <div class="row" style="padding:10px"><span class="gr"><b style="font-size:11.5px">Consulta confirmada</b><span class="line w70"></span></span></div>
-            <span class="chip chip--teal">Cardiologia · 12/08 · 09h20</span>
-            <div class="row" style="padding:10px"><span class="gr"><b style="font-size:11.5px">Transporte reservado</b><span class="line w50"></span></span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="compo__float compo__float--r glass fly" id="pRight" data-fly="thru" data-x0="-20" data-x1="42" data-y0="-22" data-y1="54">
-        <div class="mk" style="display:grid;gap:10px">
-          <span class="mk__tag" style="margin:0">Fila estadual</span>
-          <b style="font-family:var(--display); font-size:30px; letter-spacing:-.03em; font-variant-numeric:tabular-nums">80.367</b>
-          <span style="font-size:12.5px;color:var(--ink-2);line-height:1.45">pacientes de demanda reprimida, deduplicados e ordenados por critério clínico</span>
-          <span class="bars" style="height:44px"><i style="height:38%"></i><i style="height:56%"></i><i style="height:44%"></i><i style="height:78%"></i><i style="height:62%"></i><i style="height:96%"></i></span>
-        </div>
-      </div>
+<!-- herói: a mensagem à esquerda; à direita, a tela real da regulação e o quadro de etapas da solicitação -->
+<section class="heroi" aria-labelledby="t-heroi">
+  <div class="caixa">
+    <div class="heroi-texto">
+      <p class="sobre">Tecnologia para a gestão pública da saúde</p>
+      <h1 class="t-1" id="t-heroi">A rede municipal de saúde, acompanhada etapa por etapa.</h1>
+      <p class="lead">Recepção, UBS, UPA, regulação, transporte sanitário e faturamento SUS trabalham sobre o mesmo cadastro por CPF. A central sabe em que etapa está cada solicitação, a unidade vê o que foi decidido e o cidadão acompanha pelo Regula+.</p>
+      <div class="heroi-acoes">
+        <a class="btn btn-1 btn-seta" href="#contato">Agendar demonstração</a>
+        <a class="mais mais-ancora" href="#jornada">Acompanhar a jornada do paciente</a>
       </div>
     </div>
 
-    <div class="stagegrid rv" style="--d:120ms">
-      <div><b class="cnt" data-to="53">0</b><span>unidades conectadas: UBS, UPA, central e apoio</span></div>
-      <div><b class="cnt" data-to="40" data-suf="+">0</b><span>painéis operacionais no mesmo login</span></div>
-      <div><b class="cnt" data-to="80367" data-fmt="1">0</b><span>pacientes na fila estadual regulada</span></div>
-      <div><b class="cnt" data-to="1">0</b><span>cadastro por CPF para toda a rede</span></div>
-    </div>
-  </div>
-</section>
+    <figure class="palco" aria-labelledby="palco-legenda">
+      <div class="janela palco-tela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Regulação · Solicitações</span></div><img src="assets/telas/regulacao-quadro.webp" srcset="assets/telas/regulacao-quadro-p.webp 800w, assets/telas/regulacao-quadro.webp 1600w" sizes="(max-width:900px) 92vw, 600px" width="1600" height="1000" alt="Lista de solicitações da regulação, com prioridade, prazo e a próxima ação de cada pedido, com dados fictícios" fetchpriority="high" decoding="async"></div>
 
-<!-- ══════════════════ FAIXA QUE CORRE ══════════════════ -->
-<section class="band fade-x" aria-label="Módulos da plataforma">
-  <div class="band__row fly" data-band data-fly="thru" data-x0="0" data-x1="-380">
-    <span class="band__chip glass-lite"><b>01</b> Regulação Assistencial</span>
-    <span class="band__chip glass-lite"><b>02</b> Fila Estadual</span>
-    <span class="band__chip glass-lite"><b>03</b> Controle de Retornos</span>
-    <span class="band__chip glass-lite"><b>04</b> Executante</span>
-    <span class="band__chip glass-lite"><b>05</b> UBS · prontuário</span>
-    <span class="band__chip glass-lite"><b>06</b> UPA · leitos e ouvidoria</span>
-    <span class="band__chip glass-lite"><b>07</b> Transporte Sanitário</span>
-    <span class="band__chip glass-lite"><b>08</b> Patrimônio</span>
-  </div>
-  <div class="band__row fly" data-band data-fly="thru" data-x0="-380" data-x1="0">
-    <span class="band__chip glass-lite"><b>09</b> Regula+ · app do paciente</span>
-    <span class="band__chip glass-lite"><b>10</b> Chat da Regulação</span>
-    <span class="band__chip glass-lite"><b>11</b> Senhas e TV de chamada</span>
-    <span class="band__chip glass-lite"><b>12</b> APA · produção profissional</span>
-    <span class="band__chip glass-lite"><b>13</b> Faturamento SUS e auditoria</span>
-    <span class="band__chip glass-lite"><b>14</b> Administração Global</span>
-  </div>
-</section>
-
-<!-- ══════════════════ JORNADA (pinned) ══════════════════ -->
-<section id="jornada">
-  <div class="j-intro rv">
-    <p class="eyebrow">O caminho do paciente</p>
-    <h2 class="h-l rv">Cinco etapas que costumavam ser cinco sistemas.</h2>
-  </div>
-
-  <div class="j-track" id="jTrack">
-    <div class="j-pin fade-y">
-      <div class="j-inner">
-        <ol class="j-nav" id="jNav">
-          <li class="on"><b>01</b><span>Atenção primária</span><em></em></li>
-          <li><b>02</b><span>Regulação</span><em></em></li>
-          <li><b>03</b><span>Transporte</span><em></em></li>
-          <li><b>04</b><span>Urgência</span><em></em></li>
-          <li><b>05</b><span>Gestão</span><em></em></li>
+      <div class="ficha" data-ficha>
+        <div class="ficha-cab"><span class="tag at sem">Urgente</span><span class="protocolo">2026000002</span></div>
+        <p class="ficha-nome">Francisca das Chagas Oliveira</p>
+        <p class="ficha-sub">Cardiologia · Consulta em cardiologia</p>
+        <p class="ficha-rot" id="ficha-rot">Etapas do processo</p>
+        <ol class="etapas" aria-labelledby="ficha-rot">
+          <li class="feita"><span>Protocolo/Entrada</span></li>
+          <li class="feita"><span>Análise regulatória</span></li>
+          <li class="atual" data-de><span>Fila de espera</span></li>
+          <li data-para><span>Agendamento/Contato</span><small>Paciente comunicado</small></li>
+          <li><span>Atendimento</span></li>
+          <li><span>Contrarreferência</span></li>
+          <li><span>Encerramento</span></li>
         </ol>
-
-        <div class="j-stages" id="jStages">
-          <!-- 01 -->
-          <article class="j-stage on">
-            <div class="j-stage__copy">
-              <span class="num">01 · ATENÇÃO PRIMÁRIA</span>
-              <h3>A UBS recebe, e o registro já nasce completo.</h3>
-              <p>Acolhimento, evolução clínica, vacina com lote e validade, medicação externa pela
-                tabela SIGTAP, pedido de exame com os tubos certos. Cada profissional escreve na
-                mesma ficha, com o CIAP correspondente à sua categoria.</p>
-              <ul class="j-feats">
-                <li>Equipe e ACS por microárea</li><li>Vacina com lote e SLA</li>
-                <li>CIAP por categoria profissional</li><li>Alergia sinalizada</li>
-                <li>Pedido único de farmácia</li>
-              </ul>
-            </div>
-            <div class="j-art">
-              <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">UBS · Atendimento em andamento</span><span class="mk__tag">Ficha</span></div>
-                <div class="mk__body">
-                  <div class="row"><span class="av">MJ</span><span class="gr"><b style="font-size:12px">Maria J. · 47 anos</b><span class="line w70"></span></span><span class="chip chip--amber">Alergia: dipirona</span></div>
-                  <div class="rows">
-                    <div class="row"><span class="chip">Vacina</span><span class="gr"><span class="line w85"></span></span><span class="mk__tag" style="margin:0">Lote 24B</span></div>
-                    <div class="row"><span class="chip chip--teal">Exame</span><span class="gr"><span class="line w50"></span></span><span class="mk__tag" style="margin:0">3 tubos</span></div>
-                    <div class="row"><span class="chip">Farmácia</span><span class="gr"><span class="line w70"></span></span><span class="mk__tag" style="margin:0">SIGTAP</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 02 -->
-          <article class="j-stage">
-            <div class="j-stage__copy">
-              <span class="num">02 · REGULAÇÃO</span>
-              <h3>A solicitação entra numa esteira, não numa caixa de e-mail.</h3>
-              <p>Oito etapas visíveis, do recebimento ao encerramento. O prazo conta só dias úteis,
-                o cartão mostra a especialidade pedida, e as decisões terminais (deferir, indeferir,
-                encerrar) ficam com o regulador master. A unidade opera contato e agenda.</p>
-              <ul class="j-feats">
-                <li>Kanban por categoria</li><li>SLA em dias úteis</li>
-                <li>Matching automático de vaga</li><li>Master × unidade</li>
-                <li>Fila de retornos</li>
-              </ul>
-            </div>
-            <div class="j-art">
-              <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">Esteira da solicitação #4120</span><span class="mk__tag">Etapa 5/8</span></div>
-                <div class="mk__body">
-                  <div class="route"><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
-                  <div class="rows">
-                    <div class="row"><span class="gr"><b style="font-size:12px">Vaga localizada · Cardiologia</b><span class="line w70"></span></span><span class="chip chip--teal">Hoje 14h</span></div>
-                    <div class="row"><span class="gr"><b style="font-size:12px">Vence em 2 dias úteis</b><span class="line w50"></span></span><span class="chip chip--amber">SLA</span></div>
-                    <div class="row"><span class="gr"><b style="font-size:12px">Aguardando decisão do master</b><span class="line w40"></span></span><span class="chip">Bloqueado p/ unidade</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 03 -->
-          <article class="j-stage">
-            <div class="j-stage__copy">
-              <span class="num">03 · TRANSPORTE</span>
-              <h3>O paciente sai da cidade e ninguém perde o rastro.</h3>
-              <p>Motorista e casa de apoio têm cada um o seu painel. Embarque e chegada são
-                confirmados com foto pela câmera do próprio celular, e o operador vê a frota do
-                dia por veículo e por rota, sem ligar para ninguém.</p>
-              <ul class="j-feats">
-                <li>Painel do motorista</li><li>Casa de apoio</li>
-                <li>Validação por foto</li><li>Frota por dia e veículo</li>
-              </ul>
-            </div>
-            <div class="j-art">
-              <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">Transporte sanitário · rota do dia</span><span class="mk__tag">Veículo 07</span></div>
-                <div class="mk__body">
-                  <div class="route"><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
-                  <div class="rows">
-                    <div class="row"><span class="av">01</span><span class="gr"><b style="font-size:12px">Embarque · UBS Centro</b><span class="line w50"></span></span><span class="chip chip--teal">Foto ok</span></div>
-                    <div class="row"><span class="av">02</span><span class="gr"><b style="font-size:12px">Casa de apoio · Goiânia</b><span class="line w70"></span></span><span class="chip chip--teal">Chegada 11h04</span></div>
-                    <div class="row"><span class="av">03</span><span class="gr"><b style="font-size:12px">Retorno previsto</b><span class="line w40"></span></span><span class="chip">17h30</span></div>
-                  </div>
-                  <span class="bars" style="height:52px"><i style="height:40%"></i><i style="height:70%"></i><i style="height:52%"></i><i style="height:88%"></i><i style="height:64%"></i><i style="height:46%"></i><i style="height:76%"></i></span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 04 -->
-          <article class="j-stage">
-            <div class="j-stage__copy">
-              <span class="num">04 · URGÊNCIA</span>
-              <h3>A UPA absorve o agudo com o leito na tela.</h3>
-              <p>Higienização de leitos, pré-internação e ouvidoria na ficha padrão do Ministério
-                vivem no mesmo hub, e cada um enxerga apenas a própria unidade, por regra de
-                acesso, não por combinado.</p>
-              <ul class="j-feats">
-                <li>Higienização de leitos</li><li>Pré-internação</li>
-                <li>Ouvidoria (ficha MS)</li><li>Isolamento por unidade</li>
-              </ul>
-            </div>
-            <div class="j-art">
-              <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">UPA · Mapa de leitos</span><span class="mk__tag">Ala B</span></div>
-                <div class="mk__body">
-                  <div class="beds">
-                    <i class="bz"></i><i class="bz"></i><i class="ok"></i><i class="wr"></i><i class="bz"></i><i class="ok"></i>
-                    <i class="ok"></i><i class="bz"></i><i class="bz"></i><i class="ok"></i><i class="wr"></i><i class="bz"></i>
-                    <i class="bz"></i><i class="ok"></i><i class="ok"></i><i class="bz"></i><i class="bz"></i><i class="ok"></i>
-                  </div>
-                  <div style="display:flex;gap:8px;flex-wrap:wrap">
-                    <span class="chip">11 ocupados</span><span class="chip chip--teal">5 livres</span><span class="chip chip--amber">2 em higienização</span>
-                  </div>
-                  <div class="row"><span class="gr"><b style="font-size:12px">Pré-internação · 2 pacientes</b><span class="line w70"></span></span><span class="chip">Aguardando vaga</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- 05 -->
-          <article class="j-stage">
-            <div class="j-stage__copy">
-              <span class="num">05 · GESTÃO</span>
-              <h3>A secretaria vê a rede inteira sem pedir relatório para ninguém.</h3>
-              <p>Produção por profissional, faturamento SUS mês a mês, monitoria de qualidade e
-                uma matriz de permissões em que se enxerga, na mesma tela, quem acessa o quê em
-                cada unidade.</p>
-              <ul class="j-feats">
-                <li>Produção por profissional</li><li>Faturamento SUS</li>
-                <li>Monitoria de qualidade</li><li>Matriz RBAC</li>
-                <li>Auditoria médica</li>
-              </ul>
-            </div>
-            <div class="j-art">
-              <div class="mk">
-                <div class="mk__bar"><span class="mk__dot"></span><span class="mk__title">Painel da Secretaria · julho</span><span class="mk__tag">Consolidado</span></div>
-                <div class="mk__body">
-                  <span class="bars"><i style="height:34%"></i><i style="height:52%"></i><i style="height:46%"></i><i style="height:70%"></i><i style="height:58%"></i><i style="height:84%"></i><i style="height:66%"></i><i style="height:96%"></i></span>
-                  <div class="rows">
-                    <div class="row"><span class="gr"><b style="font-size:12px">Produção validada</b><span class="line w85"></span></span><span class="chip chip--teal">Automática</span></div>
-                    <div class="row"><span class="gr"><b style="font-size:12px">Faturamento · auditoria do mês</b><span class="line w50"></span></span><span class="chip">4 anexos</span></div>
-                    <div class="row"><span class="gr"><b style="font-size:12px">Sem produção (vínculo ativo)</b><span class="line w40"></span></span><span class="chip chip--amber">3 casos</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
+        <p class="ficha-reg" aria-live="polite"><span data-reg-antes>Na fila desde 02/10</span><span data-reg-depois hidden>Vaga confirmada · registrado pela central</span></p>
       </div>
-    </div>
+
+      <div class="aparelho palco-cel"><img src="assets/telas/app-inicio.webp" srcset="assets/telas/app-inicio-p.webp 420w, assets/telas/app-inicio.webp 780w" sizes="150px" width="780" height="1688" alt="Tela inicial do Regula+ com o próximo agendamento, a senha de atendimento e o retorno em fila, com dados fictícios" loading="lazy" decoding="async"></div>
+      <figcaption id="palco-legenda" class="miudo">Telas reais do sistema com dados fictícios. O quadro de etapas reproduz o da solicitação e mostra, como exemplo, o pedido passando para o agendamento.</figcaption>
+    </figure>
+  </div>
+
+  <div class="caixa">
+    <dl class="fatos">
+      <div><dt>Um cadastro</dt><dd>O paciente é o mesmo CPF da recepção ao aplicativo.</dd></div>
+      <div><dt>Uma regra de acesso</dt><dd>Painéis e unidades liberados por papel, conferidos no servidor.</dd></div>
+      <div><dt>Um histórico</dt><dd>Cada gravação no sistema fica registrada, com quem e quando.</dd></div>
+      <div><dt>Web e Android</dt><dd>No navegador da unidade e no celular do cidadão e do motorista.</dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- ══════════════════ VÍDEO ══════════════════ -->
-<section class="sec" id="video">
-  <div class="wrap">
-    <div class="vid-grid">
-      <div class="vid-side">
-        <div class="sec__hd" style="margin:0">
-          <p class="eyebrow rv">A apresentação</p>
-          <h2 class="h-l rv">Oito minutos, do prontuário perdido à rede operando junto.</h2>
-          <p class="lede rv" style="--d:120ms">Por que a rede se fragmenta em sistemas que não conversam,
-            o que cada domínio da plataforma resolve e o que muda quando todo mundo escreve no mesmo
-            cadastro. Termina na única pergunta que interessa à secretaria.</p>
-        </div>
-
-        <ul class="vid-chaps">
-          <li class="rv" style="--d:180ms">O cenário de hoje</li>
-          <li class="rv" style="--d:230ms">Silos de dados</li>
-          <li class="rv" style="--d:280ms">Os domínios da plataforma</li>
-          <li class="rv" style="--d:330ms">Faturamento e gestão</li>
-          <li class="rv" style="--d:380ms">A pergunta do fecho</li>
-        </ul>
-
-        <p class="vid-meta rv" style="--d:430ms">8 min 18 s · assista sem sair da página</p>
-      </div>
-
-      <figure class="vslot" id="vslot">
-        <video src="video-allregtech.mp4" poster="video-capa.jpg" controls playsinline preload="none"></video>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════ MÓDULOS ══════════════════ -->
-<section class="sec" id="modulos">
-  <div class="wrap">
-    <div class="sec__hd">
-      <p class="eyebrow rv">O que já está rodando</p>
-      <h2 class="h-l rv">Catorze módulos, um cadastro, uma regra de acesso.</h2>
-      <p class="lede rv" style="--d:120ms">Cada módulo resolve um problema real de secretaria municipal. Todos
-        compartilham o mesmo paciente, o mesmo login por CPF e a mesma matriz de permissões.</p>
+<!-- jornada: seis momentos de um atendimento, cada um com a tela real de quem registra -->
+<section class="secao jornada-sec" id="jornada" aria-labelledby="t-jor">
+  <div class="caixa">
+    <div class="cab cab-largo surge">
+      <p class="sobre">Jornada do paciente</p>
+      <h2 class="t-2" id="t-jor">Seis momentos de um atendimento. Seis equipes. Um registro.</h2>
+      <p class="lead">Siga um paciente fictício pela rede. Cada etapa é feita por uma equipe diferente, na tela dela, e o que uma registra a próxima já encontra.</p>
     </div>
 
-  </div>
-
-  <div class="spiral-track" id="spiralTrack">
-    <div class="spiral-pin fade-y">
-      <canvas id="spiralNeon" aria-hidden="true"></canvas>
-      <div class="spiral-stage" id="spiralStage">
-        <article class="mod" data-before="Papel na unidade, planilha na central e cobrança por mensagem."><span class="mod__k">Núcleo</span><h3>Regulação Assistencial</h3>
-          <p>Esteira de oito etapas com Kanban por categoria, prazo em dias úteis e matching de vaga.</p>
-          <ul><li>Kanban</li><li>SLA em dias úteis</li><li>Master × unidade</li></ul></article>
-
-        <article class="mod" data-before="Uma lista de espera por unidade, sem saber quem já foi atendido em outra."><span class="mod__k">Rede</span><h3>Fila Estadual</h3>
-          <p>Planilha estadual importada em lote, deduplicada por identidade, com convocação registrada.</p>
-          <ul><li>80.367 pacientes</li><li>Busca no servidor</li></ul></article>
-
-        <article class="mod" data-before="O retorno combinado no balcão e anotado num caderno."><span class="mod__k">Rede</span><h3>Controle de Retornos</h3>
-          <p>Fila própria para o retorno: o ponto exato onde o paciente costuma sumir do sistema.</p>
-          <ul><li>Fila dedicada</li><li>Reagendamento</li></ul></article>
-
-        <article class="mod" data-before="Prestador agendando por telefone, sem conferir autorização."><span class="mod__k">Rede</span><h3>Executante</h3>
-          <p>Módulo do prestador: admissão só por código de autorização, agendamento só contra vaga.</p>
-          <ul><li>Código de autorização</li><li>Vaga obrigatória</li></ul></article>
-
-        <article class="mod" data-before="Ficha de papel por profissional, sem histórico compartilhado."><span class="mod__k">Assistência</span><h3>UBS · prontuário</h3>
-          <p>Equipe e ACS por microárea, vacina com lote, CIAP por categoria e alergia sinalizada.</p>
-          <ul><li>Farmácia</li><li>Laboratório</li><li>Evolução compartilhada</li></ul></article>
-
-        <article class="mod" data-before="Quadro branco na parede para leito e higienização."><span class="mod__k">Assistência</span><h3>UPA · módulos hospitalares</h3>
-          <p>Hub extensível com ouvidoria na ficha do Ministério, higienização de leitos e pré-internação.</p>
-          <ul><li>Mapa de leitos</li><li>Isolamento por unidade</li></ul></article>
-
-        <article class="mod" data-before="Lista impressa no painel do carro e confirmação verbal."><span class="mod__k">Logística</span><h3>Transporte Sanitário</h3>
-          <p>Painéis separados de motorista e casa de apoio, com embarque e chegada validados por foto.</p>
-          <ul><li>Câmera do celular</li><li>Frota por dia</li></ul></article>
-
-        <article class="mod" data-before="Planilha de bens atualizada uma vez por ano, no inventário."><span class="mod__k">Logística</span><h3>Patrimônio</h3>
-          <p>Cadastro, rastreio e resumo do bem, com gestão de usuários feita pelo supervisor.</p>
-          <ul><li>Rastreio por etiqueta</li><li>Login por CPF</li></ul></article>
-
-        <article class="mod" data-before="Ligação que ninguém atende e recado deixado com o vizinho."><span class="mod__k">Paciente</span><h3>Regula+ · Android</h3>
-          <p>App do cidadão: agendamentos, avisos, chat com a regulação e chamada de voz.</p>
-          <ul><li>APK Android</li><li>Chamada WebRTC</li></ul></article>
-
-        <article class="mod" data-before="WhatsApp pessoal do servidor, que sai junto quando ele sai."><span class="mod__k">Comunicação</span><h3>Chat da Regulação</h3>
-          <p>Atendimento por WhatsApp Cloud API e canal interno do app, identificado por CPF.</p>
-          <ul><li>WhatsApp oficial</li><li>Painel de qualidade</li></ul></article>
-
-        <article class="mod" data-before="Chamada em voz alta e senha anotada em caderno."><span class="mod__k">Recepção</span><h3>Senhas e TV de chamada</h3>
-          <p>Fila por prioridade, rendimento do atendente e painel de TV com rechamada por voz.</p>
-          <ul><li>Guichê fixável</li><li>TV com áudio</li></ul></article>
-
-        <article class="mod" data-before="Fechamento manual no fim do mês, divergência descoberta tarde."><span class="mod__k">Gestão</span><h3>APA · produção profissional</h3>
-          <p>Importação SISS e Excel, calendário de produção, atestado do RH e relatório de governança.</p>
-          <ul><li>Import .xlsx</li><li>Diagnóstico do arquivo</li></ul></article>
-
-        <article class="mod" data-before="Pasta física com anexos soltos e prazo controlado de cabeça."><span class="mod__k">Gestão</span><h3>Faturamento SUS e auditoria</h3>
-          <p>Ciclo mensal com anexos que alimentam o painel, auditoria médica e monitoria de qualidade.</p>
-          <ul><li>Ciclo mensal</li><li>Papel clínico</li></ul></article>
-
-        <article class="mod" data-before="Combinado informal de acesso e usuário compartilhado entre colegas."><span class="mod__k">Administração</span><h3>Administração Global</h3>
-          <p>Matriz RBAC por painel e unidade, admin de unidade separado do master, avisos por escopo.</p>
-          <ul><li>Matriz de permissões</li><li>Sessão até 18h</li></ul></article>
+    <div class="trilha" data-abas data-trilha style="--at:0">
+      <div class="trilha-etapas" role="tablist" aria-label="Etapas da jornada do paciente">
+        <button type="button" role="tab" id="j-a0" aria-controls="j-p0" aria-selected="true"><span class="n">01</span><b>Recepção</b><small>Senhas e TV</small></button>
+        <button type="button" role="tab" id="j-a1" aria-controls="j-p1" aria-selected="false" tabindex="-1"><span class="n">02</span><b>Atendimento</b><small>UBS</small></button>
+        <button type="button" role="tab" id="j-a2" aria-controls="j-p2" aria-selected="false" tabindex="-1"><span class="n">03</span><b>Solicitação</b><small>Regulação</small></button>
+        <button type="button" role="tab" id="j-a3" aria-controls="j-p3" aria-selected="false" tabindex="-1"><span class="n">04</span><b>Viagem</b><small>Transporte</small></button>
+        <button type="button" role="tab" id="j-a4" aria-controls="j-p4" aria-selected="false" tabindex="-1"><span class="n">05</span><b>Aviso</b><small>Regula+</small></button>
+        <button type="button" role="tab" id="j-a5" aria-controls="j-p5" aria-selected="false" tabindex="-1"><span class="n">06</span><b>Produção</b><small>Faturamento SUS</small></button>
       </div>
 
-      <ol class="spiral-idx" id="spiralIdx" aria-hidden="true"></ol>
-
-      <aside class="spiral-detail glass-lite" id="spiralDetail" aria-hidden="true">
-        <em>No lugar de</em>
-        <p id="spiralBefore">Papel na unidade, planilha na central e cobrança por mensagem.</p>
-        <hr>
-        <em>Entrega</em>
-        <strong id="spiralTitle">Regulação Assistencial</strong>
-        <span class="chip" id="spiralCat">Núcleo</span>
-      </aside>
-
-      <div class="spiral-hud glass">
-        <b id="spiralNum">01</b>
-        <span id="spiralName">Regulação Assistencial</span>
-        <em></em>
-        <i>de 14</i>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════ PERSONAS ══════════════════ -->
-<section class="sec" id="pessoas">
-  <div class="rail-track" id="railTrack">
-    <div class="rail-pin fade-x">
-      <div class="rail-pin__inner">
-        <div class="wrap day-hd">
-          <div class="sec__hd" style="margin:0; max-width:28ch">
-            <p class="eyebrow rv">Um dia na rede</p>
-            <h2 class="h-m rv">A mesma paciente, sete telas, um dia.</h2>
+      <div class="vitrine-paineis trilha-paineis">
+        <div role="tabpanel" id="j-p0" aria-labelledby="j-a0" class="vitrine-painel on">
+          <div class="passo-texto">
+            <p class="passo-quem">Quem registra: a recepção</p>
+            <h3>A senha é emitida e chamada na TV da unidade.</h3>
+            <p>No totem ou no guichê. A TV chama com a voz do próprio aparelho, e o guichê vê quem é o paciente, o motivo e a próxima da vez.</p>
+            <p class="passo-fica"><b>Fica registrado</b> emissão, chamada, transferência e encerramento da senha, com horário e quem atendeu.</p>
+            <a class="mais" href="solucoes/recepcao-senhas.html">Recepção e senhas</a>
           </div>
-          <div class="day-clock rv" style="--d:120ms">
-            <span class="day-clock__t" id="dayClock">07:10</span>
-            <span class="day-clock__l">Maria J. · 47 anos · UBS Centro · alergia a dipirona</span>
-            <span class="day-clock__bar"><i id="dayBar"></i></span>
-          </div>
-          <div class="railctl">
-            <button type="button" id="railPrev" aria-label="Momento anterior">‹</button>
-            <button type="button" id="railNext" aria-label="Próximo momento">›</button>
-          </div>
+          <div class="janela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Recepção · Guichê</span></div><img src="assets/telas/senhas-painel.webp" srcset="assets/telas/senhas-painel-p.webp 800w, assets/telas/senhas-painel.webp 1600w" sizes="(max-width:900px) 92vw, 620px" width="1600" height="1000" alt="Tela do guichê com a senha REC-010 chamada, os dados da paciente e a próxima da vez, com dados fictícios" loading="lazy" decoding="async"></div>
         </div>
-
-        <div class="rail" id="rail" tabindex="0" aria-label="Um dia na rede, tela por tela">
-          <article class="per glass-lite" data-min="430">
-            <span class="per__time">07:10 <s></s> Recepção</span>
-            <div class="per__who"><span class="per__ico">RC</span><h3>A senha</h3></div>
-            <div class="per__mini">
-              <div class="row"><span class="chip">PA-014</span><span class="gr"><b>Preferencial · 47 anos</b><span class="line w70"></span></span></div>
-              <div class="row"><span class="gr"><b>3 à frente na fila</b><span class="line w40"></span></span><span class="mk__tag" style="margin:0">Guichê 2</span></div>
-            </div>
-            <q>Antes eu anotava num caderno para saber quantos tinha atendido.</q>
-          </article>
-
-          <article class="per glass-lite" data-min="520">
-            <span class="per__time">08:40 <s></s> Médico da UBS</span>
-            <div class="per__who"><span class="per__ico">MD</span><h3>A consulta</h3></div>
-            <div class="per__mini">
-              <div class="row"><span class="chip chip--amber">Alergia</span><span class="gr"><b>Dipirona · sinalizada na ficha</b></span></div>
-              <div class="row"><span class="chip chip--teal">Exame</span><span class="gr"><b>Hemograma · 3 tubos</b><span class="line w50"></span></span></div>
-              <div class="row"><span class="chip">Encaminha</span><span class="gr"><b>Cardiologia · adulto</b></span></div>
-            </div>
-            <q>O pedido já sai com o que o laboratório precisa.</q>
-          </article>
-
-          <article class="per glass-lite" data-min="545">
-            <span class="per__time">09:05 <s></s> Regulador</span>
-            <div class="per__who"><span class="per__ico">RG</span><h3>A esteira</h3></div>
-            <div class="per__mini">
-              <div class="route"><i></i><s class="done"></s><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
-              <div class="row"><span class="gr"><b>Etapa 3 de 8 · em análise</b><span class="line w70"></span></span><span class="chip chip--amber">2 dias úteis</span></div>
-            </div>
-            <q>A fila deixou de ser uma planilha que só eu sabia ler.</q>
-          </article>
-
-          <article class="per glass-lite" data-min="680">
-            <span class="per__time">11:20 <s></s> Central de Marcação</span>
-            <div class="per__who"><span class="per__ico">CM</span><h3>A vaga</h3></div>
-            <div class="per__mini">
-              <div class="row"><span class="chip chip--teal">Vaga</span><span class="gr"><b>Cardiologia · 12/08 · 09h20</b></span></div>
-              <div class="row"><span class="gr"><b>Casada com a solicitação #4120</b><span class="line w50"></span></span><span class="mk__tag" style="margin:0">Auto</span></div>
-            </div>
-            <q>A vaga encontra a pessoa certa sem eu abrir três telas.</q>
-          </article>
-
-          <article class="per glass-lite" data-min="780">
-            <span class="per__time">13:00 <s></s> Motorista</span>
-            <div class="per__who"><span class="per__ico">MT</span><h3>A viagem</h3></div>
-            <div class="per__mini">
-              <div class="route"><i></i><s class="done"></s><i></i><s></s><i class="pale"></i><s></s><i class="pale"></i></div>
-              <div class="row"><span class="chip chip--teal">Foto ok</span><span class="gr"><b>Embarque · UBS Centro</b><span class="line w40"></span></span></div>
-            </div>
-            <q>A confirmação é a foto: acabou a discussão de horário.</q>
-          </article>
-
-          <article class="per glass-lite" data-min="782">
-            <span class="per__time">13:02 <s></s> Paciente · Regula+</span>
-            <div class="per__who"><span class="per__ico">R+</span><h3>O aviso</h3></div>
-            <div class="per__mini">
-              <div class="row"><span class="gr"><b>Consulta confirmada</b><span class="line w70"></span></span><span class="chip chip--teal">12/08</span></div>
-              <div class="row"><span class="gr"><b>Transporte reservado</b><span class="line w50"></span></span><span class="chip">Veículo 07</span></div>
-            </div>
-            <q>Descobri o horário no aplicativo antes de alguém me ligar.</q>
-          </article>
-
-          <article class="per glass-lite" data-min="1060">
-            <span class="per__time">17:40 <s></s> Secretaria</span>
-            <div class="per__who"><span class="per__ico">SC</span><h3>O fechamento</h3></div>
-            <div class="per__mini">
-              <span class="bars" style="height:46px"><i style="height:40%"></i><i style="height:62%"></i><i style="height:50%"></i><i style="height:88%"></i><i style="height:70%"></i></span>
-              <div class="row"><span class="gr"><b>Atendimento na produção do dia</b><span class="line w50"></span></span><span class="chip chip--teal">Validado</span></div>
-            </div>
-            <q>Consigo responder o conselho de saúde no mesmo dia.</q>
-          </article>
+        <div role="tabpanel" id="j-p1" aria-labelledby="j-a1" class="vitrine-painel">
+          <div class="passo-texto">
+            <p class="passo-quem">Quem registra: a equipe da UBS</p>
+            <h3>Triagem e consulta acontecem na mesma ficha.</h3>
+            <p>O médico abre o atendimento e já vê a alergia em destaque, os problemas ativos e os laudos que voltaram da regulação.</p>
+            <p class="passo-fica"><b>Fica registrado</b> triagem, evolução, encaminhamentos e documentos clínicos em PDF.</p>
+            <a class="mais" href="solucoes/atencao-primaria.html">Atenção primária</a>
+          </div>
+          <div class="janela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>UBS · Atendimento médico</span></div><img src="assets/telas/ubs-atendimento.webp" srcset="assets/telas/ubs-atendimento-p.webp 800w, assets/telas/ubs-atendimento.webp 1600w" sizes="(max-width:900px) 92vw, 620px" width="1600" height="1000" alt="Atendimento médico com alergia em destaque, problemas ativos e resultados da regulação na mesma ficha, com dados fictícios" loading="lazy" decoding="async"></div>
         </div>
+        <div role="tabpanel" id="j-p2" aria-labelledby="j-a2" class="vitrine-painel">
+          <div class="passo-texto">
+            <p class="passo-quem">Quem registra: a central de regulação</p>
+            <h3>O encaminhamento entra na esteira com protocolo.</h3>
+            <p>A central analisa, pede complemento ou reclassifica, cruza o pedido com as vagas publicadas e agenda. A unidade de origem acompanha cada passo.</p>
+            <p class="passo-fica"><b>Fica registrado</b> as etapas do processo, do protocolo ao encerramento, e cada decisão no histórico.</p>
+            <a class="mais" href="solucoes/regulacao.html">Regulação assistencial</a>
+          </div>
+          <div class="janela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Regulação · Solicitação</span></div><img src="assets/telas/regulacao-solicitacao.webp" srcset="assets/telas/regulacao-solicitacao-p.webp 800w, assets/telas/regulacao-solicitacao.webp 1600w" sizes="(max-width:900px) 92vw, 620px" width="1600" height="1000" alt="Detalhe de uma solicitação agendada, com as etapas do processo à direita, da entrada ao encerramento, com dados fictícios" loading="lazy" decoding="async"></div>
+        </div>
+        <div role="tabpanel" id="j-p3" aria-labelledby="j-a3" class="vitrine-painel">
+          <div class="passo-texto">
+            <p class="passo-quem">Quem registra: o transporte e o motorista</p>
+            <h3>Se o atendimento é em outra cidade, a viagem já sai agendada.</h3>
+            <p>O agendamento tem protocolo, veículo e horário de embarque. No dia, o motorista confirma quem embarcou lendo o QR Code no celular.</p>
+            <p class="passo-fica"><b>Fica registrado</b> protocolo, acompanhante, embarque e presença, com relatórios e o BPA do transporte.</p>
+            <a class="mais" href="solucoes/transporte.html">Transporte sanitário</a>
+          </div>
+          <div class="janela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Transporte · Agendamentos</span></div><img src="assets/telas/transporte-agenda.webp" srcset="assets/telas/transporte-agenda-p.webp 800w, assets/telas/transporte-agenda.webp 1600w" sizes="(max-width:900px) 92vw, 620px" width="1600" height="1000" alt="Agendamentos do transporte do dia, com protocolo, destino, embarque, veículo e situação de cada passageiro, com dados fictícios" loading="lazy" decoding="async"></div>
+        </div>
+        <div role="tabpanel" id="j-p4" aria-labelledby="j-a4" class="vitrine-painel passo-cel">
+          <div class="passo-texto">
+            <p class="passo-quem">Quem vê: o próprio cidadão</p>
+            <h3>O paciente acompanha pelo celular o que a rede decidiu.</h3>
+            <p>O Regula+ usa a mesma base do portal. O agendamento, a senha do dia e a posição no retorno aparecem para o paciente, e ele conversa com a central pelo app.</p>
+            <p class="passo-fica"><b>Fica registrado</b> o aceite do termo de privacidade, com versão, data e hora.</p>
+            <a class="mais" href="solucoes/regula-mais.html">Regula+</a>
+          </div>
+          <div class="aparelho"><img src="assets/telas/app-inicio.webp" srcset="assets/telas/app-inicio-p.webp 420w, assets/telas/app-inicio.webp 780w" sizes="240px" width="780" height="1688" alt="Início do Regula+ com a consulta agendada, a senha de atendimento e o retorno de endocrinologia em fila, com dados fictícios" loading="lazy" decoding="async"></div>
+        </div>
+        <div role="tabpanel" id="j-p5" aria-labelledby="j-a5" class="vitrine-painel">
+          <div class="passo-texto">
+            <p class="passo-quem">Quem registra: o faturamento</p>
+            <h3>O que foi atendido vira produção conferida.</h3>
+            <p>A competência do BPA reúne os procedimentos, valida cada registro com SIGTAP e CNES e aponta o que tem alerta antes de fechar e exportar.</p>
+            <p class="passo-fica"><b>Fica registrado</b> coleta, validação, fechamento e reabertura da competência.</p>
+            <a class="mais" href="solucoes/faturamento-sus.html">Faturamento SUS</a>
+          </div>
+          <div class="janela"><div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Faturamento · BPA</span></div><img src="assets/telas/faturamento-bpa.webp" srcset="assets/telas/faturamento-bpa-p.webp 800w, assets/telas/faturamento-bpa.webp 1600w" sizes="(max-width:900px) 92vw, 620px" width="1600" height="1000" alt="Competência do BPA aberta, com registros válidos, com alerta e com erro e a validação de cada procedimento, com dados fictícios" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <div class="trilha-pe">
+        <p class="miudo">Telas reais do sistema, com dados fictícios.</p>
+        <button type="button" class="btn btn-2 btn-p btn-seta" data-proxima>Próxima etapa</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════ APP DO PACIENTE (celular 3D) ══════════════════ -->
-<section class="sec" id="app">
-  <div class="wrap app-grid">
-    <div>
-      <p class="eyebrow rv" style="color:#E8B4F0">Regula+ · aplicativo do paciente</p>
-      <h2 class="h-l rv" style="margin:14px 0 16px">O portal cabe no bolso de quem espera.</h2>
-      <p class="lede rv" style="--d:120ms">O Regula+ não é um site separado com dados copiados: é a mesma base do
-        portal, vista pelo lado do paciente. O que o regulador decide às 11h20 aparece no celular às 11h21.</p>
-      <ul class="app-list">
-        <li class="rv" style="--d:60ms"><b>Agenda</b><span><strong>Consulta e exame</strong> com data, hora e unidade, direto da vaga casada na regulação.</span></li>
-        <li class="rv" style="--d:120ms"><b>Transporte</b><span><strong>Veículo e ponto de embarque</strong>, atualizados quando o motorista confirma a rota.</span></li>
-        <li class="rv" style="--d:180ms"><b>Chat</b><span><strong>Conversa com a regulação</strong> no mesmo canal do operador, identificada por CPF.</span></li>
-        <li class="rv" style="--d:240ms"><b>Voz</b><span><strong>Chamada de voz</strong> pelo próprio app, com servidor TURN dedicado.</span></li>
-        <li class="rv" style="--d:300ms"><b>Avisos</b><span><strong>Recados da rede ou da unidade</strong>, com nível de urgência definido na origem.</span></li>
+<!-- integração: o que as soluções têm em comum -->
+<section class="secao secao-branca" id="ecossistema" aria-labelledby="t-eco">
+  <div class="caixa eco">
+    <div class="eco-cab surge">
+      <div>
+        <p class="sobre">Integração</p>
+        <h2 class="t-2" id="t-eco">Cada equipe na sua tela. Todas sobre a mesma base.</h2>
+      </div>
+      <div>
+        <p class="lead">As soluções não trocam planilhas entre si: escrevem no mesmo cadastro, obedecem à mesma regra de acesso e deixam rastro no mesmo histórico. É isso que permite à regulação ver o atendimento da UBS e ao paciente ver o agendamento no app.</p>
+        <a class="mais" href="solucoes/tecnologia-seguranca.html">Como a plataforma é construída</a>
+      </div>
+    </div>
+    <div class="pilha revela" role="img" aria-label="Diagrama: seis frentes de trabalho (atenção primária, urgência e hospital, regulação, transporte sanitário, Regula+ e gestão e faturamento) apoiadas sobre três camadas comuns: cadastro único do paciente, regra de acesso por papel e trilha de auditoria.">
+      <ul class="pilha-modulos" aria-hidden="true">
+        <li>Atenção primária</li>
+        <li>Urgência e hospital</li>
+        <li>Regulação</li>
+        <li>Transporte sanitário</li>
+        <li class="cid">Regula+</li>
+        <li>Gestão e faturamento</li>
       </ul>
-    </div>
-
-    <div class="phone3d rv" id="phone3d" style="--d:120ms">
-      <div class="phone3d__tilt" id="phoneTilt">
-        <div class="phone3d__obj">
-          <div class="phone3d__f phone3d__f--back"></div>
-          <div class="phone3d__f phone3d__f--r"></div>
-          <div class="phone3d__f phone3d__f--l"></div>
-          <div class="phone3d__f phone3d__f--t"></div>
-          <div class="phone3d__f phone3d__f--b"></div>
-          <div class="phone3d__f phone3d__f--front">
-            <div class="phone3d__scr">
-              <div class="pscr__status">
-                <span>09:41</span>
-                <span>
-                  <i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:10px"></i>
-                  <b class="pscr__batt"></b>
-                </span>
-              </div>
-
-              <div class="pscr__top">
-                <div>
-                  <em>REGULA+</em>
-                  <b>Olá, Maria</b>
-                </div>
-                <span class="pscr__av">MJ</span>
-              </div>
-
-              <div class="pscr__body">
-                <div class="pscr__sec">Próximo atendimento</div>
-                <div class="pscr__card pscr__card--hi">
-                  <span class="pscr__tag">Confirmada</span>
-                  <b>Cardiologia · adulto</b>
-                  <small>12 de agosto, 09h20 · Hospital de referência</small>
-                </div>
-
-                <div class="pscr__sec">Sua viagem</div>
-                <div class="pscr__card">
-                  <span class="pscr__tag pscr__tag--go">Veículo 07</span>
-                  <b>Embarque 06h40 · UBS Centro</b>
-                  <small>Leve documento com foto e o cartão SUS</small>
-                </div>
-
-                <div class="pscr__card">
-                  <span class="pscr__tag pscr__tag--warn">Exame pendente</span>
-                  <b>Hemograma · 3 tubos</b>
-                  <small>Laboratório municipal · jejum de 8 horas</small>
-                </div>
-
-                <div class="pscr__card">
-                  <span class="pscr__dot"></span>
-                  <span class="pscr__tag">Regulação</span>
-                  <b>Nova mensagem</b>
-                  <small>“Sua vaga foi confirmada, Maria.”</small>
-                </div>
-              </div>
-
-              <div class="pscr__nav">
-                <span class="on"><i></i>Início</span>
-                <span><i></i>Agenda</span>
-                <span><i></i>Chat</span>
-                <span><i></i>Perfil</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="pilha-base" aria-hidden="true">
+        <div><b>Cadastro único do paciente</b><span>CPF, CNS e endereço, com consulta ao CADSUS</span></div>
+        <div><b>Regra de acesso</b><span>painel, papel e unidade, conferidos no servidor</span></div>
+        <div><b>Trilha de auditoria</b><span>toda gravação, com quem e quando</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════ TESE ══════════════════ -->
-<section class="sec fade-x" id="tese" style="--fade-c:var(--deep)">
-  <canvas id="net" aria-hidden="true"></canvas>
-  <div class="orbit" aria-hidden="true">
-    <div class="orbit__card glass fly" style="--ox:4%; --oy:16%" data-fly="thru" data-x0="-300" data-x1="120" data-y0="150" data-y1="-70">
-      <em>Regulação</em><b>8 etapas</b><span>da solicitação recebida ao encerramento, com responsável visível</span>
+<!-- índice das soluções: onde cada uma trabalha -->
+<section class="secao" id="solucoes" aria-labelledby="t-sol">
+  <div class="caixa">
+    <div class="cab surge">
+      <p class="sobre">Soluções</p>
+      <h2 class="t-2" id="t-sol">Onde cada solução trabalha.</h2>
+      <p class="lead">Organizadas pelo lugar da rede em que são usadas. Cada uma tem a sua página, com as funções e as telas.</p>
     </div>
-    <div class="orbit__card glass fly" style="--ox:auto; --oy:14%; right:4%; left:auto" data-fly="thru" data-x0="320" data-x1="-110" data-y0="180" data-y1="-60">
-      <em>Fila estadual</em><b>80.367</b><span>pacientes deduplicados numa fila só</span>
+    <div class="indice" data-indice id="mais-solucoes">
+      <div class="indice-lista">
+        <div class="indice-grupo">
+          <h3>Na unidade de saúde</h3>
+          <a class="indice-linha" href="solucoes/recepcao-senhas.html" data-tela="senhas-tv"><b>Recepção, senhas e TV</b><span>Senha no totem, chamada na TV com voz, impressão térmica e indicadores do atendimento.</span><em>Recepção</em></a>
+          <a class="indice-linha" href="solucoes/atencao-primaria.html" data-tela="ubs-fila"><b>Atenção primária</b><span>Fila com chamada, triagem, consulta, Paciente 360, sala de vacina e farmácia.</span><em>Equipes da UBS</em></a>
+          <a class="indice-linha" href="solucoes/urgencia-hospitalar.html" data-tela="upa-classificacao"><b>UPA e módulos hospitalares</b><span>Classificação de risco de Manchester, mapa de leitos, higienização, pré-internação e ouvidoria.</span><em>Pronto-atendimento</em></a>
+        </div>
+        <div class="indice-grupo">
+          <h3>Na central</h3>
+          <a class="indice-linha" href="solucoes/regulacao.html" data-tela="regulacao-kanban"><b>Regulação assistencial</b><span>Solicitações com protocolo, vagas cruzadas com a fila, retornos, fila estadual e auditoria médica.</span><em>Central de regulação</em></a>
+          <a class="indice-linha" href="solucoes/transporte.html" data-tela="transporte-motorista" data-cel><b>Transporte sanitário</b><span>Viagens com protocolo, embarque por QR Code, veículos, motoristas e casa de apoio.</span><em>Central de transporte</em></a>
+        </div>
+        <div class="indice-grupo">
+          <h3>Com o cidadão</h3>
+          <a class="indice-linha" href="solucoes/regula-mais.html" data-tela="app-chat" data-cel><b>Regula+</b><span>Agendamentos, senhas, exames, vacinas e conversa com a central, no aplicativo Android.</span><em>Cidadão</em></a>
+        </div>
+        <div class="indice-grupo">
+          <h3>Na gestão</h3>
+          <a class="indice-linha" href="solucoes/faturamento-sus.html" data-tela="faturamento-bpa"><b>Faturamento SUS</b><span>Competências do BPA conferidas com SIGTAP e CNES, produção apurada e exportação do arquivo.</span><em>Faturamento</em></a>
+          <a class="indice-linha" href="solucoes/administracao.html" data-tela="admin-permissoes"><b>Administração e acessos</b><span>Usuários, unidades e permissões por painel e por papel, com administrador por unidade.</span><em>Secretaria</em></a>
+          <a class="indice-linha" href="solucoes/administracao.html#pessoas"><b>RH, ponto e capacitação</b><span>Ponto por selfie e GPS, ausências e férias, cursos com progresso e certificado.</span><em>Recursos humanos</em></a>
+        </div>
+      </div>
+      <div class="indice-tela" aria-hidden="true">
+        <div class="indice-quadro"><img alt="" src="assets/telas/senhas-tv-p.webp" width="800" height="500" loading="lazy" decoding="async"></div>
+        <p class="miudo" data-indice-legenda>Passe o mouse por uma solução para ver a tela.</p>
+      </div>
     </div>
-    <div class="orbit__card glass fly" style="--ox:7%; --oy:62%" data-fly="thru" data-x0="-260" data-x1="90" data-y0="220" data-y1="-90">
-      <em>Prazo</em><b>Dias úteis</b><span>o vencimento nunca cai num sábado</span>
-    </div>
-    <div class="orbit__card glass fly" style="--ox:auto; --oy:64%; right:6%; left:auto" data-fly="thru" data-x0="280" data-x1="-90" data-y0="240" data-y1="-80">
-      <em>Acesso</em><b>RBAC por unidade</b><span>quem vê o quê, auditável na matriz</span>
-    </div>
-  </div>
-  <span class="net-cap">53 unidades · um único cadastro de paciente</span>
-  <div class="wrap">
-    <p class="eyebrow rv">A ideia</p>
-    <h2 class="h-l rv" style="--d:80ms">O sistema não pode acabar onde a <span class="mark">responsabilidade continua</span>.</h2>
-    <p class="lede rv" style="--d:160ms">Quase todo software de saúde municipal cobre um pedaço e devolve o
-      paciente para o mundo: para a planilha, para o grupo de mensagens, para a ligação. O Portal
-      AllRegTech foi construído ao contrário: o paciente entra uma vez e a rede inteira enxerga
-      onde ele está.</p>
   </div>
 </section>
 
-<!-- ══════════════════ TECNOLOGIA ══════════════════ -->
-<section class="sec" id="tecnologia">
-  <div class="wrap">
-    <div class="tec-top">
-      <div class="sec__hd rv" style="margin:0">
-        <p class="eyebrow">Por baixo</p>
-        <h2 class="h-l">Construído para rodar em VPS de secretaria, não em nuvem de startup.</h2>
-        <p class="lede">Stack enxuta, banco relacional, processo supervisionado e integração com o que
-          o município já é obrigado a alimentar. Sem orquestrador, sem serviço gerenciado e sem
-          fatura que cresce junto com o movimento da rede.</p>
-        <div class="tec-facts">
-          <div><b>1</b><span>VPS Ubuntu para toda a rede</span></div>
-          <div><b>24/7</b><span>operação supervisionada</span></div>
-          <div><b>0</b><span>serviços cobrados por uso</span></div>
+<!-- vídeo -->
+<section class="secao secao-branca" id="video" aria-labelledby="t-video">
+  <div class="caixa video">
+    <div class="surge">
+      <p class="sobre">Apresentação</p>
+      <h2 class="t-2" id="t-video">Oito minutos para ver a rede trabalhando junto.</h2>
+      <p class="lead" style="margin-top:14px">Por que a rede se fragmenta em sistemas que não conversam e o que muda quando todos escrevem no mesmo cadastro.</p>
+      <p class="miudo" style="margin-top:16px">8 min 18 s · assista sem sair da página</p>
+    </div>
+    <figure class="surge">
+      <video src="video-allregtech.mp4" poster="video-capa.jpg" controls playsinline preload="none" aria-label="Vídeo de apresentação da AllRegTech"></video>
+    </figure>
+  </div>
+</section>
+
+<!-- segurança: o que é controlado e o que fica registrado -->
+<section class="secao" id="confianca" aria-labelledby="t-conf">
+  <div class="caixa conf">
+    <div>
+      <div class="surge">
+        <p class="sobre">Tecnologia e segurança</p>
+        <h2 class="t-2" id="t-conf">Quem vê, o que muda e quando.</h2>
+        <p class="lead" style="margin-top:14px">Dado de saúde pede controle de acesso e memória do que aconteceu. Estes são os controles que já funcionam hoje.</p>
+      </div>
+      <dl class="controles surge">
+        <div><dt>Acesso por perfil</dt><dd>Painéis e unidades liberados por papel. A regra é conferida no servidor, não só na tela.</dd></div>
+        <div><dt>Trilha de auditoria</dt><dd>Toda gravação no sistema fica registrada, com senhas e chaves mascaradas.</dd></div>
+        <div><dt>Privacidade</dt><dd>O cidadão aceita um termo versionado, com data, hora e origem registradas.</dd></div>
+        <div><dt>Cópias de segurança</dt><dd>Backup diário do banco, cifrado e guardado fora do servidor principal.</dd></div>
+      </dl>
+      <p class="surge" style="margin-top:24px"><a class="mais" href="solucoes/tecnologia-seguranca.html">Tecnologia e segurança em detalhe</a></p>
+    </div>
+    <figure class="registro revela" aria-labelledby="registro-legenda">
+      <div class="registro-cab"><b>Trilha de auditoria</b><span>14/10/2026</span></div>
+      <ol>
+        <li><time>10:54</time><span>Recepção</span><b>Emitiu a senha</b><code>REC-010 · preferencial</code></li>
+        <li><time>12:55</time><span>Recepção</span><b>Chamou no guichê</b><code>Guichê 01</code></li>
+        <li><time>13:20</time><span>UBS</span><b>Registrou a triagem</b><code>classificação: verde</code></li>
+        <li><time>13:41</time><span>UBS</span><b>Encaminhou</b><code>cardiologia · protocolo 2026000002</code></li>
+        <li><time>13:42</time><span>Administração</span><b>Alterou usuário</b><code>senha: ••••••</code></li>
+      </ol>
+      <figcaption id="registro-legenda" class="miudo">Ilustração simplificada do registro, com dados fictícios. A senha nunca aparece: o sistema guarda a gravação com o campo mascarado.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- convite -->
+<section class="secao" id="contato" aria-labelledby="t-conv" style="padding-top:0">
+  <div class="caixa">
+    <div class="convite surge">
+      <div>
+        <p class="sobre">Demonstração</p>
+        <h2 class="t-2" id="t-conv">Veja um paciente atravessar a rede, do guichê ao BPA.</h2>
+        <p class="lead">Mostramos o sistema funcionando com dados fictícios, no ritmo da sua equipe, e respondemos sobre a implantação no seu município.</p>
+        <div class="convite-acoes">
+          <a class="btn btn-1 btn-seta" href="mailto:diretoria@allregtech.com?subject=Demonstra%C3%A7%C3%A3o%20da%20AllRegTech">Agendar demonstração</a>
+          <a class="mais" href="mailto:diretoria@allregtech.com">diretoria@allregtech.com</a>
         </div>
       </div>
+      <div>
+        <p class="pauta-rot">Roteiro de 40 minutos</p>
+        <ol class="pauta">
+          <li><em>10 min</em><div><b>A recepção e a fila</b><span>Cadastro, senha emitida e o painel de chamada na TV.</span></div></li>
+          <li><em>15 min</em><div><b>A esteira da regulação</b><span>Solicitação, análise, vaga e o transporte do dia.</span></div></li>
+          <li><em>10 min</em><div><b>O paciente no celular</b><span>O aviso chegando e a conversa com a central.</span></div></li>
+          <li><em>5 min</em><div><b>O que vira produção</b><span>Produção apurada e o faturamento SUS.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="choice rv" style="--d:80ms">
-        <div class="choice__bar">escolha de infraestrutura</div>
+</main>
+
+<footer class="rodape">
+  <div class="caixa">
+    <div class="rodape-grade">
+      <div class="rodape-marca">
+        <img src="assets/logo-art.png" alt="AllRegTech" width="84" height="43">
+        <p>Plataforma de gestão da saúde pública municipal, no navegador da unidade e no celular do cidadão.</p>
+      </div>
+      <div>
+        <h2>Soluções</h2>
         <ul>
-          <li class="no rv" style="--d:140ms"><i>✕</i><b>Orquestrador de containers</b>
-            <span>Mais uma camada para a equipe da secretaria manter em pé.</span></li>
-          <li class="no rv" style="--d:200ms"><i>✕</i><b>Serviço gerenciado cobrado por uso</b>
-            <span>Fatura que cresce junto com o movimento da rede.</span></li>
-          <li class="no rv" style="--d:260ms"><i>✕</i><b>Bundler no frontend</b>
-            <span>Correção que depende de build para chegar na unidade.</span></li>
-          <li class="yes rv" style="--d:320ms"><i>✓</i><b>Stack que a equipe já sabe operar</b>
-            <span>Node, PostgreSQL e nginx, sem peça exótica no caminho.</span></li>
-          <li class="yes rv" style="--d:380ms"><i>✓</i><b>Processo supervisionado</b>
-            <span>Se cai, sobe sozinho, cada app com log próprio.</span></li>
-          <li class="yes rv" style="--d:440ms"><i>✓</i><b>Atualização sem instalar nada</b>
-            <span>A recepção abre o navegador e já está na versão nova.</span></li>
+          <li><a href="solucoes/regulacao.html">Regulação</a></li>
+          <li><a href="solucoes/atencao-primaria.html">Atenção primária</a></li>
+          <li><a href="solucoes/urgencia-hospitalar.html">Urgência e hospital</a></li>
+          <li><a href="solucoes/transporte.html">Transporte sanitário</a></li>
+          <li><a href="solucoes/regula-mais.html">Regula+</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Plataforma</h2>
+        <ul>
+          <li><a href="solucoes/recepcao-senhas.html">Recepção e senhas</a></li>
+          <li><a href="solucoes/faturamento-sus.html">Faturamento SUS</a></li>
+          <li><a href="solucoes/administracao.html">Administração</a></li>
+          <li><a href="solucoes/tecnologia-seguranca.html">Tecnologia e segurança</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="mailto:diretoria@allregtech.com">diretoria@allregtech.com</a></li>
+          <li><a href="#contato">Agendar demonstração</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+          <li><a href="/material/">Área restrita</a></li>
         </ul>
       </div>
     </div>
-    <div class="arch">
-      <div class="arch__tier rv">
-        <span class="arch__label">Borda</span>
-        <div class="node"><span class="node__k"><i></i>TLS · vhosts</span><b>nginx</b><span>TLS em todos os endereços, com bloqueio de arquivos sensíveis na borda.</span></div>
-        <div class="node"><span class="node__k"><i></i>Supervisão</span><b>PM2</b><span>Cada app é um processo nomeado, com restart automático e log próprio.</span></div>
-        <div class="node"><span class="node__k"><i></i>Mídia</span><b>coturn · TURN</b><span>Servidor próprio para a chamada de voz atravessar NAT de operadora.</span></div>
-      </div>
-
-      <div class="arch__join" aria-hidden="true"></div>
-
-      <div class="arch__tier rv">
-        <span class="arch__label">Aplicação</span>
-        <div class="node node--wide"><span class="node__k"><i></i>Servidor</span><b>Node.js + Express</b><span>Servidor único por app; o frontend é modular e montado no servidor, não empacotado por bundler.</span></div>
-        <div class="node"><span class="node__k"><i></i>Tempo real</span><b>Socket.IO</b><span>Painel de senhas, TV de chamada e chat, sem recarregar a página.</span></div>
-        <div class="node"><span class="node__k"><i></i>Voz</span><b>WebRTC</b><span>Chamada do operador para o paciente dentro do próprio aplicativo.</span></div>
-        <div class="node"><span class="node__k"><i></i>Mobile</span><b>Capacitor · Android</b><span>Regula+ empacotado em APK, espelhando o portal do paciente.</span></div>
-      </div>
-
-      <div class="arch__join" aria-hidden="true"></div>
-
-      <div class="arch__tier rv">
-        <span class="arch__label">Dados e integrações</span>
-        <div class="node node--wide"><span class="node__k"><i></i>Banco</span><b>PostgreSQL</b><span>Migrado de MariaDB por uma camada de compatibilidade, com o caminho de volta preservado.</span></div>
-        <div class="node"><span class="node__k"><i></i>Ministério</span><b>PEC e-SUS · BPA</b><span>Envio de produção, com ambiente de simulação isolado da API real.</span></div>
-        <div class="node"><span class="node__k"><i></i>Cadastro</span><b>CADSUS · SIGTAP</b><span>Cartão nacional e tabela de procedimentos consultados na origem.</span></div>
-        <div class="node"><span class="node__k"><i></i>Mensageria</span><b>WhatsApp Cloud API</b><span>Canal oficial da Meta, sem sessão de navegador improvisada.</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════ CTA ══════════════════ -->
-<section id="contato">
-  <div class="wrap">
-    <div class="cta rv">
-      <div class="cta__grid">
-        <div class="cta__lead">
-          <p class="eyebrow" style="color:#E8B4F0">Próximo passo</p>
-          <h2 class="h-l">Vamos percorrer a sua rede na tela.</h2>
-          <p class="lede" style="color:var(--on-deep-2)">Uma sessão de 40 minutos com dados de demonstração: entramos pela
-            recepção da UBS e saímos no faturamento, passando por regulação, transporte e o aplicativo do paciente.</p>
-          <div class="hero-cta">
-            <a class="btn btn--primary" href="mailto:diretoria@allregtech.com?subject=Demonstra%C3%A7%C3%A3o%20do%20Portal%20AllRegTech">Agendar demonstração</a>
-            <a class="btn btn--onDeep" href="#modulos">Rever os módulos</a>
-          </div>
-          <p class="cta__mail">ou escreva direto para
-            <a href="mailto:diretoria@allregtech.com">diretoria@allregtech.com</a></p>
-        </div>
-
-        <ol class="agenda">
-          <li class="rv" style="--d:120ms"><em>10 min</em><b>A recepção e a fila</b>
-            <p>Cadastro do cidadão, senha emitida e o painel de chamada rodando na TV da unidade.</p></li>
-          <li class="rv" style="--d:180ms"><em>15 min</em><b>A esteira da regulação</b>
-            <p>Solicitação, análise, vaga casada e o transporte reservado para o dia da consulta.</p></li>
-          <li class="rv" style="--d:240ms"><em>10 min</em><b>O paciente no celular</b>
-            <p>O aviso chegando, a confirmação de volta e a chamada de voz do operador dentro do app.</p></li>
-          <li class="rv" style="--d:300ms"><em>5 min</em><b>O que vira receita</b>
-            <p>Produção apurada por profissional e o faturamento SUS fechando o ciclo.</p></li>
-        </ol>
-      </div>
-
-      <p class="cta__sign rv" style="--d:360ms">O futuro não é promessa.
-        <b>É escolha de infraestrutura hoje.</b></p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div class="foot__brand">
-        <a class="brand" href="#hero" aria-label="Portal AllRegTech · início">
-          <span class="brand-mark" style="--bm:112px"></span>
-        </a>
-        <p>Regulação, atenção básica, hospitalar, transporte sanitário e faturamento SUS na mesma
-          base de pacientes, no navegador da unidade e no celular do cidadão.</p>
-      </div>
-
-      <nav class="foot__col" aria-label="Seções do portfólio">
-        <span class="foot__t">Navegar</span>
-        <a href="#jornada">A jornada</a>
-        <a href="#video">Vídeo</a>
-        <a href="#modulos">Módulos</a>
-        <a href="#app">Aplicativo</a>
-        <a href="#tecnologia">Tecnologia</a>
-      </nav>
-
-      <div class="foot__col">
-        <span class="foot__t">Conversar</span>
-        <a href="/privacidade.html">Política de Privacidade</a>
-        <a href="mailto:diretoria@allregtech.com">diretoria@allregtech.com</a>
-        <a href="#contato">Agendar demonstração</a>
-        <a href="/material/" rel="nofollow">Área restrita</a>
-      </div>
-    </div>
-
-    <div class="foot__base">
-      <span>© 2026 AllRegTech</span>
-      <span>Plataforma de gestão da saúde pública municipal · web e Android</span>
-    </div>
+    <div class="rodape-base"><span>© 2026 AllRegTech</span><span>Plataforma de gestão da saúde pública municipal · web e Android</span></div>
   </div>
 </footer>
 
-<script>
-(function(){
-  "use strict";
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* ── reveal on scroll ── */
-  var rv = document.querySelectorAll(".rv");
-  if (reduce || !("IntersectionObserver" in window)) {
-    rv.forEach(function(el){ el.classList.add("in"); });
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
-    rv.forEach(function(el){ io.observe(el); });
-  }
-
-  /* ── barra de progresso + nav grudada ── */
-  var bar = document.getElementById("bar");
-  var nav = document.getElementById("nav");
-  var main = document.getElementById("pMain");
-  var fl = document.getElementById("pLeft");
-  var fr = document.getElementById("pRight");
-  var track = document.getElementById("jTrack");
-  var stages = Array.prototype.slice.call(document.querySelectorAll("#jStages .j-stage"));
-  var navItems = Array.prototype.slice.call(document.querySelectorAll("#jNav li"));
-  var stage = document.getElementById("pStage");
-  var compo = document.getElementById("pCompo");
-  var current = -1;
-  var ticking = false;
-  var scrollTiltX = 15, pointerX = 0, pointerY = 0;
-
-  function applyStage(){
-    if (!stage || reduce) return;
-    stage.style.setProperty("--rx", (scrollTiltX + pointerY).toFixed(2) + "deg");
-    stage.style.setProperty("--ry", pointerX.toFixed(2) + "deg");
-    stage.style.setProperty("--rz", (pointerX * -0.18).toFixed(2) + "deg");
-  }
-
-  /* ───── motor de deslocamento: cada elemento viaja de um ponto a outro ───── */
-  function clamp(v, a, b){ return v < a ? a : (v > b ? b : v); }
-  function lerp(a, b, t){ return a + (b - a) * t; }
-
-  function easeOutCubic(x){ return 1 - Math.pow(1 - x, 3); }
-  /* ultrapassa um pouco a posição final antes de assentar */
-  function easeOutBack(x){ var c1 = 0.92, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); }
-
-  var flyItems = [];
-  function registerFly(el, o){
-    flyItems.push({
-      el: el, mode: o.mode || "in",
-      x0: o.x0 || 0, x1: o.x1 || 0, y0: o.y0 || 0, y1: o.y1 || 0, z0: o.z0 || 0,
-      rx: o.rx || 0, ry: o.ry || 0, rz: o.rz || 0, blur: o.blur || 0,
-      s0: (o.s0 === undefined ? 1 : o.s0), fade: o.fade !== false, span: o.span || 0.62,
-      lag: o.lag || 0, sheen: !!o.sheen, done: false
-    });
-  }
-  Array.prototype.forEach.call(document.querySelectorAll("[data-fly]"), function(el){
-    registerFly(el, {
-      mode: el.dataset.fly,
-      x0: parseFloat(el.dataset.x0), x1: parseFloat(el.dataset.x1),
-      y0: parseFloat(el.dataset.y0), y1: parseFloat(el.dataset.y1),
-      fade: el.dataset.fly !== "thru"
-    });
-  });
-
-  /* ── módulos em hélice: os catorze cards orbitam um eixo e sobem com o scroll ── */
-  var modulos = document.getElementById("modulos");
-  var spiralTrack = document.getElementById("spiralTrack");
-  var spiralStage = document.getElementById("spiralStage");
-  var spiralCards = spiralStage ? Array.prototype.slice.call(spiralStage.querySelectorAll(".mod")) : [];
-  var spiralNum = document.getElementById("spiralNum");
-  var spiralName = document.getElementById("spiralName");
-  var spiralTitle = document.getElementById("spiralTitle");
-  var spiralCat = document.getElementById("spiralCat");
-  var spiralBefore = document.getElementById("spiralBefore");
-  var spiralIdx = document.getElementById("spiralIdx");
-  var idxItems = [];
-  var spiralFront = -1;
-
-  /* monta o índice dos catorze a partir dos próprios cards */
-  if (spiralIdx && spiralCards.length) {
-    spiralCards.forEach(function(c, i){
-      var li = document.createElement("li");
-      var b = document.createElement("b");
-      b.textContent = (i + 1 < 10 ? "0" : "") + (i + 1);
-      var s = document.createElement("span");
-      s.textContent = c.querySelector("h3").textContent;
-      li.appendChild(b); li.appendChild(s);
-      spiralIdx.appendChild(li);
-      idxItems.push(li);
-    });
-  }
-  /* A hélice 3D fixada volta a ser o padrão. Ela cai para a linha do tempo
-     (spiral-off) só onde não faz sentido: tela estreita, tela muito baixa ou
-     preferência por menos movimento. */
-  var spiralOff = reduce || window.innerWidth < 1000 || window.innerHeight < 540;
-  if (modulos && spiralOff) modulos.classList.add("spiral-off");
-  /* sem isso os 14 cards apareceriam empilhados no mesmo ponto antes do
-     primeiro updateSpiral posicionar cada um na hélice */
-  if (!spiralOff) spiralCards.forEach(function(c){ c.style.setProperty("--so", "0"); });
-
-  /* o "no lugar de" saía nos painéis laterais da hélice; aqui vai para o card */
-  spiralCards.forEach(function(c){
-    var before = c.dataset.before;
-    if (!before) return;
-    var p = document.createElement("p");
-    p.className = "mod__before";
-    var b = document.createElement("b");
-    b.textContent = "No lugar de";
-    p.appendChild(b);
-    p.appendChild(document.createTextNode(before));
-    c.appendChild(p);
-  });
-
-  /* na grade de fallback os cards ainda entram voando dos cantos */
-  if (spiralOff) {
-    var GOLDEN = 2.39996323;
-    spiralCards.forEach(function(el, i){
-      el.classList.add("flying");
-      var a = i * GOLDEN, cx = Math.cos(a), side = cx >= 0 ? 1 : -1;
-      registerFly(el, {
-        mode: "deck", span: 0.74, sheen: true,
-        x0: cx * (280 + (i % 4) * 100), y0: 100 + Math.abs(Math.sin(a)) * 130,
-        z0: -400 - (i % 5) * 130, rx: 10 + (i % 4) * 4,
-        ry: -side * (22 + (i % 3) * 8), rz: side * (8 + (i % 5) * 3),
-        s0: 0.86, blur: 8
-      });
-    });
-  }
-
-  /* ── a hélice de luz: mesma projeção em perspectiva que o CSS usa nos cards ── */
-  var neon = document.getElementById("spiralNeon");
-  var nctx = neon && neon.getContext ? neon.getContext("2d") : null;
-  var NW = 0, NH = 0, PERSP = 1500, STAGE_Z = -400, STEP_DEG = 46;
-
-  function sizeNeon(){
-    if (!neon) return;
-    var dp = Math.min(window.devicePixelRatio || 1, 2);
-    NW = neon.clientWidth; NH = neon.clientHeight;
-    neon.width = Math.round(NW * dp); neon.height = Math.round(NH * dp);
-    if (nctx) nctx.setTransform(dp, 0, 0, dp, 0, 0);
-  }
-
-  /* t em "unidades de card": devolve o ponto já projetado na tela */
-  function helixPoint(t, active, radius, rise){
-    var d = t - active;
-    var ang = d * STEP_DEG * Math.PI / 180;
-    var x = Math.sin(ang) * radius;
-    var z = STAGE_Z + Math.cos(ang) * radius;
-    var y = d * rise;
-    var f = PERSP / (PERSP - z);
-    return { x: NW / 2 + x * f, y: NH * 0.46 + y * f, f: f, z: z };
-  }
-
-  function drawNeon(active, radius, rise){
-    if (!nctx || !NW) return;
-    nctx.clearRect(0, 0, NW, NH);
-    var lo = active - 3.4, hi = active + 3.4, steps = 108;
-
-    /* a fita da hélice, em três passadas: halo, brilho e núcleo aceso */
-    nctx.lineCap = "round"; nctx.lineJoin = "round";
-    var PASS = [
-      { w: 34, a: 0.10, core: false },
-      { w: 13, a: 0.30, core: false },
-      { w: 2.6, a: 1.00, core: true }
-    ];
-    for (var pass = 0; pass < PASS.length; pass++) {
-      var cfg = PASS[pass];
-      for (var s = 0; s < steps; s++) {
-        var t0 = lo + (hi - lo) * (s / steps);
-        var t1 = lo + (hi - lo) * ((s + 1) / steps);
-        var a = helixPoint(t0, active, radius, rise);
-        var b = helixPoint(t1, active, radius, rise);
-        var depth = clamp((a.f - 0.68) / 0.62, 0, 1);           /* perto = 1, longe = 0 */
-        var edge = clamp(1 - Math.abs(t0 - active) / 3.4, 0, 1);
-        var alpha = cfg.a * (0.25 + depth * 0.75) * edge;
-        if (alpha < 0.008) continue;
-        var teal = clamp((Math.sin(t0 * 0.85) + 1) / 2, 0, 1);  /* a luz varia de roxo a turquesa */
-        nctx.strokeStyle = cfg.core
-          ? "rgba(255,255,255," + alpha.toFixed(3) + ")"
-          : "rgba(214,204,239," + alpha.toFixed(3) + ")";
-        nctx.lineWidth = cfg.w * (0.45 + depth * 0.95);
-        nctx.beginPath(); nctx.moveTo(a.x, a.y); nctx.lineTo(b.x, b.y); nctx.stroke();
-      }
-    }
-
-    /* anel no nível do módulo da frente, marcando a volta atual */
-    var ringSteps = 64;
-    nctx.lineWidth = 1.2;
-    for (var rs = 0; rs < ringSteps; rs++) {
-      var ang0 = (rs / ringSteps) * Math.PI * 2, ang1 = ((rs + 1) / ringSteps) * Math.PI * 2;
-      var za = STAGE_Z + Math.cos(ang0) * radius, zb = STAGE_Z + Math.cos(ang1) * radius;
-      var fa = PERSP / (PERSP - za), fb2 = PERSP / (PERSP - zb);
-      var yr = NH * 0.46;
-      var ax = NW / 2 + Math.sin(ang0) * radius * fa, ay = yr + (Math.cos(ang0) * radius * 0.06) * fa;
-      var bx = NW / 2 + Math.sin(ang1) * radius * fb2, by = yr + (Math.cos(ang1) * radius * 0.06) * fb2;
-      var da = clamp((fa - 0.68) / 0.62, 0, 1);
-      nctx.strokeStyle = "rgba(255,255,255," + (0.05 + da * 0.16).toFixed(3) + ")";
-      nctx.beginPath(); nctx.moveTo(ax, ay); nctx.lineTo(bx, by); nctx.stroke();
-    }
-
-    /* raios do eixo até cada módulo: dá esqueleto à hélice */
-    for (var sp = 0; sp < spiralCards.length; sp++) {
-      if (Math.abs(sp - active) > 3.2) continue;
-      var pt = helixPoint(sp, active, radius, rise);
-      var axisY = NH * 0.46 + (sp - active) * rise * (PERSP / (PERSP - STAGE_Z));
-      var dd = clamp((pt.f - 0.68) / 0.62, 0, 1);
-      var ee = clamp(1 - Math.abs(sp - active) / 3.2, 0, 1);
-      nctx.strokeStyle = "rgba(214,204,239," + (0.09 + dd * ee * 0.3).toFixed(3) + ")";
-      nctx.lineWidth = 1 + dd * 0.8;
-      nctx.beginPath(); nctx.moveTo(NW / 2, axisY); nctx.lineTo(pt.x, pt.y); nctx.stroke();
-    }
-
-    /* um nó aceso na âncora de cada módulo */
-    for (var i = 0; i < spiralCards.length; i++) {
-      if (Math.abs(i - active) > 3.4) continue;
-      var q = helixPoint(i, active, radius, rise);
-      var dep = clamp((q.f - 0.68) / 0.62, 0, 1);
-      var near = clamp(1 - Math.abs(i - active), 0, 1);
-      var rad = (2.4 + near * 3.6) * (0.6 + dep * 0.8);
-      nctx.beginPath(); nctx.arc(q.x, q.y, rad * 4.5, 0, Math.PI * 2);
-      nctx.fillStyle = "rgba(214,204,239," + (0.10 * dep + near * 0.14).toFixed(3) + ")"; nctx.fill();
-      nctx.beginPath(); nctx.arc(q.x, q.y, rad, 0, Math.PI * 2);
-      nctx.fillStyle = "rgba(" + (near > 0.6 ? "255,255,255," : "214,204,239,") + (0.35 + dep * 0.5).toFixed(3) + ")";
-      nctx.fill();
-    }
-  }
-
-  function updateSpiral(scrollY){
-    if (!spiralTrack || !spiralCards.length || spiralOff) return;
-    var span = spH - window.innerHeight;
-    if (span <= 0) return;
-    var p = clamp((scrollY - spTop0) / span, 0, 1);
-    var n = spiralCards.length;
-    var active = p * (n - 1);
-    var radius = Math.min(window.innerWidth * 0.29, 460);
-    var rise = Math.min(window.innerHeight * 0.23, 158);
-    if (!NW) sizeNeon();
-    /* só desenha a hélice enquanto o painel fixo está de fato na tela */
-    if (scrollY > spTop0 - window.innerHeight && scrollY < spTop0 + spH) {
-      drawNeon(active, radius, rise);
-    }
-
-    for (var i = 0; i < n; i++) {
-      var c = spiralCards[i];
-      var d = i - active;
-      var ang = d * 46;                                   /* graus de volta por módulo */
-      var facing = Math.cos(ang * Math.PI / 180);         /* 1 de frente, -1 de costas */
-      var vis = clamp(1 - Math.abs(d) / 3.1, 0, 1);
-      c.style.setProperty("--sa", ang.toFixed(2) + "deg");
-      c.style.setProperty("--sy", (d * rise).toFixed(1) + "px");
-      c.style.setProperty("--sr", radius.toFixed(0) + "px");
-      c.style.setProperty("--so", (vis * (0.3 + 0.7 * clamp((facing + 1) / 2, 0, 1))).toFixed(3));
-      c.style.visibility = vis <= 0.015 ? "hidden" : "visible";
-    }
-
-    var front = clamp(Math.round(active), 0, n - 1);
-    if (front !== spiralFront) {
-      if (spiralCards[spiralFront]) spiralCards[spiralFront].classList.remove("is-front");
-      spiralFront = front;
-      var card = spiralCards[front];
-      card.classList.add("is-front");
-      var h3 = card.querySelector("h3");
-      var kk = card.querySelector(".mod__k");
-      if (spiralNum) spiralNum.textContent = (front + 1 < 10 ? "0" : "") + (front + 1);
-      if (spiralName && h3) spiralName.textContent = h3.textContent;
-      if (spiralTitle && h3) spiralTitle.textContent = h3.textContent;
-      if (spiralCat && kk) spiralCat.textContent = kk.textContent;
-      if (spiralBefore) spiralBefore.textContent = card.dataset.before || "";
-      for (var q = 0; q < idxItems.length; q++) {
-        idxItems[q].classList.toggle("on", q === front);
-        idxItems[q].classList.toggle("near", Math.abs(q - front) === 1);
-      }
-    }
-  }
-
-  /* ── o quadro do vídeo cresce à medida que chega ao centro da tela ── */
-  var vslot = document.getElementById("vslot");
-  if (vslot) registerFly(vslot, { mode: "deck", span: 0.86, s0: 0.78, y0: 70 });
-
-  /* ── títulos das seções: montam-se palavra a palavra, alternando os lados ── */
-  Array.prototype.forEach.call(document.querySelectorAll("[data-words]"), function(h){
-    var words = h.textContent.trim().split(/\s+/);
-    h.textContent = "";
-    words.forEach(function(w, i){
-      var s = document.createElement("span");
-      s.className = "word";
-      s.textContent = w;
-      h.appendChild(s);
-      if (i < words.length - 1) h.appendChild(document.createTextNode(" "));
-      /* só sobem e assentam, em cascata: deslocamento horizontal embaralharia a leitura */
-      registerFly(s, {
-        mode: "deck", span: 0.55, y0: 58, rz: (i % 2 === 0 ? -1 : 1) * 3.5,
-        s0: 1, lag: Math.min(i * 0.045, 0.4)
-      });
-    });
-  });
-
-  /* ── as posições no documento são medidas uma vez, não a cada quadro ──
-     ler getBoundingClientRect() intercalado com escritas de estilo força um
-     recálculo de layout por elemento; com ~100 elementos animados isso trava
-     o renderizador inteiro. Aqui só se lê em measureAll(). */
-  var jTop0 = 0, jH = 0, spTop0 = 0, spH = 0, rlTop0 = 0, rlH = 0, railLeft0 = 0;
-
-  /* rede de segurança da revelação: o IntersectionObserver só entrega quando a
-     aba está renderizando de fato. Se algo o impedir, o próprio scroll revela. */
-  var rvItems = [];
-  function measureRv(){
-    var sy = window.pageYOffset;
-    rvItems = [];
-    Array.prototype.forEach.call(document.querySelectorAll(".rv:not(.in)"), function(el){
-      var r = el.getBoundingClientRect();
-      rvItems.push({ el: el, top0: r.top + sy });
-    });
-  }
-  function sweepRv(scrollY){
-    if (!rvItems.length) return;
-    var limit = scrollY + window.innerHeight * 0.94, left = [];
-    for (var i = 0; i < rvItems.length; i++) {
-      if (rvItems[i].top0 <= limit) rvItems[i].el.classList.add("in");
-      else left.push(rvItems[i]);
-    }
-    rvItems = left;
-  }
-
-  function measureAll(){
-    var sy = window.pageYOffset;
-    measureRv();
-    for (var i = 0; i < flyItems.length; i++) {
-      var it = flyItems[i];
-      var r = it.el.getBoundingClientRect();
-      it.top0 = r.top + sy;
-      it.h = r.height;
-    }
-    if (track) { jTop0 = track.getBoundingClientRect().top + sy; jH = track.offsetHeight; }
-    if (spiralTrack) { spTop0 = spiralTrack.getBoundingClientRect().top + sy; spH = spiralTrack.offsetHeight; }
-    if (railTrack) { rlTop0 = railTrack.getBoundingClientRect().top + sy; rlH = railTrack.offsetHeight; }
-    if (railEl) {
-      var keep = railEl.style.getPropertyValue("--rx");
-      railEl.style.setProperty("--rx", "0px");
-      railLeft0 = railEl.getBoundingClientRect().left;
-      for (var c = 0; c < perCards.length; c++) {
-        perCards[c].cx0 = perCards[c].offsetLeft + perCards[c].offsetWidth / 2;
-      }
-      if (keep) railEl.style.setProperty("--rx", keep);
-    }
-  }
-
-  function updateFly(scrollY){
-    if (reduce) return;
-    var vh = window.innerHeight;
-    for (var i = 0; i < flyItems.length; i++) {
-      var it = flyItems[i];
-      var top = it.top0 - scrollY;
-      if (top + it.h < -320 || top > vh + 320) continue;
-      var st = it.el.style, fx, fy, fo;
-
-      if (it.mode === "thru") {
-        var t = clamp((vh - top) / (vh + it.h), 0, 1);
-        fx = lerp(it.x0, it.x1, t); fy = lerp(it.y0, it.y1, t); fo = 1;
-      } else {
-        var raw0 = (vh - top) / (vh * it.span);
-        var p = clamp((raw0 - it.lag) / (1 - it.lag), 0, 1);
-        var e = it.mode === "deck" ? easeOutBack(p) : easeOutCubic(p);
-        var k = 1 - e;              /* pode ficar negativo: é a ultrapassagem */
-        var raw = 1 - p;            /* sem overshoot, para desfoque e opacidade */
-        fx = it.x0 * k; fy = it.y0 * k;
-        fo = it.fade ? clamp(p * 2.4, 0, 1) : 1;
-        st.setProperty("--fz", (it.z0 * k).toFixed(1) + "px");
-        st.setProperty("--frx", (it.rx * k).toFixed(2) + "deg");
-        st.setProperty("--fry", (it.ry * k).toFixed(2) + "deg");
-        st.setProperty("--frz", (it.rz * k).toFixed(2) + "deg");
-        st.setProperty("--fsc", (1 - (1 - it.s0) * k).toFixed(4));
-        if (it.blur) st.setProperty("--fb", (it.blur * raw * raw).toFixed(2) + "px");
-        if (it.sheen) {
-          /* o brilho cruza o card no trecho final da chegada */
-          var sp = clamp((p - 0.5) / 0.42, 0, 1);
-          st.setProperty("--sheen", (-130 + sp * 270).toFixed(1) + "%");
-          st.setProperty("--sheeno", (sp > 0 && sp < 1 ? Math.sin(sp * Math.PI) * 0.9 : 0).toFixed(3));
-        }
-        if (p >= 0.999 && !it.done) { it.done = true; it.el.classList.remove("flying"); }
-        else if (p < 0.999 && it.done) { it.done = false; it.el.classList.add("flying"); }
-      }
-      st.setProperty("--fx", fx.toFixed(1) + "px");
-      st.setProperty("--fy", fy.toFixed(1) + "px");
-      st.setProperty("--fo", fo.toFixed(3));
-    }
-  }
-
-  /* ───── faixa de perfis: prende a seção e desliza os cards de lado ───── */
-  var pessoas = document.getElementById("pessoas");
-  var railTrack = document.getElementById("railTrack");
-  var railEl = document.getElementById("rail");
-  function railPinned(){
-    return railTrack && railEl && pessoas && !pessoas.classList.contains("flat") && window.innerWidth >= 1000;
-  }
-  var perCards = railEl ? Array.prototype.slice.call(railEl.querySelectorAll(".per")) : [];
-  var beads = [];
-  var dayClock = document.getElementById("dayClock");
-  var dayBar = document.getElementById("dayBar");
-  var activePer = -1, railW = 0, lastClock = "";
-
-  /* o fio do dia e uma conta por momento, desenhados fora dos cards
-     para não acompanharem a rotação 3D deles */
-  /* o fio e as contas são criados uma única vez; depois só se reposiciona,
-     para não haver mutação de DOM a cada remedição */
-  function buildThread(){
-    if (!railEl || !perCards.length || window.innerWidth < 1000) return;
-    var thread = railEl.querySelector(".rail__thread");
-    if (!thread) {
-      thread = document.createElement("span");
-      thread.className = "rail__thread";
-      thread.setAttribute("aria-hidden", "true");
-      railEl.appendChild(thread);
-    }
-    if (beads.length === perCards.length) {
-      var f0 = perCards[0], l0 = perCards[perCards.length - 1];
-      thread.style.left = (f0.offsetLeft + f0.offsetWidth / 2) + "px";
-      thread.style.width = Math.max((l0.offsetLeft + l0.offsetWidth / 2) - (f0.offsetLeft + f0.offsetWidth / 2), 0) + "px";
-      perCards.forEach(function(c, i){ beads[i].style.left = (c.offsetLeft + c.offsetWidth / 2) + "px"; });
-      railW = railEl.scrollWidth;
-      return;
-    }
-    var first = perCards[0], last = perCards[perCards.length - 1];
-    var x0 = first.offsetLeft + first.offsetWidth / 2;
-    var x1 = last.offsetLeft + last.offsetWidth / 2;
-    thread.style.left = x0 + "px";
-    thread.style.width = Math.max(x1 - x0, 0) + "px";
-    perCards.forEach(function(c){
-      var b = document.createElement("span");
-      b.className = "rail__bead";
-      b.setAttribute("aria-hidden", "true");
-      b.style.left = (c.offsetLeft + c.offsetWidth / 2) + "px";
-      railEl.appendChild(b);
-      beads.push(b);
-    });
-    railW = railEl.scrollWidth;
-  }
-
-  function hhmm(mins){
-    var h = Math.floor(mins / 60), m = Math.round(mins % 60);
-    return (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m;
-  }
-
-  function updateRail(scrollY){
-    if (!railEl || !perCards.length) return;
-    var rx = 0, pinned = railPinned();
-
-    /* a seção prende e a fila de momentos atravessa a tela */
-    if (pinned) {
-      var span = rlH - window.innerHeight;
-      if (span > 0) {
-        var p = clamp((scrollY - rlTop0) / span, 0, 1);
-        var dist = Math.max(railW - window.innerWidth + 40, 0);
-        rx = -p * dist;
-        railEl.style.setProperty("--rx", rx.toFixed(1) + "px");
-        if (dayBar) dayBar.style.width = (p * 100).toFixed(1) + "%";
-        if (dayClock) {
-          var m0 = parseFloat(perCards[0].dataset.min);
-          var m1 = parseFloat(perCards[perCards.length - 1].dataset.min);
-          var txt = hhmm(lerp(m0, m1, p));
-          if (txt !== lastClock) { dayClock.textContent = txt; lastClock = txt; }
-        }
-      }
-    }
-
-    /* coverflow: quem passa pelo centro cresce e se apruma; o resto recua girado */
-    if (reduce || !pinned) return;
-    var vc = window.innerWidth / 2, best = -1, bestD = Infinity;
-    for (var i = 0; i < perCards.length; i++) {
-      var c = perCards[i];
-      /* centro calculado, não medido: railLeft0 e cx0 vêm do measureAll */
-      var d = (railLeft0 + c.cx0 + rx - vc) / (window.innerWidth * 0.42);
-      var ad = Math.abs(d);
-      if (ad < bestD) { bestD = ad; best = i; }
-      var k = clamp(1 - ad, 0, 1);
-      c.style.setProperty("--pry", (-clamp(d, -1.6, 1.6) * 21).toFixed(2) + "deg");
-      c.style.setProperty("--pz", (k * 80 - 50).toFixed(1) + "px");
-      c.style.setProperty("--psc", (0.88 + k * 0.12).toFixed(4));
-      c.style.setProperty("--po", (0.4 + k * 0.6).toFixed(3));
-    }
-    if (best !== activePer) {
-      if (perCards[activePer]) perCards[activePer].classList.remove("is-on");
-      if (beads[activePer]) beads[activePer].classList.remove("on");
-      activePer = best;
-      if (perCards[activePer]) perCards[activePer].classList.add("is-on");
-      if (beads[activePer]) beads[activePer].classList.add("on");
-    }
-  }
-
-  var docH = 0;
-  function onScroll(){
-    var y = window.pageYOffset;
-    bar.style.width = (docH > 0 ? clamp(y / docH, 0, 1) * 100 : 0) + "%";
-    nav.classList.toggle("stuck", y > 60);
-
-    /* herói 3D: a cena se apruma e o painel principal recua */
-    if (!reduce && main && y < window.innerHeight * 1.7) {
-      var p3 = Math.min(y / (window.innerHeight * 0.9), 1);
-      scrollTiltX = 15 - 15 * p3;
-      applyStage();
-      main.style.setProperty("--ty", (y * -0.05).toFixed(2) + "px");
-      main.style.setProperty("--sc", (1 - Math.min(y / 9000, 0.04)).toFixed(4));
-    }
-
-    /* elementos que viajam pela tela conforme a página desce */
-    sweepRv(y);
-    updateFly(y);
-    updateSpiral(y);
-    updateRail(y);
-
-    /* jornada pinada */
-    if (track && !document.getElementById("jornada").classList.contains("j-flat")) {
-      var span = jH - window.innerHeight;
-      if (span > 0) {
-        var p = Math.min(Math.max((y - jTop0) / span, 0), 0.9999);
-        var i = Math.floor(p * stages.length);
-        var inner = (p * stages.length) - i;
-        if (i !== current) {
-          current = i;
-          stages.forEach(function(s, k){ s.classList.toggle("on", k === i); });
-          navItems.forEach(function(n, k){ n.classList.toggle("on", k === i); });
-        }
-        if (navItems[i]) navItems[i].style.setProperty("--p", (inner * 100).toFixed(1) + "%");
-      }
-    }
-    ticking = false;
-  }
-  function request(){ if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); } }
-  window.addEventListener("scroll", request, { passive: true });
-
-  /* remede tudo só quando a página muda de forma, nunca durante a rolagem */
-  var remeasureTimer = 0;
-  function remeasure(){
-    docH = document.documentElement.scrollHeight - window.innerHeight;
-    buildThread();
-    sizeNeon();
-    measureAll();
-    request();
-  }
-  function scheduleRemeasure(){
-    clearTimeout(remeasureTimer);
-    remeasureTimer = setTimeout(remeasure, 120);
-  }
-  window.addEventListener("resize", scheduleRemeasure);
-  window.addEventListener("load", function(){ remeasure(); setTimeout(remeasure, 700); });
-  /* nada de ResizeObserver aqui: remeasure() mexe no DOM (as contas do fio),
-     o que dispararia o próprio observer e travaria o renderizador em laço. */
-
-  /* jornada e dia na rede voltam a prender na tela; viram lista só quando o
-     usuário pede menos movimento */
-  if (reduce) {
-    document.getElementById("jornada").classList.add("j-flat");
-    if (pessoas) {
-      pessoas.classList.add("flat");
-      if (dayClock) dayClock.textContent = "07:10 → 17:40";
-    }
-  }
-  remeasure();
-
-  /* ── contadores ── */
-  function fmt(n, grouped){ return grouped ? n.toLocaleString("pt-BR") : String(n); }
-  var counters = document.querySelectorAll(".cnt");
-  if (reduce || !("IntersectionObserver" in window)) {
-    counters.forEach(function(el){
-      el.textContent = fmt(parseInt(el.dataset.to, 10), el.dataset.fmt) + (el.dataset.suf || "");
-    });
-  } else {
-    var cio = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (!e.isIntersecting) return;
-        cio.unobserve(e.target);
-        var el = e.target, to = parseInt(el.dataset.to, 10), t0 = null, dur = 1400;
-        function step(ts){
-          if (t0 === null) t0 = ts;
-          var p = Math.min((ts - t0) / dur, 1);
-          var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = fmt(Math.round(to * eased), el.dataset.fmt) + (el.dataset.suf || "");
-          if (p < 1) window.requestAnimationFrame(step);
-        }
-        window.requestAnimationFrame(step);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(function(el){ cio.observe(el); });
-  }
-
-  /* ── navegação interna sem trocar o #hash ──
-     dentro do iframe do artifact, mudar o hash conta como navegação e o
-     visualizador descarta a página. Rolar por script evita isso. */
-  document.addEventListener("click", function(e){
-    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
-    if (!a) return;
-    var id = a.getAttribute("href").slice(1);
-    if (!id) return;
-    var target = document.getElementById(id);
-    if (!target) return;
-    e.preventDefault();
-    var top = target.getBoundingClientRect().top + window.pageYOffset - 64;
-    window.scrollTo({ top: Math.max(top, 0), behavior: "auto" });
-    request();
-  });
-
-  /* ── nav ativa por seção ── */
-  var links = Array.prototype.slice.call(document.querySelectorAll(".navlinks a"));
-  var targets = links.map(function(a){ return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
-  if ("IntersectionObserver" in window && targets.length) {
-    var nio = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (!e.isIntersecting) return;
-        links.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); });
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    targets.forEach(function(t){ nio.observe(t); });
-  }
-
-  /* ── faixa horizontal ── */
-  var rail = document.getElementById("rail");
-  function slide(dir){
-    if (!rail) return;
-    var card = rail.querySelector(".per");
-    var step = card ? card.offsetWidth + 18 : 340;
-    rail.scrollBy({ left: dir * step, behavior: reduce ? "auto" : "smooth" });
-  }
-  var prev = document.getElementById("railPrev");
-  var next = document.getElementById("railNext");
-  if (prev) prev.addEventListener("click", function(){ slide(-1); });
-  if (next) next.addEventListener("click", function(){ slide(1); });
-
-  /* ── 3D: cena do herói responde ao ponteiro ── */
-  var finePointer = window.matchMedia("(pointer: fine)").matches;
-  if (finePointer && !reduce && compo) {
-    compo.addEventListener("pointermove", function(e){
-      var r = compo.getBoundingClientRect();
-      pointerX = (((e.clientX - r.left) / r.width) - 0.5) * 16;
-      pointerY = (0.5 - ((e.clientY - r.top) / r.height)) * 9;
-      applyStage();
-    });
-    compo.addEventListener("pointerleave", function(){ pointerX = 0; pointerY = 0; applyStage(); });
-  }
-
-  /* ── 3D: a logo extrudada e o celular seguem o ponteiro ── */
-  function followPointer(zone, target, varX, varY, ampX, ampY){
-    if (!zone || !target || reduce || !finePointer) return;
-    zone.addEventListener("pointermove", function(e){
-      var r = zone.getBoundingClientRect();
-      target.style.setProperty(varY, ((((e.clientX - r.left) / r.width) - 0.5) * ampY).toFixed(2) + "deg");
-      target.style.setProperty(varX, ((0.5 - ((e.clientY - r.top) / r.height)) * ampX).toFixed(2) + "deg");
-    });
-    zone.addEventListener("pointerleave", function(){
-      target.style.setProperty(varX, "0deg");
-      target.style.setProperty(varY, "0deg");
-    });
-  }
-  /* espessura da marca: camadas da arte empilhadas atrás da face */
-  var logoObj = document.getElementById("logoObj");
-  if (logoObj) {
-    var face = logoObj.firstElementChild;
-    for (var li = 5; li >= 1; li--) {
-      var layer = document.createElement("span");
-      layer.className = "logo3d__l";
-      layer.style.setProperty("--i", li);
-      logoObj.insertBefore(layer, face);
-    }
-  }
-
-  followPointer(document.getElementById("hero"), document.getElementById("logoTilt"), "--lx", "--ly", 26, 34);
-  followPointer(document.getElementById("app"), document.getElementById("phoneTilt"), "--px", "--py", 18, 26);
-
-  /* ── 3D: inclinação dos cards de módulo ── */
-  if (finePointer && !reduce) {
-    Array.prototype.forEach.call(document.querySelectorAll(".mod"), function(card){
-      card.addEventListener("pointermove", function(e){
-        var r = card.getBoundingClientRect();
-        card.style.setProperty("--my", ((((e.clientX - r.left) / r.width) - 0.5) * 9).toFixed(2) + "deg");
-        card.style.setProperty("--mx", ((0.5 - ((e.clientY - r.top) / r.height)) * 7).toFixed(2) + "deg");
-      });
-      card.addEventListener("pointerleave", function(){
-        card.style.setProperty("--my", "0deg");
-        card.style.setProperty("--mx", "0deg");
-      });
-    });
-  }
-
-  /* ── 3D: malha das unidades, projetada à mão em canvas ── */
-  var cv = document.getElementById("net");
-  if (cv && cv.getContext) {
-    var ctx = cv.getContext("2d");
-    var N = 53, nodes = [], edges = [], W = 0, H = 0, dpr = 1, rot = 0.6, visible = false, raf = 0;
-
-    /* distribuição em espiral de Fibonacci — pontos bem espalhados na esfera */
-    var GA = Math.PI * (3 - Math.sqrt(5));
-    for (var i = 0; i < N; i++) {
-      var yy = 1 - (i / (N - 1)) * 2;
-      var rr = Math.sqrt(Math.max(0, 1 - yy * yy));
-      var th = GA * i;
-      nodes.push({ x: Math.cos(th) * rr, y: yy, z: Math.sin(th) * rr, hub: i % 9 === 0 });
-    }
-    for (var a = 0; a < N; a++) {
-      for (var b = a + 1; b < N; b++) {
-        var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y, dz = nodes[a].z - nodes[b].z;
-        var d2 = dx * dx + dy * dy + dz * dz;
-        if (d2 < 0.19) edges.push([a, b]);
-      }
-    }
-
-    function size(){
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = cv.clientWidth; H = cv.clientHeight;
-      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function draw(){
-      if (!W || !H) return;
-      ctx.clearRect(0, 0, W, H);
-      var R = Math.min(W, H) * 0.42, cx = W / 2, cy = H / 2;
-      var cos = Math.cos(rot), sin = Math.sin(rot);
-      var tilt = 0.34, ct = Math.cos(tilt), st = Math.sin(tilt);
-      var pr = new Array(N);
-
-      for (var k = 0; k < N; k++) {
-        var n = nodes[k];
-        var x1 = n.x * cos - n.z * sin, z1 = n.x * sin + n.z * cos;   /* giro em Y */
-        var y1 = n.y * ct - z1 * st, z2 = n.y * st + z1 * ct;          /* inclinação em X */
-        var f = 2.9 / (2.9 - z2);                                      /* projeção em perspectiva */
-        pr[k] = { x: cx + x1 * R * f, y: cy + y1 * R * f, f: f, z: z2, hub: n.hub };
-      }
-
-      ctx.lineWidth = 1;
-      for (var e = 0; e < edges.length; e++) {
-        var p = pr[edges[e][0]], q = pr[edges[e][1]];
-        var depth = (p.z + q.z) / 2;
-        ctx.strokeStyle = "rgba(214,204,239," + (0.05 + Math.max(0, depth + 1) * 0.13).toFixed(3) + ")";
-        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
-      }
-      for (var m = 0; m < N; m++) {
-        var s = pr[m];
-        var alpha = 0.22 + Math.max(0, s.z + 1) * 0.36;
-        var rad = (s.hub ? 3.4 : 1.9) * s.f;
-        ctx.beginPath(); ctx.arc(s.x, s.y, rad, 0, Math.PI * 2);
-        ctx.fillStyle = s.hub
-          ? "rgba(255,255,255," + Math.min(alpha + 0.24, 1).toFixed(3) + ")"
-          : "rgba(214,204,239," + alpha.toFixed(3) + ")";
-        ctx.fill();
-        if (s.hub && s.z > 0) {
-          ctx.beginPath(); ctx.arc(s.x, s.y, rad * 3.4, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(255,255,255,.07)"; ctx.fill();
-        }
-      }
-    }
-
-    function loop(){ rot += 0.0022; draw(); raf = window.requestAnimationFrame(loop); }
-    function start(){ if (!raf && !reduce) raf = window.requestAnimationFrame(loop); }
-    function stop(){ if (raf) { window.cancelAnimationFrame(raf); raf = 0; } }
-
-    size(); draw();
-    window.addEventListener("resize", function(){ size(); draw(); });
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function(entries){
-        visible = entries[0].isIntersecting;
-        if (visible) start(); else stop();
-      }, { threshold: 0.01 }).observe(cv);
-    } else { start(); }
-  }
-})();
-</script>
-
+<script src="assets/site.js?v=4" defer></script>
 </body>
 </html>
