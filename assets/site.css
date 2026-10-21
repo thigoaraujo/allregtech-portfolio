@@ -19,7 +19,7 @@
   --raio-1:6px; --raio-2:8px; --raio-3:12px; --raio-4:16px;
   --sombra:0 1px 2px rgba(32,28,44,.05), 0 6px 20px -8px rgba(32,28,44,.14);
   --sombra-alta:0 2px 4px rgba(32,28,44,.05), 0 22px 44px -18px rgba(48,32,79,.30);
-  --larg:1200px; --gutter:clamp(16px,4vw,40px);
+  --larg:1600px; --gutter:clamp(16px,4vw,64px);
   --topo:64px;
   /* movimento: controles respondem rápido, contexto e entradas um pouco mais longos */
   --motion-fast:160ms; --motion-normal:280ms; --motion-slow:560ms;
@@ -50,8 +50,8 @@ h1,h2,h3,h4{ margin:0; font-family:var(--fonte-titulo); font-weight:600; letter-
 /* o rótulo leva a marca das etapas: um ponto cheio ligado por um fio curto */
 .sobre::before{ content:""; flex:none; width:22px; height:8px; background:radial-gradient(circle 4px at 4px 4px, currentColor 98%, transparent) 0 0/8px 8px no-repeat, linear-gradient(currentColor,currentColor) 8px 3.5px/14px 1px no-repeat; opacity:.9 }
 .cab-centro .sobre{ justify-content:center }
-.t-1{ font-size:clamp(34px,3.8vw,52px); font-weight:600; letter-spacing:-.03em; line-height:1.04 }
-.t-2{ font-size:clamp(27px,3vw,40px); letter-spacing:-.025em; line-height:1.08 }
+.t-1{ font-size:clamp(34px,3.8vw,60px); font-weight:600; letter-spacing:-.03em; line-height:1.04 }
+.t-2{ font-size:clamp(27px,2.8vw,46px); letter-spacing:-.025em; line-height:1.08 }
 .t-3{ font-size:clamp(20px,1.8vw,24px) }
 .lead{ font-size:clamp(16px,1.25vw,18px); color:var(--texto-2); max-width:58ch }
 .miudo{ font-size:13px; color:var(--texto-3) }
@@ -457,7 +457,7 @@ html.heroi-ok{ --h-atraso:0; --h-dur:var(--motion-fast) }
 .ficha{ grid-column:1 / 6; grid-row:1; z-index:2; margin:0 0 -150px -28px; align-self:end;
   background:var(--sup); border:1px solid var(--borda); border-radius:var(--raio-3); box-shadow:var(--sombra-alta);
   padding:12px 14px 10px; font-size:12px; line-height:1.3; min-width:0 }
-.palco-cel{ grid-column:10 / 13; grid-row:1; justify-self:end; width:min(148px,100%); margin:0 0 -96px 0; z-index:3; padding:6px; border-radius:24px }
+.palco-cel{ grid-column:10 / 13; grid-row:1; justify-self:end; width:min(clamp(148px,11vw,190px),100%); margin:0 0 -96px 0; z-index:3; padding:6px; border-radius:24px }
 .palco-cel img{ border-radius:19px }
 .palco > figcaption{ grid-column:6 / 13; grid-row:2; margin-top:116px; max-width:46ch }
 .ficha-cab{ display:flex; align-items:center; gap:8px }
