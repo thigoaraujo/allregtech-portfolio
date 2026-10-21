@@ -182,7 +182,7 @@
         if (!nome) { quadro.classList.remove('trocando'); return; }
         var fim = function(){ quadro.classList.remove('trocando'); };
         img.onload = fim; img.onerror = fim;
-        img.src = 'assets/telas/' + nome + '-p.webp';
+        img.src = 'assets/telas/' + nome + '-p.webp?v=2';
         if (img.complete) fim();
       }, menos ? 0 : 140);
     };
